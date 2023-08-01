@@ -1,0 +1,40 @@
+package net.ZuperZV.Tool_Forge.item;
+
+import net.ZuperZV.Tool_Forge.Tool_Forge;
+import net.ZuperZV.Tool_Forge.item.costom.ModToolTiers;
+import net.minecraft.world.item.*;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+
+public class ModItems {
+    public static final DeferredRegister<Item> ITEMS =
+            DeferredRegister.create(ForgeRegistries.ITEMS, Tool_Forge.MOD_ID);
+
+    public static final RegistryObject<Item> GILDED_NETHERITE_INGOT = ITEMS.register("gilded_netherite_ingot",
+            () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+
+    public static final RegistryObject<Item> GILDED_NETHERITE_SWORD = ITEMS.register("gilded_netherite_sword",
+            () -> new SwordItem(ModToolTiers.GILDED_NETERITE, 3, 3, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> GILDED_NETHERITE_PICKAXE = ITEMS.register("gilded_netherite_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.GILDED_NETERITE, 2, 3, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> GILDED_NETHERITE_SHOVEL = ITEMS.register("gilded_netherite_shovel",
+            () -> new ShovelItem(ModToolTiers.GILDED_NETERITE, 2, 3, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> GILDED_NETHERITE_AXE = ITEMS.register("gilded_netherite_axe",
+            () -> new AxeItem(ModToolTiers.GILDED_NETERITE, 2.5f, 3, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> GILDED_NETHERITE_HOE = ITEMS.register("gilded_netherite_hoe",
+            () -> new HoeItem(ModToolTiers.GILDED_NETERITE, 2, 3, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
+
+    public static final RegistryObject<Item> GILDED_GOLD = ITEMS.register("gilded_gold",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GILDED_GOLD_NUGGET = ITEMS.register("gilded_gold_nugget",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_GILDED_GOLD = ITEMS.register("raw_gilded_gold",
+            () -> new Item(new Item.Properties()));
+
+
+    public static void register(IEventBus eventBus) {
+        ITEMS.register(eventBus);
+    }
+}

@@ -1,6 +1,8 @@
 package net.ZuperZV.Tool_Forge;
 
 import com.mojang.logging.LogUtils;
+import net.ZuperZV.Tool_Forge.item.ModItems;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -24,6 +26,8 @@ public class Tool_Forge {
 
         modEventBus.addListener(this::commonSetup);
 
+        ModItems.register(modEventBus);
+
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
     }
@@ -34,6 +38,16 @@ public class Tool_Forge {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.GILDED_NETHERITE_INGOT);
+            event.accept(ModItems.GILDED_GOLD);
+
+            event.accept(ModItems.GILDED_NETHERITE_SWORD);
+            event.accept(ModItems.GILDED_NETHERITE_PICKAXE);
+            event.accept(ModItems.GILDED_NETHERITE_SHOVEL);
+            event.accept(ModItems.GILDED_NETHERITE_AXE);
+            event.accept(ModItems.GILDED_NETHERITE_HOE);
+        }
 
     }
 
