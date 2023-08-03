@@ -1,6 +1,7 @@
 package net.ZuperZV.Tool_Forge.item;
 
 import net.ZuperZV.Tool_Forge.Tool_Forge;
+import net.ZuperZV.Tool_Forge.item.costom.ModArmorMaterials;
 import net.ZuperZV.Tool_Forge.item.costom.ModToolTiers;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -15,6 +16,13 @@ public class ModItems {
     public static final RegistryObject<Item> GILDED_NETHERITE_INGOT = ITEMS.register("gilded_netherite_ingot",
             () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 
+    public static final RegistryObject<Item> GILDED_GOLD = ITEMS.register("gilded_gold",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GILDED_GOLD_NUGGET = ITEMS.register("gilded_gold_nugget",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_GILDED_GOLD = ITEMS.register("raw_gilded_gold",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> GILDED_NETHERITE_SWORD = ITEMS.register("gilded_netherite_sword",
             () -> new SwordItem(ModToolTiers.GILDED_NETERITE, 3, 3, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> GILDED_NETHERITE_PICKAXE = ITEMS.register("gilded_netherite_pickaxe",
@@ -26,12 +34,14 @@ public class ModItems {
     public static final RegistryObject<Item> GILDED_NETHERITE_HOE = ITEMS.register("gilded_netherite_hoe",
             () -> new HoeItem(ModToolTiers.GILDED_NETERITE, 2, 3, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
 
-    public static final RegistryObject<Item> GILDED_GOLD = ITEMS.register("gilded_gold",
-            () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> GILDED_GOLD_NUGGET = ITEMS.register("gilded_gold_nugget",
-            () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> RAW_GILDED_GOLD = ITEMS.register("raw_gilded_gold",
-            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GILDED_NETHERITE_HELMET = ITEMS.register("gilded_netherite_helmet",
+            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.HELMET, new Item.Properties().fireResistant() .rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> GILDED_NETHERITE_CHESTPLATE = ITEMS.register("gilded_netherite_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant() .rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> GILDED_NETHERITE_LEGGINGS = ITEMS.register("gilded_netherite_leggings",
+            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant() .rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> GILDED_NETHERITE_BOOTS = ITEMS.register("gilded_netherite_boots",
+            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant() .rarity(Rarity.EPIC)));
 
 
     public static void register(IEventBus eventBus) {

@@ -1,6 +1,7 @@
 package net.ZuperZV.Tool_Forge;
 
 import com.mojang.logging.LogUtils;
+import net.ZuperZV.Tool_Forge.block.ModBlocks;
 import net.ZuperZV.Tool_Forge.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -27,6 +28,7 @@ public class Tool_Forge {
         modEventBus.addListener(this::commonSetup);
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
@@ -41,11 +43,24 @@ public class Tool_Forge {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.GILDED_NETHERITE_INGOT);
             event.accept(ModItems.GILDED_GOLD);
+        }
 
+        if(event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.GILDED_NETHERITE_SWORD);
-            event.accept(ModItems.GILDED_NETHERITE_PICKAXE);
-            event.accept(ModItems.GILDED_NETHERITE_SHOVEL);
             event.accept(ModItems.GILDED_NETHERITE_AXE);
+
+            event.accept(ModItems.GILDED_NETHERITE_HELMET);
+            event.accept(ModItems.GILDED_NETHERITE_CHESTPLATE);
+            event.accept(ModItems.GILDED_NETHERITE_LEGGINGS);
+            event.accept(ModItems.GILDED_NETHERITE_BOOTS);
+
+
+        }
+
+        if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(ModItems.GILDED_NETHERITE_PICKAXE);
+            event.accept(ModItems.GILDED_NETHERITE_AXE);
+            event.accept(ModItems.GILDED_NETHERITE_SHOVEL);
             event.accept(ModItems.GILDED_NETHERITE_HOE);
         }
 

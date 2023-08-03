@@ -22,6 +22,23 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.GILDED_GOLD);
         simpleItem(ModItems.GILDED_GOLD_NUGGET);
+
+        simpleItem(ModItems.GILDED_NETHERITE_HELMET);
+        simpleItem(ModItems.GILDED_NETHERITE_CHESTPLATE);
+        simpleItem(ModItems.GILDED_NETHERITE_LEGGINGS);
+        simpleItem(ModItems.GILDED_NETHERITE_BOOTS);
+
+        handheldItem(ModItems.GILDED_NETHERITE_SWORD);
+        handheldItem(ModItems.GILDED_NETHERITE_PICKAXE);
+        handheldItem(ModItems.GILDED_NETHERITE_AXE);
+        handheldItem(ModItems.GILDED_NETHERITE_SHOVEL);
+        handheldItem(ModItems.GILDED_NETHERITE_HOE);
+    }
+
+    private ItemModelBuilder handheldItem(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/handheld")).texture("layer0",
+                new ResourceLocation(Tool_Forge.MOD_ID,"item/" + item.getId().getPath()));
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
