@@ -1,9 +1,11 @@
 package net.ZuperZV.Tool_Forge.item;
 
 import net.ZuperZV.Tool_Forge.Tool_Forge;
+import net.ZuperZV.Tool_Forge.entity.ModEntities;
 import net.ZuperZV.Tool_Forge.item.costom.ModArmorMaterials;
 import net.ZuperZV.Tool_Forge.item.costom.ModToolTiers;
 import net.minecraft.world.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -42,6 +44,11 @@ public class ModItems {
             () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant() .rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> GILDED_NETHERITE_BOOTS = ITEMS.register("gilded_netherite_boots",
             () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant() .rarity(Rarity.EPIC)));
+
+    public static final RegistryObject<Item> SOUL_SPAWN_EGG = ITEMS.register("soul_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.SOUL, 0x7e9680, 0xc5d1c5,
+                    new Item.Properties()));
+
 
 
     public static void register(IEventBus eventBus) {

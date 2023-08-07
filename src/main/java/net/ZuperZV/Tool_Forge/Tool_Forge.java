@@ -2,7 +2,11 @@ package net.ZuperZV.Tool_Forge;
 
 import com.mojang.logging.LogUtils;
 import net.ZuperZV.Tool_Forge.block.ModBlocks;
+import net.ZuperZV.Tool_Forge.entity.ModEntities;
+import net.ZuperZV.Tool_Forge.entity.client.SoulRenderer;
 import net.ZuperZV.Tool_Forge.item.ModItems;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -15,6 +19,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+
+import javax.swing.text.html.parser.Entity;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Tool_Forge.MOD_ID)
@@ -29,6 +35,8 @@ public class Tool_Forge {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        ModEntities.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
@@ -77,6 +85,9 @@ public class Tool_Forge {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(() -> {
+                EntityRenderers.register(ModEntities.SOUL.get(), SoulRenderer::new);
+            });
 
         }
     }

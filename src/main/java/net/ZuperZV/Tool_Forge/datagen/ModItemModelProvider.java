@@ -33,6 +33,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.GILDED_NETHERITE_AXE);
         handheldItem(ModItems.GILDED_NETHERITE_SHOVEL);
         handheldItem(ModItems.GILDED_NETHERITE_HOE);
+
+        withExistingParent(ModItems.SOUL_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
     private ItemModelBuilder handheldItem(RegistryObject<Item> item) {
