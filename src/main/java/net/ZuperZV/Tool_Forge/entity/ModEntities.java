@@ -15,7 +15,7 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<SoulEntity>> SOUL =
             ENTITY_TYPES.register("soul", () -> EntityType.Builder.of(SoulEntity::new, MobCategory.CREATURE)
-                    .sized(1.8f, 0.6f).build("soul"));
+                    .sized(0.6f, 1.8f).build("soul"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

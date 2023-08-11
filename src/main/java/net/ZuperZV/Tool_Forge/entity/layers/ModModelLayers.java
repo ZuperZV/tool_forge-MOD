@@ -6,6 +6,5 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ModModelLayers {
     public static final ModelLayerLocation SOUL_LAYER = new ModelLayerLocation(
-            new ResourceLocation(Tool_Forge.MOD_ID, "soul_layer"), "soul_layer"
-    );
+            new ResourceLocation(Tool_Forge.MOD_ID, "soul_layer"), "soul_layer");
 }

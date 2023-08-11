@@ -61,19 +61,19 @@ public class SoulModel<T extends SoulEntity> extends HierarchicalModel<T> {
 	@Override
 	public void setupAnim(SoulEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
+		this.applyHeadRotation(entity, netHeadYaw, headPitch, ageInTicks);
+
 		this.animateWalk(ModAnimationDefinions.SOUL_WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
 		this.animate(entity.idleAnimationState, ModAnimationDefinions.SOUL_IDEL, ageInTicks, 1f);
 
+	}
 
+	private void applyHeadRotation(SoulEntity pEntity, float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {
+		pNetHeadYaw = Mth.clamp(pNetHeadYaw, -30.0F, 30.0F);
+		pHeadPitch = Mth.clamp(pHeadPitch, -25.0F, 45.0F);
 
-		private void applyHeadRotation(SoulEntity pEntity, float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {
-			pNetHeadYaw = Mth.clamp(pNetHeadYaw, -30.0F, 30.0F);
-			pHeadPitch = Mth.clamp(pHeadPitch, -25.0F, 45.0F);
-
-			this.Head.yRot = pNetHeadYaw * ((float)Math.PI / 180F);
-			this.Head.xRot = pHeadPitch * ((float)Math.PI / 180F);
-		}
-
+		this.Head.yRot = pNetHeadYaw * ((float)Math.PI / 180F);
+		this.Head.xRot = pHeadPitch * ((float)Math.PI / 180F);
 	}
 
 	@Override

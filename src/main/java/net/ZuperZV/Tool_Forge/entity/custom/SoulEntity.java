@@ -6,7 +6,6 @@ import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -29,7 +28,7 @@ public class SoulEntity extends Animal {
         this.goalSelector.addGoal(1, new FollowParentGoal(this, 1.1d));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0d));
 
-        this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 6f);
+        this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 6f));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
     }
 
