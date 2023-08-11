@@ -14,8 +14,8 @@ public class ModEntities {
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Tool_Forge.MOD_ID);
 
     public static final RegistryObject<EntityType<SoulEntity>> SOUL =
-            ENTITY_TYPES.register("rhino", () -> EntityType.Builder.of(SoulEntity::new, MobCategory.MONSTER)
-                    .sized(2.5f, 2.5f).build("soul"));
+            ENTITY_TYPES.register("soul", () -> EntityType.Builder.of(SoulEntity::new, MobCategory.CREATURE)
+                    .sized(1.8f, 0.6f).build("soul"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

@@ -72,6 +72,10 @@ public class Tool_Forge {
             event.accept(ModItems.GILDED_NETHERITE_HOE);
         }
 
+        if(event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+            event.accept(ModItems.SOUL_SPAWN_EGG);
+        }
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
