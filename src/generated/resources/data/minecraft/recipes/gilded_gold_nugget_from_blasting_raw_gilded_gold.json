@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.5,
+  "group": "GILDED_GOLD_NUGGET",
+  "ingredient": {
+    "item": "tool_forge:raw_gilded_gold"
+  },
+  "result": "tool_forge:gilded_gold_nugget"
+}

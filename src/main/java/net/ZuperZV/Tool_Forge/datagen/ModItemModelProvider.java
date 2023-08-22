@@ -23,16 +23,19 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.GILDED_GOLD);
         simpleItem(ModItems.GILDED_GOLD_NUGGET);
 
-        simpleItem(ModItems.GILDED_NETHERITE_HELMET);
-        simpleItem(ModItems.GILDED_NETHERITE_CHESTPLATE);
-        simpleItem(ModItems.GILDED_NETHERITE_LEGGINGS);
-        simpleItem(ModItems.GILDED_NETHERITE_BOOTS);
+        //simpleItem(ModItems.GILDED_NETHERITE_HELMET);
+        //simpleItem(ModItems.GILDED_NETHERITE_CHESTPLATE);
+        //simpleItem(ModItems.GILDED_NETHERITE_LEGGINGS);
+        //simpleItem(ModItems.GILDED_NETHERITE_BOOTS);
 
         handheldItem(ModItems.GILDED_NETHERITE_SWORD);
         handheldItem(ModItems.GILDED_NETHERITE_PICKAXE);
         handheldItem(ModItems.GILDED_NETHERITE_AXE);
         handheldItem(ModItems.GILDED_NETHERITE_SHOVEL);
         handheldItem(ModItems.GILDED_NETHERITE_HOE);
+
+        handheldItem(ModItems.ECTOPLASM);
+        handheldItem(ModItems.SOUL_SHARD);
 
         withExistingParent(ModItems.SOUL_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }

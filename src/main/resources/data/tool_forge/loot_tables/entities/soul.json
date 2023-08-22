@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 50,
+          "name": "tool_forge:ectoplasm"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "tool_forge:soul_shard"
+        }
+      ]
+    }
+  ]
+}

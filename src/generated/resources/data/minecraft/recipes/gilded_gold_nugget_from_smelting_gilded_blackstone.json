@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "GILDED_GOLD_NUGGET",
+  "ingredient": {
+    "item": "minecraft:gilded_blackstone"
+  },
+  "result": "tool_forge:gilded_gold_nugget"
+}
