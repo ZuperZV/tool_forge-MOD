@@ -26,15 +26,15 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> GILDED_NETHERITE_SWORD = ITEMS.register("gilded_netherite_sword",
-            () -> new SwordItem(ModToolTiers.GILDED_NETERITE, 5, -2.3f, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
+            () -> new SwordItem(ModToolTiers.GILDED_NETERITE, 5, -3f, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> GILDED_NETHERITE_PICKAXE = ITEMS.register("gilded_netherite_pickaxe",
-            () -> new PickaxeItem(ModToolTiers.GILDED_NETERITE, 2, -2.7f, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
+            () -> new PickaxeItem(ModToolTiers.GILDED_NETERITE, 2, 2f, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> GILDED_NETHERITE_SHOVEL = ITEMS.register("gilded_netherite_shovel",
-            () -> new ShovelItem(ModToolTiers.GILDED_NETERITE, 2, -3, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
+            () -> new ShovelItem(ModToolTiers.GILDED_NETERITE, 2, 3, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> GILDED_NETHERITE_AXE = ITEMS.register("gilded_netherite_axe",
-            () -> new AxeItem(ModToolTiers.GILDED_NETERITE, 2.5f, -2.9f, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
+            () -> new AxeItem(ModToolTiers.GILDED_NETERITE, 2.5f, 2f, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> GILDED_NETHERITE_HOE = ITEMS.register("gilded_netherite_hoe",
-            () -> new HoeItem(ModToolTiers.GILDED_NETERITE, 2, -3, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
+            () -> new HoeItem(ModToolTiers.GILDED_NETERITE, 2, 1, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
 
     public static final RegistryObject<Item> GILDED_NETHERITE_HELMET = ITEMS.register("gilded_netherite_helmet",
             () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.HELMET, new Item.Properties().fireResistant() .rarity(Rarity.EPIC)));
