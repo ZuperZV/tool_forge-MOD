@@ -28,6 +28,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> GILDED_GOLD_BLOCK = registerBlock("gilded_gold_block",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.GOLD_BLOCK)));
 
+    public static final RegistryObject<Block> TOOL_STATION = registerBlock("tool_station",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_TILES)));
+
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
