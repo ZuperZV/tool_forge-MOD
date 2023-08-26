@@ -2,6 +2,7 @@ package net.ZuperZV.Tool_Forge;
 
 import com.mojang.logging.LogUtils;
 import net.ZuperZV.Tool_Forge.block.ModBlocks;
+import net.ZuperZV.Tool_Forge.block.custom.entity.ModBlockEntities;
 import net.ZuperZV.Tool_Forge.entity.ModEntities;
 import net.ZuperZV.Tool_Forge.entity.client.SoulRenderer;
 import net.ZuperZV.Tool_Forge.item.ModItems;
@@ -37,6 +38,7 @@ public class Tool_Forge {
         ModBlocks.register(modEventBus);
 
         ModEntities.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);

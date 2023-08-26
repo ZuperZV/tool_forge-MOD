@@ -22,10 +22,10 @@ public class ModItemTagGenerator extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider pProvider) {
         // Add Item Tags here
         this.tag(ItemTags.TRIMMABLE_ARMOR)
-                .add(ModItems.GILDED_NETHERITE_HELMET.get())
-                .add(ModItems.GILDED_NETHERITE_CHESTPLATE.get())
-                .add(ModItems.GILDED_NETHERITE_LEGGINGS.get())
-                .add(ModItems.GILDED_NETHERITE_BOOTS.get());
+                .add(ModItems.GILDED_NETHERITE_HELMET.get(),
+                ModItems.GILDED_NETHERITE_CHESTPLATE.get(),
+                ModItems.GILDED_NETHERITE_LEGGINGS.get(),
+                ModItems.GILDED_NETHERITE_BOOTS.get());
 
     }
 
