@@ -1,13 +1,13 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "Tool_Station",
+	"parent": "tool_station",
 	"textures": {
-		"0": "tool_froge:block/Tool_Station_si",
-		"2": "tool_froge:block/Tool_Station_top",
+		"0": "tool_forge:block/tool_station_si",
+		"2": "tool_forge:block/tool_station_top",
 		"3": "minecraft:block/polished_deepslate",
 		"5": "minecraft:block/deepslate_tiles",
-		"6": "tool_froge:block/lava_Container",
-		"particle": "tool_froge:block/Tool_Station_si"
+		"6": "tool_forge:block/lava_container",
+		"particle": "tool_forge:block/tool_station_si"
 	},
 	"elements": [
 		{

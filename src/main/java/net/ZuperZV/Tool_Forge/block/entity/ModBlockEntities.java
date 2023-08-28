@@ -1,4 +1,4 @@
-package net.ZuperZV.Tool_Forge.block.custom.entity;
+package net.ZuperZV.Tool_Forge.block.entity;
 
 import net.ZuperZV.Tool_Forge.Tool_Forge;
 import net.ZuperZV.Tool_Forge.block.ModBlocks;

@@ -1,6 +1,5 @@
-package net.ZuperZV.Tool_Forge.block.custom.entity;
+package net.ZuperZV.Tool_Forge.block.entity;
 
-import net.ZuperZV.Tool_Forge.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -11,6 +10,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.util.LazyOptional;
@@ -113,5 +113,9 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
         //08:32
+    }
+
+    public void tick(Level level, BlockPos pPos, BlockState pState) {
+
     }
 }

@@ -2,11 +2,10 @@ package net.ZuperZV.Tool_Forge;
 
 import com.mojang.logging.LogUtils;
 import net.ZuperZV.Tool_Forge.block.ModBlocks;
-import net.ZuperZV.Tool_Forge.block.custom.entity.ModBlockEntities;
+import net.ZuperZV.Tool_Forge.block.entity.ModBlockEntities;
 import net.ZuperZV.Tool_Forge.entity.ModEntities;
 import net.ZuperZV.Tool_Forge.entity.client.SoulRenderer;
 import net.ZuperZV.Tool_Forge.item.ModItems;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -20,8 +19,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-
-import javax.swing.text.html.parser.Entity;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Tool_Forge.MOD_ID)
