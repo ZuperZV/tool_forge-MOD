@@ -1,9 +1,12 @@
 package net.ZuperZV.Tool_Forge.block.entity;
 
+import net.ZuperZV.Tool_Forge.screen.ToolStationMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -86,7 +89,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return null;
+        return new ToolStationMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
     @Override
@@ -117,5 +120,14 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
 
     public void tick(Level level, BlockPos pPos, BlockState pState) {
 
+    }
+
+    public void drops() {
+        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
+            inventory.setItem(i, itemHandler.getStackInSlot(i));
+        }
+
+        Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 }
