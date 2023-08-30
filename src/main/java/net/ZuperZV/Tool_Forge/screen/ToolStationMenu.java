@@ -33,11 +33,11 @@ public class ToolStationMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 47, 16));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 12, 58));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 6, 79));
-            this.addSlot(new SlotItemHandler(iItemHandler, 3, 12, 100));
-            this.addSlot(new SlotItemHandler(iItemHandler, 4, 57, 79));
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 17, 48));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 59, 13));
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 80, 7));
+            this.addSlot(new SlotItemHandler(iItemHandler, 3, 101, 13));
+            this.addSlot(new SlotItemHandler(iItemHandler, 4, 80, 58));
         });
 
         addDataSlots(data);
