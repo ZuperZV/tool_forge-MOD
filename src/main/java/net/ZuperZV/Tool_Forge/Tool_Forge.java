@@ -6,6 +6,7 @@ import net.ZuperZV.Tool_Forge.block.entity.ModBlockEntities;
 import net.ZuperZV.Tool_Forge.entity.ModEntities;
 import net.ZuperZV.Tool_Forge.entity.client.SoulRenderer;
 import net.ZuperZV.Tool_Forge.item.ModItems;
+import net.ZuperZV.Tool_Forge.recipe.ModRecipes;
 import net.ZuperZV.Tool_Forge.screen.ModMenuTypes;
 import net.ZuperZV.Tool_Forge.screen.ToolStationScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -41,6 +42,8 @@ public class Tool_Forge {
 
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+
+        ModRecipes.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);

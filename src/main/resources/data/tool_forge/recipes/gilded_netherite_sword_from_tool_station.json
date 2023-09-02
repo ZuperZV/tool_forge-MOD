@@ -1,0 +1,14 @@
+{
+  "type": "tool_forge:tool_station",
+  "ingreedients": [
+    {
+      "item": "tool_forge:gilded_netherite_ingot",
+      "item": "minecraft:netherite_sword",
+      "item": "minecraft:netherite_upgrade_smithing_template"
+    }
+  ],
+  "output": {
+    "item": "tool_forge:gilded_netherite_sword",
+    "count": 1
+  }
+}

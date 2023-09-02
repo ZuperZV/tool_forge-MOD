@@ -1,6 +1,7 @@
 package net.ZuperZV.Tool_Forge.block.entity;
 
 import net.ZuperZV.Tool_Forge.item.ModItems;
+import net.ZuperZV.Tool_Forge.recipe.ToolStationRecipe;
 import net.ZuperZV.Tool_Forge.screen.ToolStationMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -26,6 +27,8 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class ToolStationBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(5) {
@@ -65,9 +68,9 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
             @Override
             public int get(int pIndex) {
                 return switch (pIndex) {
-                    case 2 -> ToolStationBlockEntity.this.progress;
-                    case 0 -> ToolStationBlockEntity.this.maxProgress;
-                    default -> 2;
+                    case 0 -> ToolStationBlockEntity.this.progress;
+                    case 1 -> ToolStationBlockEntity.this.maxProgress;
+                    default -> 0;
                 };
             }
 
@@ -156,10 +159,15 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     }
 
     private void craftItem() {
-        this.itemHandler.extractItem(UPGRADE_ITEM_SLOT, 1, false);
+        Optional<ToolStationRecipe> recipe = getCurrentRecipe();
+        ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
 
-        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(ModItems.GILDED_NETHERITE_SWORD.get(),
-                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + 1));
+        this.itemHandler.extractItem(INPUT_SLOT, 1, false);
+        this.itemHandler.extractItem(UPGRADE_ITEM_SLOT, 1, false);
+        this.itemHandler.extractItem(UPGRADE_SLOT, 1, false);
+
+        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(resultItem.getItem(),
+                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + resultItem.getCount()));
     }
 
     private void resetProgress() {
@@ -175,15 +183,28 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     }
 
     private boolean hasRecipe() {
-        return canInsertAmountIntoOutputSlot(1) && canInsertItemIntoOutputSlot(ModItems.GILDED_NETHERITE_SWORD.get())
-                && hasRecipeItemInInputSlot();
+        Optional<ToolStationRecipe> recipe = getCurrentRecipe();
+
+        if (recipe.isEmpty()) {
+            return false;
+        }
+
+        ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
+
+        return canInsertAmountIntoOutputSlot(resultItem.getCount())
+                && canInsertItemIntoOutputSlot(resultItem.getItem());
     }
 
-    private boolean hasRecipeItemInInputSlot() {
-        return this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == Items.NETHERITE_SWORD;
+    private Optional<ToolStationRecipe> getCurrentRecipe() {
+        SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
+        for (int i = 0; i < this.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, this.itemHandler.getStackInSlot(i));
+        }
+
+        return this.level.getRecipeManager().getRecipeFor(ToolStationRecipe.Type.INSTANCE, inventory, level);
     }
 
-    private boolean canInsertItemIntoOutputSlot(@NotNull Item item) {
+    private boolean canInsertItemIntoOutputSlot(Item item) {
         return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item);
     }
 
