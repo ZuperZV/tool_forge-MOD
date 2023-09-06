@@ -40,8 +40,8 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch (slot) {
-                case 0 -> stack.getItem() == Items.LAVA_BUCKET;
-                case 1, 2, 3 -> true;
+                case 3 -> stack.getItem() == Items.LAVA_BUCKET;
+                case 0, 1, 2 -> true;
                 case 4 -> false;
                 default -> super.isItemValid(slot, stack);
 
@@ -49,10 +49,10 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
         }
     };
 
-    private static final int INPUT_INPUT_SLOT = 0;
-    private static final int INPUT_SLOT = 1;
-    private static final int UPGRADE_ITEM_SLOT = 2;
-    private static final int UPGRADE_SLOT = 3;
+    private static final int INPUT_SLOT = 0;
+    private static final int UPGRADE_ITEM_SLOT = 1;
+    private static final int UPGRADE_SLOT = 2;
+    private static final int INPUT_INPUT_SLOT = 3;
     private static final int OUTPUT_SLOT = 4;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
