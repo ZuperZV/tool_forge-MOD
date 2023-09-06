@@ -2,13 +2,13 @@
   "type": "tool_forge:tool_station",
   "ingredients": [
     {
-      "item": "minecraft:redstone"
+      "item": "minecraft:netherite_upgrade_smithing_template"
     },
     {
-      "item": "minecraft:spider_eye"
+      "item": "minecraft:netherite_sword"
     },
     {
-      "item": "minecraft:spider_eye"
+      "item": "tool_forge:gilded_netherite_ingot"
     }
   ],
   "output": {
