@@ -83,11 +83,14 @@ public class Tool_Forge {
             event.accept(ModItems.SOUL_SPAWN_EGG);
         }
 
+        if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+                event.accept(ModBlocks.TOOL_STATION);
+            }
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
 
     }
 
