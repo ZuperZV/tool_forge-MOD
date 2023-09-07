@@ -31,9 +31,9 @@ public class ToolStationRecipe implements Recipe<SimpleContainer> {
             return false;
         }
 
-        return inputItems.get(0).test(pContainer.getItem(0)) &&
-                inputItems.get(1).test(pContainer.getItem(1)) &&
-                inputItems.get(2).test(pContainer.getItem(2));
+        return inputItems.get(0).test(pContainer.getItem(1)) &&
+                inputItems.get(1).test(pContainer.getItem(2)) &&
+                inputItems.get(2).test(pContainer.getItem(3));
     }
 
     @Override
