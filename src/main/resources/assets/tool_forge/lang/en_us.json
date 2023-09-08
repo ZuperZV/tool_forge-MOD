@@ -22,6 +22,9 @@
     "block.tool_forge.tool_station": "Tool Station",
 
     "item.tool_forge.ectoplasm": "Ectoplasm",
-    "item.tool_forge.soul_shard": "Soul Shard"
+    "item.tool_forge.soul_shard": "Soul Shard",
+
+    "tool_forge.tooltip.liquid.amount.with.capacity": "%s / %s mB",
+  "tool_forge.tooltip.liquid.amount": "%s mB"
 
 }

@@ -28,7 +28,7 @@ import org.slf4j.Logger;
 @Mod(Tool_Forge.MOD_ID)
 public class Tool_Forge {
     public static final String MOD_ID = "tool_forge";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public Tool_Forge() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -83,14 +83,14 @@ public class Tool_Forge {
             event.accept(ModItems.SOUL_SPAWN_EGG);
         }
 
-        if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-                event.accept(ModBlocks.TOOL_STATION);
-            }
-
+        if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(ModBlocks.TOOL_STATION);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event) {
 
     }
 
@@ -104,7 +104,8 @@ public class Tool_Forge {
 
                 MenuScreens.register(ModMenuTypes.TOOL_STATION_MENU.get(), ToolStationScreen::new);
             });
-
         }
     }
 }
+
+
