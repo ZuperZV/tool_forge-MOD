@@ -46,7 +46,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch (slot) {
-                case 0 -> stack.getItem() == Items.LAVA_BUCKET;
+                case 0 -> stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
                 case 1, 2, 3 -> true;
                 case 4 -> false;
                 default -> super.isItemValid(slot, stack);
@@ -72,7 +72,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     private final FluidTank FLUID_TANK = createFluidTank();
 
     private FluidTank createFluidTank() {
-        return new FluidTank(64000) {
+        return new FluidTank(3000) {
             @Override
             protected void onContentsChanged() {
                 setChanged();

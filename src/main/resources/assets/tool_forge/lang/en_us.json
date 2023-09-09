@@ -1,30 +1,29 @@
 {
-    "item.tool_forge.gilded_netherite_ingot": "Gilded Netherite ingot",
-    "item.tool_forge.gilded_gold": "Gilded Gold",
-    "item.tool_forge.gilded_gold_nugget": "Gilded Gold Nugget",
-    "item.tool_forge.raw_gilded_gold": "Raw Gilded Gold",
-    "item.tool_forge.soul_spawn_egg": "Soul Spawn Egg",
+  "item.tool_forge.gilded_netherite_ingot": "Gilded Netherite ingot",
+  "item.tool_forge.gilded_gold": "Gilded Gold",
+  "item.tool_forge.gilded_gold_nugget": "Gilded Gold Nugget",
+  "item.tool_forge.raw_gilded_gold": "Raw Gilded Gold",
+  "item.tool_forge.soul_spawn_egg": "Soul Spawn Egg",
 
 
-    "item.tool_forge.gilded_netherite_sword": "Gilded Netherite Sword",
-    "item.tool_forge.gilded_netherite_pickaxe": "Gilded Netherite Pickaxe",
-    "item.tool_forge.gilded_netherite_shovel": "Gilded Netherite Shovel",
-    "item.tool_forge.gilded_netherite_axe": "Gilded Netherite Axe",
-    "item.tool_forge.gilded_netherite_hoe": "Gilded Netherite Hoe",
+  "item.tool_forge.gilded_netherite_sword": "Gilded Netherite Sword",
+  "item.tool_forge.gilded_netherite_pickaxe": "Gilded Netherite Pickaxe",
+  "item.tool_forge.gilded_netherite_shovel": "Gilded Netherite Shovel",
+  "item.tool_forge.gilded_netherite_axe": "Gilded Netherite Axe",
+  "item.tool_forge.gilded_netherite_hoe": "Gilded Netherite Hoe",
 
-    "item.tool_forge.gilded_netherite_helmet": "Gilded Netherite Helmet",
-    "item.tool_forge.gilded_netherite_chestplate": "Gilded Netherite Chestplate",
-    "item.tool_forge.gilded_netherite_leggings": "Gilded Netherite Leggings",
-    "item.tool_forge.gilded_netherite_boots": "Gilded Netherite Boots",
+  "item.tool_forge.gilded_netherite_helmet": "Gilded Netherite Helmet",
+  "item.tool_forge.gilded_netherite_chestplate": "Gilded Netherite Chestplate",
+  "item.tool_forge.gilded_netherite_leggings": "Gilded Netherite Leggings",
+  "item.tool_forge.gilded_netherite_boots": "Gilded Netherite Boots",
 
-    "block.tool_forge.gilded_gold_block": "Gilded Gold Block",
+  "block.tool_forge.gilded_gold_block": "Gilded Gold Block",
 
-    "block.tool_forge.tool_station": "Tool Station",
+  "block.tool_forge.tool_station": "Tool Station",
 
-    "item.tool_forge.ectoplasm": "Ectoplasm",
-    "item.tool_forge.soul_shard": "Soul Shard",
+  "item.tool_forge.ectoplasm": "Ectoplasm",
+  "item.tool_forge.soul_shard": "Soul Shard",
 
-    "tool_forge.tooltip.liquid.amount.with.capacity": "%s / %s mB",
+  "tool_forge.tooltip.liquid.amount.with.capacity": "%s / %s mB",
   "tool_forge.tooltip.liquid.amount": "%s mB"
-
 }
