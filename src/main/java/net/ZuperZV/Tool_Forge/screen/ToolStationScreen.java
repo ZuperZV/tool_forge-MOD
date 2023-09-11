@@ -34,7 +34,7 @@ public class ToolStationScreen extends AbstractContainerScreen<ToolStationMenu> 
     }
 
     private void assignFluidRenderer() {
-        fluidRenderer = new FluidTankRenderer(3000, true, 10, 30);
+        fluidRenderer = new FluidTankRenderer(3000, true, 16, 39);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class ToolStationScreen extends AbstractContainerScreen<ToolStationMenu> 
 
         renderFluidTooltipArea(guiGraphics, pMouseX, pMouseY, x, y, menu.blockEntity.getFluid(), 26, 11, fluidRenderer);
 
-        fluidRenderer.render(guiGraphics,x + 26, y + 11, menu.blockEntity.getFluid());
+        fluidRenderer.render(guiGraphics,x + 26,y + 11, menu.blockEntity.getFluid());
     }
 
     private void renderFluidTooltipArea(GuiGraphics guiGraphics, int pMouseX, int pMouseY, int x, int y,

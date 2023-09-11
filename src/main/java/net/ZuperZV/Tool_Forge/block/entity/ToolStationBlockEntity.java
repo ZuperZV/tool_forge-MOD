@@ -76,14 +76,14 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
             @Override
             protected void onContentsChanged() {
                 setChanged();
-                if (!level.isClientSide()) {
+                if(!level.isClientSide()) {
                     level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
                 }
             }
 
             @Override
             public boolean isFluidValid(FluidStack stack) {
-                return stack.getFluid() == Fluids.LAVA;
+                return true;
             }
         };
     }
@@ -200,7 +200,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     }
 
     private void extractFluid() {
-        this.FLUID_TANK.drain(500, IFluidHandler.FluidAction.EXECUTE);
+        this.FLUID_TANK.drain(1000, IFluidHandler.FluidAction.EXECUTE);
     }
 
     private void fillUpOnFluid() {
@@ -272,7 +272,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     }
 
     private boolean hasEnoughFluidToCraft() {
-        return this.FLUID_TANK.getFluidAmount() >= 500;
+        return this.FLUID_TANK.getFluidAmount() >= 1000;
     }
 
     private Optional<ToolStationRecipe> getCurrentRecipe() {
