@@ -27,7 +27,6 @@ public class ModBlocks {
     public static final RegistryObject<Block> TOOL_STATION = registerBlock("tool_station",
             () -> new ToolStationBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_TILES).noOcclusion()));
 
-
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

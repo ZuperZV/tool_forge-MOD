@@ -19,7 +19,7 @@ import net.minecraftforge.items.SlotItemHandler;
 public class ToolStationRecipeCategory implements IRecipeCategory<ToolStationRecipe> {
     public static final ResourceLocation UID = new ResourceLocation(Tool_Forge.MOD_ID, "tool_station");
     public static final ResourceLocation TEXTURE = new ResourceLocation(Tool_Forge.MOD_ID,
-            "textures/gui/tool_station_gui-png");
+            "textures/gui/tool_station_gui_inv.png");
 
     public static final RecipeType<ToolStationRecipe> TOOL_STATION_TYPE =
             new RecipeType<>(UID, ToolStationRecipe.class);
@@ -55,9 +55,9 @@ public class ToolStationRecipeCategory implements IRecipeCategory<ToolStationRec
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, ToolStationRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 59, 13).addIngredients(recipe.getIngredients().get(1));
-        builder.addSlot(RecipeIngredientRole.INPUT, 80, 7).addIngredients(recipe.getIngredients().get(2));
-        builder.addSlot(RecipeIngredientRole.INPUT, 101, 13).addIngredients(recipe.getIngredients().get(3));
+        builder.addSlot(RecipeIngredientRole.INPUT, 59, 13).addIngredients(recipe.getIngredients().get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 80, 7).addIngredients(recipe.getIngredients().get(1));
+        builder.addSlot(RecipeIngredientRole.INPUT, 101, 13).addIngredients(recipe.getIngredients().get(2));
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 80, 58).addItemStack(recipe.getResultItem(null));
 

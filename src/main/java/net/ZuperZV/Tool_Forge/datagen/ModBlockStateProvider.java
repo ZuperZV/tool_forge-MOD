@@ -19,6 +19,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.GILDED_GOLD_BLOCK);
+
         simpleBlock(ModBlocks.TOOL_STATION.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/tool_station")));
 

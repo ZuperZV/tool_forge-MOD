@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#forge:is_hot/nether",
+  "spawners": {
+    "type": "tool_forge:soul",
+    "maxCount": 2,
+    "minCount": 1,
+    "weight": 1
+  }
+}

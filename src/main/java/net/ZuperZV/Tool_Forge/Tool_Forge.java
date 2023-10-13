@@ -57,7 +57,9 @@ public class Tool_Forge {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.GILDED_NETHERITE_INGOT);
+            event.accept(ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE);
             event.accept(ModItems.GILDED_GOLD);
+            event.accept(ModItems.RAW_GILDED_GOLD);
         }
 
         if(event.getTabKey() == CreativeModeTabs.COMBAT) {
@@ -85,6 +87,7 @@ public class Tool_Forge {
 
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(ModBlocks.TOOL_STATION);
+
         }
     }
 

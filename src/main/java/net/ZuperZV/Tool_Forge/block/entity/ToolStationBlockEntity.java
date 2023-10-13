@@ -1,12 +1,19 @@
 package net.ZuperZV.Tool_Forge.block.entity;
 
+import net.ZuperZV.Tool_Forge.block.custom.ToolStationBlock;
 import net.ZuperZV.Tool_Forge.item.ModItems;
 import net.ZuperZV.Tool_Forge.recipe.ToolStationRecipe;
 import net.ZuperZV.Tool_Forge.screen.ToolStationMenu;
+import net.ZuperZV.Tool_Forge.util.InventoryDirectionEntry;
+import net.ZuperZV.Tool_Forge.util.InventoryDirectionWrapper;
+import net.ZuperZV.Tool_Forge.util.WrappedHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -20,6 +27,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
@@ -34,13 +42,19 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
 import java.util.Optional;
 
 public class ToolStationBlockEntity extends BlockEntity implements MenuProvider {
+
+
     private final ItemStackHandler itemHandler = new ItemStackHandler(5) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
+            if (!level.isClientSide()) {
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
         }
 
         @Override
@@ -63,6 +77,15 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     private static final int OUTPUT_SLOT = 4;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
+
+    private final Map<Direction, LazyOptional<WrappedHandler>> directionWrappedHandlerMap =
+            new InventoryDirectionWrapper(itemHandler,
+                    new InventoryDirectionEntry(Direction.DOWN, OUTPUT_SLOT, false),
+                    new InventoryDirectionEntry(Direction.NORTH, INPUT_SLOT, true),
+                    new InventoryDirectionEntry(Direction.SOUTH, OUTPUT_SLOT, false),
+                    new InventoryDirectionEntry(Direction.EAST, OUTPUT_SLOT, false),
+                    new InventoryDirectionEntry(Direction.WEST, INPUT_SLOT, true),
+                    new InventoryDirectionEntry(Direction.UP, INPUT_SLOT, true)).directionsMap;
     private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
 
     protected final ContainerData data;
@@ -72,7 +95,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     private final FluidTank FLUID_TANK = createFluidTank();
 
     private FluidTank createFluidTank() {
-        return new FluidTank(3000) {
+        return new FluidTank(6000) {
             @Override
             protected void onContentsChanged() {
                 setChanged();
@@ -86,6 +109,16 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
                 return true;
             }
         };
+    }
+
+    public ItemStack getRenderStack() {
+        ItemStack stack = itemHandler.getStackInSlot(OUTPUT_SLOT);
+
+        if (stack.isEmpty()) {
+            stack = itemHandler.getStackInSlot(INPUT_SLOT);
+        }
+
+        return stack;
     }
 
 
@@ -139,6 +172,21 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
 
         if (cap == ForgeCapabilities.FLUID_HANDLER)
             return  lazyFluidHandler.cast();
+
+        if(directionWrappedHandlerMap.containsKey(side)) {
+            Direction localDir = this.getBlockState().getValue(ToolStationBlock.FACING);
+
+            if(side == Direction.DOWN ||side == Direction.UP) {
+                return directionWrappedHandlerMap.get(side).cast();
+            }
+
+            return switch (localDir) {
+                default -> directionWrappedHandlerMap.get(side.getOpposite()).cast();
+                case EAST -> directionWrappedHandlerMap.get(side.getClockWise()).cast();
+                case SOUTH -> directionWrappedHandlerMap.get(side).cast();
+                case WEST -> directionWrappedHandlerMap.get(side.getCounterClockWise()).cast();
+            };
+        }
 
         return lazyItemHandler.cast();
     }
@@ -271,6 +319,8 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
                 && hasEnoughFluidToCraft();
     }
 
+
+
     private boolean hasEnoughFluidToCraft() {
         return this.FLUID_TANK.getFluidAmount() >= 1000;
     }
@@ -296,5 +346,16 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     private boolean isOutputSlotEmptyOrReceivable() {
         return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() < this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
     }
 }

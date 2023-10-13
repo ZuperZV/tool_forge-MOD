@@ -22,8 +22,10 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         simpleItem(ModItems.GILDED_NETHERITE_INGOT);
+        simpleItem(ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE);
 
         simpleItem(ModItems.GILDED_GOLD);
+        simpleItem(ModItems.RAW_GILDED_GOLD);
         simpleItem(ModItems.GILDED_GOLD_NUGGET);
 
         //simpleItem(ModItems.GILDED_NETHERITE_HELMET);
@@ -37,12 +39,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.GILDED_NETHERITE_SHOVEL);
         handheldItem(ModItems.GILDED_NETHERITE_HOE);
 
-        handheldItem(ModItems.ECTOPLASM);
-        handheldItem(ModItems.SOUL_SHARD);
+        simpleItem(ModItems.ECTOPLASM);
+        simpleItem(ModItems.SOUL_SHARD);
 
         complexBlock(ModBlocks.TOOL_STATION.get());
-
-
 
         withExistingParent(ModItems.SOUL_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }

@@ -59,6 +59,28 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                             of(ModItems.GILDED_GOLD_NUGGET.get()).build()))
                     .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.TOOL_STATION.get())
+                .pattern("DAD")
+                .pattern("PLP")
+                .pattern("P P")
+                .define('A', Items.CRAFTING_TABLE)
+                .define('P', Items.POLISHED_DEEPSLATE)
+                .define('D', Items.DEEPSLATE_BRICKS)
+                .define('L', Blocks.GLASS)
+                .unlockedBy("has_crafting_table", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(Items.CRAFTING_TABLE).build()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE.get())
+                .pattern(" C ")
+                .pattern("BAB")
+                .pattern(" C ")
+                .define('A', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
+                .define('B', ModItems.GILDED_GOLD.get())
+                .define('C', Items.OBSIDIAN)
+                .unlockedBy("has_netherite_upgrade_smithing_template", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).build()))
+                .save(pWriter);
 
         oreSmelting(pWriter, GILDED_ORES, RecipeCategory.MISC, ModItems.GILDED_GOLD_NUGGET.get(), 0.25f, 200, "GILDED_GOLD_NUGGET");
         oreBlasting(pWriter, GILDED_ORES, RecipeCategory.MISC, ModItems.GILDED_GOLD_NUGGET.get(), 0.50f, 100, "GILDED_GOLD_NUGGET");

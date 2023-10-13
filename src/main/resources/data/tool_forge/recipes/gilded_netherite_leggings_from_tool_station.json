@@ -1,0 +1,18 @@
+{
+  "type": "tool_forge:tool_station",
+  "ingredients": [
+    {
+      "item": "tool_forge:gilded_netherite_upgrade_smithing_template"
+    },
+    {
+      "item": "minecraft:netherite_leggings"
+    },
+    {
+      "item": "tool_forge:gilded_netherite_ingot"
+    }
+  ],
+  "output": {
+    "item": "tool_forge:gilded_netherite_leggings",
+    "count": 1
+  }
+}

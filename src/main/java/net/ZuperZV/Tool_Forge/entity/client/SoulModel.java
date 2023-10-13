@@ -56,6 +56,7 @@ public class SoulModel<T extends SoulEntity> extends HierarchicalModel<T> {
 
 		this.animateWalk(ModAnimationDefinitions.SOUL_WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
 		this.animate(entity.idleAnimationState, ModAnimationDefinitions.SOUL_IDEL,ageInTicks, 1f);
+		this.animate(entity.attackAnimationState, ModAnimationDefinitions.SOUL_ATTACK,ageInTicks, 1f);
 	}
 
 

@@ -1,5 +1,7 @@
 {
   "item.tool_forge.gilded_netherite_ingot": "Gilded Netherite ingot",
+  "item.tool_forge.gilded_netherite_upgrade_smithing_template": "Smithing Template",
+  
   "item.tool_forge.gilded_gold": "Gilded Gold",
   "item.tool_forge.gilded_gold_nugget": "Gilded Gold Nugget",
   "item.tool_forge.raw_gilded_gold": "Raw Gilded Gold",
@@ -18,6 +20,7 @@
   "item.tool_forge.gilded_netherite_boots": "Gilded Netherite Boots",
 
   "block.tool_forge.gilded_gold_block": "Gilded Gold Block",
+  "item.tool_forge.lava_container": "Lava Container",
 
   "block.tool_forge.tool_station": "Tool Station",
 

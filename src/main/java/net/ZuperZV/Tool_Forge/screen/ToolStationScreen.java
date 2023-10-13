@@ -34,7 +34,7 @@ public class ToolStationScreen extends AbstractContainerScreen<ToolStationMenu> 
     }
 
     private void assignFluidRenderer() {
-        fluidRenderer = new FluidTankRenderer(3000, true, 16, 39);
+        fluidRenderer = new FluidTankRenderer(6000, true, 10, 30);
     }
 
     @Override
@@ -49,9 +49,9 @@ public class ToolStationScreen extends AbstractContainerScreen<ToolStationMenu> 
 
         renderProgressArrow(guiGraphics, x, y);
 
-        renderFluidTooltipArea(guiGraphics, pMouseX, pMouseY, x, y, menu.blockEntity.getFluid(), 26, 11, fluidRenderer);
+        renderFluidTooltipArea(guiGraphics, pMouseX, pMouseY, x, y, menu.blockEntity.getFluid(), 41, 14, fluidRenderer);
 
-        fluidRenderer.render(guiGraphics,x + 26,y + 11, menu.blockEntity.getFluid());
+        fluidRenderer.render(guiGraphics,x + 41,y + 14, menu.blockEntity.getFluid());
     }
 
     private void renderFluidTooltipArea(GuiGraphics guiGraphics, int pMouseX, int pMouseY, int x, int y,
@@ -76,7 +76,12 @@ public class ToolStationScreen extends AbstractContainerScreen<ToolStationMenu> 
         renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
+
     private boolean isMouseAboveArea(int pMouseX, int pMouseY, int x, int y, int offsetX, int offsetY, FluidTankRenderer renderer) {
         return MouseUtil.isMouseOver(pMouseX, pMouseY, x + offsetX, y + offsetY, renderer.getWidth(), renderer.getHeight());
+    }
+
+    private boolean isMouseAboveArea(int pMouseX, int pMouseY, int x, int y, int offsetX, int offsetY, int width, int height) {
+        return MouseUtil.isMouseOver(pMouseX, pMouseY, x + offsetX, y + offsetY, width, height);
     }
 }

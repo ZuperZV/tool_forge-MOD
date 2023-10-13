@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:netherite_upgrade_smithing_template"
+    },
+    "B": {
+      "item": "tool_forge:gilded_gold"
+    },
+    "C": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "pattern": [
+    " C ",
+    "BAB",
+    " C "
+  ],
+  "result": {
+    "item": "tool_forge:gilded_netherite_upgrade_smithing_template"
+  },
+  "show_notification": true
+}

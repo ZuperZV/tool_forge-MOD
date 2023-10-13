@@ -20,6 +20,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> GILDED_GOLD = ITEMS.register("gilded_gold",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("gilded_netherite_upgrade_smithing_template",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GILDED_GOLD_NUGGET = ITEMS.register("gilded_gold_nugget",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_GILDED_GOLD = ITEMS.register("raw_gilded_gold",

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:crafting_table"
+    },
+    "D": {
+      "item": "minecraft:deepslate_bricks"
+    },
+    "L": {
+      "item": "minecraft:glass"
+    },
+    "P": {
+      "item": "minecraft:polished_deepslate"
+    }
+  },
+  "pattern": [
+    "DAD",
+    "PLP",
+    "P P"
+  ],
+  "result": {
+    "item": "tool_forge:tool_station"
+  },
+  "show_notification": true
+}
