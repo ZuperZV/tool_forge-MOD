@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bismuth_endstone_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:bismuth_endstone_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:bismuth_from_blasting_bismuth_endstone_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_bismuth_endstone_ore",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:bismuth_from_blasting_bismuth_endstone_ore"
+    ]
+  },
+  "sends_telemetry_event": false
+}

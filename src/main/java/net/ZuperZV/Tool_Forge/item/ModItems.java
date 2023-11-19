@@ -58,6 +58,11 @@ public class ModItems {
     public static final RegistryObject<Item> SOUL_SHARD = ITEMS.register("soul_shard",
             () -> new Item(new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> BISMUTH = ITEMS.register("bismuth",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LILLIUM = ITEMS.register("lillium",
+            () -> new Item(new Item.Properties()));
+
 
 
     public static void register(IEventBus eventBus) {

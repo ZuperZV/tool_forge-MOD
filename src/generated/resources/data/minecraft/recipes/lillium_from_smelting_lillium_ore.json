@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 350,
+  "experience": 0.55,
+  "group": "LILLIUM",
+  "ingredient": {
+    "item": "tool_forge:lillium_ore"
+  },
+  "result": "tool_forge:lillium"
+}

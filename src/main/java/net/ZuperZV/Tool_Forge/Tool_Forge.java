@@ -6,6 +6,7 @@ import net.ZuperZV.Tool_Forge.block.entity.ModBlockEntities;
 import net.ZuperZV.Tool_Forge.entity.ModEntities;
 import net.ZuperZV.Tool_Forge.entity.client.SoulRenderer;
 import net.ZuperZV.Tool_Forge.item.ModItems;
+import net.ZuperZV.Tool_Forge.loot.ModLootModifiers;
 import net.ZuperZV.Tool_Forge.recipe.ModRecipes;
 import net.ZuperZV.Tool_Forge.screen.ModMenuTypes;
 import net.ZuperZV.Tool_Forge.screen.ToolStationScreen;
@@ -38,6 +39,8 @@ public class Tool_Forge {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
+        ModLootModifiers.register(modEventBus);
+
         ModEntities.register(modEventBus);
 
         ModBlockEntities.register(modEventBus);
@@ -60,6 +63,13 @@ public class Tool_Forge {
             event.accept(ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE);
             event.accept(ModItems.GILDED_GOLD);
             event.accept(ModItems.RAW_GILDED_GOLD);
+            //bismuth
+            event.accept(ModBlocks.BISMUTH_ORE);
+            event.accept(ModBlocks.BISMUTH_BLOCK);
+            event.accept(ModBlocks.BISMUTH_ENDSTONE_ORE);
+            //lillium
+            event.accept(ModBlocks.LILLIUM_ORE);
+            event.accept(ModBlocks.LILLIUM_BLOCK);
         }
 
         if(event.getTabKey() == CreativeModeTabs.COMBAT) {

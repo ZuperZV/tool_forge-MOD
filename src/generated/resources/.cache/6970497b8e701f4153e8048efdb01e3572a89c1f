@@ -1,4 +1,5 @@
-// 1.20.1	2023-09-15T20:23:08.6892489	Item Models: tool_forge
+// 1.20.1	2023-11-19T13:44:17.9864491	Item Models: tool_forge
+7168123f2e89662ad143a86bda185f1bfc216d21 assets/tool_forge/models/item/bismuth.json
 9b8dfb7756d46f5b5d9d671286cb226e9c0943e8 assets/tool_forge/models/item/ectoplasm.json
 5bc22f6046ac6f5ba4e30f215517b600085bd6e8 assets/tool_forge/models/item/gilded_gold.json
 cbbaf9ad2d23a0ac8741d978f49fb05d68919b4b assets/tool_forge/models/item/gilded_gold_nugget.json
@@ -9,6 +10,7 @@ ee05ef709afa69809963e6f583c6cafa5c926df2 assets/tool_forge/models/item/gilded_ne
 bc9ef08627e0d6e7b41ae4a242e0f04f09f8ab65 assets/tool_forge/models/item/gilded_netherite_shovel.json
 b1d4fda745c8c610330e4fab4b74ddab17c60600 assets/tool_forge/models/item/gilded_netherite_sword.json
 c001b6fb679077584b5a8af305a1ddff155b42fa assets/tool_forge/models/item/gilded_netherite_upgrade_smithing_template.json
+d99dba2071bb8ed197d26757bd4f0a4bbbf186e4 assets/tool_forge/models/item/lillium.json
 54f447a6130ec6854f4403c318bc15e20950955f assets/tool_forge/models/item/raw_gilded_gold.json
 33d44642d6e8f00876b8416b06feb475d9e9082b assets/tool_forge/models/item/soul_shard.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/tool_forge/models/item/soul_spawn_egg.json

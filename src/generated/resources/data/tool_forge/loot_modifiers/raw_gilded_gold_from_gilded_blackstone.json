@@ -1,0 +1,10 @@
+{
+  "type": "tool_forge:add_item",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:blocks/gilded_blackstone"
+    }
+  ],
+  "item": "tool_forge:raw_gilded_gold"
+}

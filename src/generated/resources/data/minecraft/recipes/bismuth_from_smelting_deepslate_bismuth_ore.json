@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 300,
+  "experience": 0.3,
+  "group": "BISMUTH",
+  "ingredient": {
+    "item": "tool_forge:deepslate_bismuth_ore"
+  },
+  "result": "tool_forge:bismuth"
+}

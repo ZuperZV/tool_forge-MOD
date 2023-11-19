@@ -24,6 +24,20 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.GILDED_GOLD_BLOCK.get())
+                .add(ModBlocks.BISMUTH_ORE.get())
+                .add(ModBlocks.BISMUTH_ENDSTONE_ORE.get())
+                .add(ModBlocks.DEPPSLATE_BISMUTH_ORE.get())
+                .add(ModBlocks.LILLIUM_ORE.get());
+
+
+        this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.BISMUTH_ORE.get())
+                .add(ModBlocks.BISMUTH_ENDSTONE_ORE.get())
+                .add(ModBlocks.DEPPSLATE_BISMUTH_ORE.get())
+                .add(ModBlocks.LILLIUM_ORE.get());
+
+        this.tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.GILDED_GOLD_BLOCK.get());
     }
 

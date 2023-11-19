@@ -27,6 +27,10 @@ import static net.minecraft.world.item.Items.GILDED_BLACKSTONE;
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     private static final List<ItemLike> GILDED_ORES = List.of(ModItems.RAW_GILDED_GOLD.get(),
             Blocks.GILDED_BLACKSTONE);
+
+    private static final List<ItemLike> BISMUTH_SMELTABLES = List.of(ModBlocks.BISMUTH_ORE.get(),
+            ModBlocks.BISMUTH_ENDSTONE_ORE.get(),ModBlocks.DEPPSLATE_BISMUTH_ORE.get());
+    private static final List<ItemLike> LILLIUM_SMELTABLES = List.of(ModBlocks.LILLIUM_ORE.get());
     public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);
     }
@@ -82,8 +86,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).build()))
                 .save(pWriter);
 
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, ModItems.BISMUTH.get(), RecipeCategory.MISC, ModBlocks.BISMUTH_BLOCK.get());
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, ModItems.LILLIUM.get(), RecipeCategory.MISC, ModBlocks.LILLIUM_BLOCK.get());
+
         oreSmelting(pWriter, GILDED_ORES, RecipeCategory.MISC, ModItems.GILDED_GOLD_NUGGET.get(), 0.25f, 200, "GILDED_GOLD_NUGGET");
         oreBlasting(pWriter, GILDED_ORES, RecipeCategory.MISC, ModItems.GILDED_GOLD_NUGGET.get(), 0.50f, 100, "GILDED_GOLD_NUGGET");
+
+        oreSmelting(pWriter, BISMUTH_SMELTABLES, RecipeCategory.MISC, ModItems.BISMUTH.get(), 0.30f, 300, "BISMUTH");
+        oreBlasting(pWriter, BISMUTH_SMELTABLES, RecipeCategory.MISC, ModItems.BISMUTH.get(), 0.30f, 150, "BISMUTH");
+
+        oreSmelting(pWriter, LILLIUM_SMELTABLES, RecipeCategory.MISC, ModItems.LILLIUM.get(), 0.55f, 350, "LILLIUM");
+        oreBlasting(pWriter, LILLIUM_SMELTABLES, RecipeCategory.MISC, ModItems.LILLIUM.get(), 0.55f, 250, "LILLIUM");
 
     }
 

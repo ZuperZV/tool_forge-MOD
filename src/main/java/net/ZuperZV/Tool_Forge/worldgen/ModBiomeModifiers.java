@@ -22,13 +22,33 @@ import java.util.List;
 public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> SPAWN_SOUL = registerKey("spawn_soul");
 
+    public static final ResourceKey<BiomeModifier> ADD_BISMUTH_ORE = registerKey("add_alexandrite_ore");
+    public static final ResourceKey<BiomeModifier> ADD_END_BISMUTH_ORE = registerKey("add_end_bismuth_ore");
+    public static final ResourceKey<BiomeModifier> ADD_END_LILLIUM_ORE = registerKey("add_end_lillium_ore");
+
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
 
         context.register(SPAWN_SOUL, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
                 biomes.getOrThrow(Tags.Biomes.IS_HOT_NETHER),
-                List.of(new MobSpawnSettings.SpawnerData(ModEntities.SOUL.get(), 1, 1, 2))));
+                List.of(new MobSpawnSettings.SpawnerData(ModEntities.SOUL.get(), 6, 1, 2))));
+
+
+        context.register(ADD_BISMUTH_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BISMUTH_ORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+
+        context.register(ADD_END_BISMUTH_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_END),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.END_BISMUTH_ORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+
+        context.register(ADD_END_LILLIUM_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_END),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.END_LILLIUM_ORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
     }
 
 

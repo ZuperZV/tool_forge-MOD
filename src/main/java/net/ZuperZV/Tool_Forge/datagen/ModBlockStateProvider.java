@@ -20,6 +20,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.GILDED_GOLD_BLOCK);
 
+        blockWithItem(ModBlocks.BISMUTH_BLOCK);
+        blockWithItem(ModBlocks.BISMUTH_ORE);
+        blockWithItem(ModBlocks.BISMUTH_ENDSTONE_ORE);
+        blockWithItem(ModBlocks.DEPPSLATE_BISMUTH_ORE);
+
+        blockWithItem(ModBlocks.LILLIUM_BLOCK);
+        blockWithItem(ModBlocks.LILLIUM_ORE);
+
         simpleBlock(ModBlocks.TOOL_STATION.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/tool_station")));
 

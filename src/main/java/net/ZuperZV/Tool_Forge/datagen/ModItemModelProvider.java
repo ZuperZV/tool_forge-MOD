@@ -28,11 +28,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.RAW_GILDED_GOLD);
         simpleItem(ModItems.GILDED_GOLD_NUGGET);
 
-        //simpleItem(ModItems.GILDED_NETHERITE_HELMET);
-        //simpleItem(ModItems.GILDED_NETHERITE_CHESTPLATE);
-        //simpleItem(ModItems.GILDED_NETHERITE_LEGGINGS);
-        //simpleItem(ModItems.GILDED_NETHERITE_BOOTS);
-
         handheldItem(ModItems.GILDED_NETHERITE_SWORD);
         handheldItem(ModItems.GILDED_NETHERITE_PICKAXE);
         handheldItem(ModItems.GILDED_NETHERITE_AXE);
@@ -41,6 +36,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.ECTOPLASM);
         simpleItem(ModItems.SOUL_SHARD);
+
+        simpleItem(ModItems.BISMUTH);
+        simpleItem(ModItems.LILLIUM);
 
         complexBlock(ModBlocks.TOOL_STATION.get());
 
