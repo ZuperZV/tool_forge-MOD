@@ -1,6 +1,9 @@
 {
   "item.tool_forge.gilded_netherite_ingot": "Gilded Netherite ingot",
+  "item.tool_forge.gilded_diamond": "Gilded Diamond",
+
   "item.tool_forge.gilded_netherite_upgrade_smithing_template": "Smithing Template",
+  "item.tool_forge.gilded_diamond_upgrade_smithing_template": "Smithing Template",
   
   "item.tool_forge.gilded_gold": "Gilded Gold",
   "item.tool_forge.gilded_gold_nugget": "Gilded Gold Nugget",
@@ -19,10 +22,26 @@
   "item.tool_forge.gilded_netherite_leggings": "Gilded Netherite Leggings",
   "item.tool_forge.gilded_netherite_boots": "Gilded Netherite Boots",
 
+  "item.tool_forge.gilded_diamond_helmet": "Gilded Diamond Helmet",
+  "item.tool_forge.gilded_diamond_chestplate": "Gilded Diamond Chestplate",
+  "item.tool_forge.gilded_diamond_leggings": "Gilded Diamond Leggings",
+  "item.tool_forge.gilded_diamond_boots": "Gilded Diamond Boots",
+
   "block.tool_forge.gilded_gold_block": "Gilded Gold Block",
   "item.tool_forge.lava_container": "Lava Container",
 
   "block.tool_forge.tool_station": "Tool Station",
+
+  "block.tool_forge.bismuth_block": "Bismuth Block",
+  "block.tool_forge.bismuth_ore": "Bismuth Ore",
+  "block.tool_forge.deepslate_bismuth_ore": "Deepslate Bismuth Ore",
+  "block.tool_forge.bismuth_endstone_ore": "Endstone Bismuth Ore",
+  "item.tool_forge.bismuth": "Bismuth",
+
+  "item.tool_forge.lillium": "Lillium",
+  "block.tool_forge.lillium_block": "Lillium Block",
+  "block.tool_forge.lillium_ore": "Lillium Ore",
+
 
   "item.tool_forge.ectoplasm": "Ectoplasm",
   "item.tool_forge.soul_shard": "Soul Shard",

@@ -1,2 +1,11 @@
-// 1.20.1	2023-09-18T18:58:19.4635632	Registries
-62b1f7503e57b4601d6ba97bd61136554221458d data/tool_forge/forge/biome_modifier/spawn_soul.json
+// 1.20.1	2023-11-20T16:06:42.6200172	Registries
+2046529cd47aec444191df98566f774ab4e41799 data/tool_forge/forge/biome_modifier/add_bismuth_ore.json
+f274eb660441aaa38451495edebe8ff30c3ff1d5 data/tool_forge/forge/biome_modifier/add_end_bismuth_ore.json
+c13be8e5472354939b1d48b76c0923b845983bca data/tool_forge/forge/biome_modifier/add_end_lillium_ore.json
+c47e22399f2f0bce9e2ab5bbfbd58122770ffc9b data/tool_forge/forge/biome_modifier/spawn_soul.json
+ee07a2ec8b62bd46ab790c354fc9fa0ee6f9c65c data/tool_forge/worldgen/configured_feature/bismuth_ore.json
+e8e9594ec5de68b9b29cc37449c585fa6d01eec7 data/tool_forge/worldgen/configured_feature/end_bismuth_ore.json
+da82ad57d1c962195693492ad38e6b8a7011486b data/tool_forge/worldgen/configured_feature/end_lillium_ore.json
+15b14ba9bf3514965af0dd8c20784e159c6d0ede data/tool_forge/worldgen/placed_feature/bismuth_ore_placed.json
+ec207ff751abe8122016992c7274f09de55cc311 data/tool_forge/worldgen/placed_feature/end_bismuth_ore_placed.json
+d83009ef300957cd3c59ee5ce4588908ce860c0b data/tool_forge/worldgen/placed_feature/end_lillium_ore_placed.json

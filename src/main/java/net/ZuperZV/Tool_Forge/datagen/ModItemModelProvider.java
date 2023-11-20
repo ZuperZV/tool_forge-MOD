@@ -23,6 +23,8 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         simpleItem(ModItems.GILDED_NETHERITE_INGOT);
         simpleItem(ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE);
+        simpleItem(ModItems.GILDED_DIAMOND);
+        simpleItem(ModItems.GILDED_DIAMOND_UPGRADE_SMITHING_TEMPLATE);
 
         simpleItem(ModItems.GILDED_GOLD);
         simpleItem(ModItems.RAW_GILDED_GOLD);

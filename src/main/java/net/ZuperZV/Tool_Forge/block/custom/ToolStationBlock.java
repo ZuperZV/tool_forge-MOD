@@ -3,6 +3,7 @@ package net.ZuperZV.Tool_Forge.block.custom;
 import net.ZuperZV.Tool_Forge.block.entity.ModBlockEntities;
 import net.ZuperZV.Tool_Forge.block.entity.ToolStationBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -27,6 +28,7 @@ import org.jetbrains.annotations.Nullable;
 import static net.minecraft.world.level.block.WeepingVinesPlantBlock.SHAPE;
 
 public class ToolStationBlock extends BaseEntityBlock {
+    private static final Component CONTAINER_TITLE = Component.translatable("container.upgrade");
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public ToolStationBlock(Properties pProperties) {
         super(pProperties);

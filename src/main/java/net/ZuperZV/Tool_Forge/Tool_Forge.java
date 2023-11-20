@@ -61,15 +61,12 @@ public class Tool_Forge {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.GILDED_NETHERITE_INGOT);
             event.accept(ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE);
+            event.accept(ModItems.GILDED_DIAMOND);
+            event.accept(ModItems.GILDED_DIAMOND_UPGRADE_SMITHING_TEMPLATE);
+
             event.accept(ModItems.GILDED_GOLD);
             event.accept(ModItems.RAW_GILDED_GOLD);
-            //bismuth
-            event.accept(ModBlocks.BISMUTH_ORE);
-            event.accept(ModBlocks.BISMUTH_BLOCK);
-            event.accept(ModBlocks.BISMUTH_ENDSTONE_ORE);
-            //lillium
-            event.accept(ModBlocks.LILLIUM_ORE);
-            event.accept(ModBlocks.LILLIUM_BLOCK);
+
         }
 
         if(event.getTabKey() == CreativeModeTabs.COMBAT) {
@@ -80,6 +77,11 @@ public class Tool_Forge {
             event.accept(ModItems.GILDED_NETHERITE_CHESTPLATE);
             event.accept(ModItems.GILDED_NETHERITE_LEGGINGS);
             event.accept(ModItems.GILDED_NETHERITE_BOOTS);
+
+            event.accept(ModItems.GILDED_DIAMOND_HELMET);
+            event.accept(ModItems.GILDED_DIAMOND_CHESTPLATE);
+            event.accept(ModItems.GILDED_DIAMOND_LEGGINGS);
+            event.accept(ModItems.GILDED_DIAMOND_BOOTS);
 
 
         }
@@ -98,6 +100,17 @@ public class Tool_Forge {
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(ModBlocks.TOOL_STATION);
 
+        }
+
+        if(event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            //bismuth
+            event.accept(ModBlocks.BISMUTH_ORE);
+            event.accept(ModBlocks.BISMUTH_BLOCK);
+            event.accept(ModBlocks.DEPPSLATE_BISMUTH_ORE);
+            event.accept(ModBlocks.BISMUTH_ENDSTONE_ORE);
+            //lillium
+            event.accept(ModBlocks.LILLIUM_ORE);
+            event.accept(ModBlocks.LILLIUM_BLOCK);
         }
     }
 

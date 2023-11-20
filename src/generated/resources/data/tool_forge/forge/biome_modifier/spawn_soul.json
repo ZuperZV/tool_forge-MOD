@@ -5,6 +5,6 @@
     "type": "tool_forge:soul",
     "maxCount": 2,
     "minCount": 1,
-    "weight": 1
+    "weight": 6
   }
 }

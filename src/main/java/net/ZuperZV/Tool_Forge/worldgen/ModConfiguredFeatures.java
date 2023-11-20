@@ -43,11 +43,11 @@ public class ModConfiguredFeatures {
                 OreConfiguration.target(deepslateReplaceabeles, ModBlocks.DEPPSLATE_BISMUTH_ORE.get().defaultBlockState()));
 
 
-        register(context, OVERWORLD_BISMUTH_ORE_KEY, Feature.ORE, new OreConfiguration(overworldAlexandriteOres, 5));
+        register(context, OVERWORLD_BISMUTH_ORE_KEY, Feature.ORE, new OreConfiguration(overworldAlexandriteOres, 7));
         register(context, END_BISMUTH_ORE_KEY, Feature.ORE, new OreConfiguration(endReplaceabeles,
-                ModBlocks.BISMUTH_ENDSTONE_ORE.get().defaultBlockState(), 4));
+                ModBlocks.BISMUTH_ENDSTONE_ORE.get().defaultBlockState(), 6));
         register(context, END_LILLIUM_ORE_KEY, Feature.ORE, new OreConfiguration(endReplaceabeles,
-                ModBlocks.LILLIUM_ORE.get().defaultBlockState(), 3));
+                ModBlocks.LILLIUM_ORE.get().defaultBlockState(), 4));
 
 
     }

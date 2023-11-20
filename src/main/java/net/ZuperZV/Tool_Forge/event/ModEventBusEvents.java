@@ -1,6 +1,9 @@
 package net.ZuperZV.Tool_Forge.event;
 
 import net.ZuperZV.Tool_Forge.Tool_Forge;
+import net.ZuperZV.Tool_Forge.block.ModBlocks;
+import net.ZuperZV.Tool_Forge.block.entity.ModBlockEntities;
+import net.ZuperZV.Tool_Forge.block.entity.renderer.ToolStationBlockEntityRenderer;
 import net.ZuperZV.Tool_Forge.entity.ModEntities;
 import net.ZuperZV.Tool_Forge.entity.client.SoulModel;
 import net.ZuperZV.Tool_Forge.entity.custom.SoulEntity;
@@ -30,5 +33,11 @@ public class ModEventBusEvents {
     public static void registerSpawnPlacement(SpawnPlacementRegisterEvent event) {
         event.register(ModEntities.SOUL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE,
                 Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+    }
+
+    @SubscribeEvent
+    public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(ModBlockEntities.TOOL_STATION_BE.get(),
+                ToolStationBlockEntityRenderer::new);
     }
 }

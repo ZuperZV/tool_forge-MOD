@@ -24,6 +24,8 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -81,11 +83,11 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     private final Map<Direction, LazyOptional<WrappedHandler>> directionWrappedHandlerMap =
             new InventoryDirectionWrapper(itemHandler,
                     new InventoryDirectionEntry(Direction.DOWN, OUTPUT_SLOT, false),
-                    new InventoryDirectionEntry(Direction.NORTH, INPUT_SLOT, true),
-                    new InventoryDirectionEntry(Direction.SOUTH, OUTPUT_SLOT, false),
-                    new InventoryDirectionEntry(Direction.EAST, OUTPUT_SLOT, false),
-                    new InventoryDirectionEntry(Direction.WEST, INPUT_SLOT, true),
-                    new InventoryDirectionEntry(Direction.UP, INPUT_SLOT, true)).directionsMap;
+                    new InventoryDirectionEntry(Direction.NORTH, FLUID_INPUT_SLOT, true),
+                    new InventoryDirectionEntry(Direction.SOUTH, UPGRADE_ITEM_SLOT, true),
+                    new InventoryDirectionEntry(Direction.EAST, INPUT_SLOT, true),
+                    new InventoryDirectionEntry(Direction.WEST, UPGRADE_SLOT, true),
+                    new InventoryDirectionEntry(Direction.UP, FLUID_INPUT_SLOT, true)).directionsMap;
     private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
 
     protected final ContainerData data;
@@ -115,7 +117,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
         ItemStack stack = itemHandler.getStackInSlot(OUTPUT_SLOT);
 
         if (stack.isEmpty()) {
-            stack = itemHandler.getStackInSlot(INPUT_SLOT);
+            stack = itemHandler.getStackInSlot(UPGRADE_ITEM_SLOT);
         }
 
         return stack;
@@ -166,29 +168,28 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == ForgeCapabilities.ITEM_HANDLER) {
-            return lazyItemHandler.cast();
-        }
-
-        if (cap == ForgeCapabilities.FLUID_HANDLER)
-            return  lazyFluidHandler.cast();
-
-        if(directionWrappedHandlerMap.containsKey(side)) {
-            Direction localDir = this.getBlockState().getValue(ToolStationBlock.FACING);
-
-            if(side == Direction.DOWN ||side == Direction.UP) {
-                return directionWrappedHandlerMap.get(side).cast();
+        if(cap == ForgeCapabilities.ITEM_HANDLER) {
+            if(side == null) {
+                return lazyItemHandler.cast();
             }
 
-            return switch (localDir) {
-                default -> directionWrappedHandlerMap.get(side.getOpposite()).cast();
-                case EAST -> directionWrappedHandlerMap.get(side.getClockWise()).cast();
-                case SOUTH -> directionWrappedHandlerMap.get(side).cast();
-                case WEST -> directionWrappedHandlerMap.get(side.getCounterClockWise()).cast();
-            };
+            if(directionWrappedHandlerMap.containsKey(side)) {
+                Direction localDir = this.getBlockState().getValue(ToolStationBlock.FACING);
+
+                if(side == Direction.DOWN ||side == Direction.UP) {
+                    return directionWrappedHandlerMap.get(side).cast();
+                }
+
+                return switch (localDir) {
+                    default -> directionWrappedHandlerMap.get(side.getOpposite()).cast();
+                    case EAST -> directionWrappedHandlerMap.get(side.getClockWise()).cast();
+                    case SOUTH -> directionWrappedHandlerMap.get(side).cast();
+                    case WEST -> directionWrappedHandlerMap.get(side.getCounterClockWise()).cast();
+                };
+            }
         }
 
-        return lazyItemHandler.cast();
+        return super.getCapability(cap, side);
     }
 
     @Override
@@ -218,7 +219,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
         FLUID_TANK.readFromNBT(pTag);
-        //08:32
+
     }
 
     public void drops() {
@@ -285,12 +286,19 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
         Optional<ToolStationRecipe> recipe = getCurrentRecipe();
         ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
 
+        ItemStack originalItem = this.itemHandler.getStackInSlot(INPUT_SLOT);
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
         this.itemHandler.extractItem(UPGRADE_ITEM_SLOT, 1, false);
         this.itemHandler.extractItem(UPGRADE_SLOT, 1, false);
 
-        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(resultItem.getItem(),
-                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + resultItem.getCount()));
+        Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(originalItem);
+
+        ItemStack newItem = new ItemStack(resultItem.getItem(), resultItem.getCount());
+        newItem.setTag(originalItem.getOrCreateTag().copy());
+
+        EnchantmentHelper.setEnchantments(enchantments, newItem);
+
+        this.itemHandler.setStackInSlot(OUTPUT_SLOT, newItem);
     }
 
     private void resetProgress() {

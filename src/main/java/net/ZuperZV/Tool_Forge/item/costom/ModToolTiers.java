@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ModToolTiers {
     public static final Tier GILDED_NETERITE = TierSortingRegistry.registerTier(
-            new ForgeTier(5, 2000, 10f, 4f, 17,
+            new ForgeTier(4, 2031, 9.0F, 4.0F, 18,
                     ModTags.Blocks.NEEDS_GILDED_NETHERITE_TOOL, () -> Ingredient.of(ModItems.GILDED_NETHERITE_INGOT.get())),
             new ResourceLocation(Tool_Forge.MOD_ID, "gilded_netherite_ingot"), List.of(Tiers.NETHERITE), List.of());
 }

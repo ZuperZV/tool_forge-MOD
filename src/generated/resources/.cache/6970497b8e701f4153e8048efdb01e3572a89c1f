@@ -1,6 +1,8 @@
-// 1.20.1	2023-11-19T13:44:17.9864491	Item Models: tool_forge
+// 1.20.1	2023-11-29T16:44:33.7343389	Item Models: tool_forge
 7168123f2e89662ad143a86bda185f1bfc216d21 assets/tool_forge/models/item/bismuth.json
 9b8dfb7756d46f5b5d9d671286cb226e9c0943e8 assets/tool_forge/models/item/ectoplasm.json
+88b3a6f86a60f4c71c83833b5b92e49762b59826 assets/tool_forge/models/item/gilded_diamond.json
+f9124a3dc8df42aa0c136e2b067b29496cc28b73 assets/tool_forge/models/item/gilded_diamond_upgrade_smithing_template.json
 5bc22f6046ac6f5ba4e30f215517b600085bd6e8 assets/tool_forge/models/item/gilded_gold.json
 cbbaf9ad2d23a0ac8741d978f49fb05d68919b4b assets/tool_forge/models/item/gilded_gold_nugget.json
 a0b9ef535e98869ce1cf11085a6f789c06961a12 assets/tool_forge/models/item/gilded_netherite_axe.json

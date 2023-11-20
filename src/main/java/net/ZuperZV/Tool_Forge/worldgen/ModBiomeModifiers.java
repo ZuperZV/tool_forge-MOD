@@ -22,7 +22,7 @@ import java.util.List;
 public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> SPAWN_SOUL = registerKey("spawn_soul");
 
-    public static final ResourceKey<BiomeModifier> ADD_BISMUTH_ORE = registerKey("add_alexandrite_ore");
+    public static final ResourceKey<BiomeModifier> ADD_BISMUTH_ORE = registerKey("add_bismuth_ore");
     public static final ResourceKey<BiomeModifier> ADD_END_BISMUTH_ORE = registerKey("add_end_bismuth_ore");
     public static final ResourceKey<BiomeModifier> ADD_END_LILLIUM_ORE = registerKey("add_end_lillium_ore");
 

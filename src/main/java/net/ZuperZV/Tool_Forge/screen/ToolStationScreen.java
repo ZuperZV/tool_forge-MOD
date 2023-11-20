@@ -38,6 +38,13 @@ public class ToolStationScreen extends AbstractContainerScreen<ToolStationMenu> 
     }
 
     @Override
+    protected void renderLabels(GuiGraphics guiGraphics, int pMouseX, int pMouseY) {
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
+
+        renderFluidTooltipArea(guiGraphics, pMouseX, pMouseY, x, y, menu.blockEntity.getFluid(), 26, 11, fluidRenderer);
+    }
+    @Override
     protected void renderBg(GuiGraphics guiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
@@ -61,6 +68,7 @@ public class ToolStationScreen extends AbstractContainerScreen<ToolStationMenu> 
                     Optional.empty(), pMouseX - x, pMouseY - y);
         }
     }
+
 
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
