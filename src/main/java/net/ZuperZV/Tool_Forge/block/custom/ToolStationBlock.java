@@ -97,7 +97,7 @@ public class ToolStationBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new ToolStationBlockEntity(pPos, pState);
+        return new ToolStationBlockEntity(  pPos, pState);
     }
 
     @Nullable

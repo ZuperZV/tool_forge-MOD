@@ -48,8 +48,6 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ToolStationBlockEntity extends BlockEntity implements MenuProvider {
-
-
     private final ItemStackHandler itemHandler = new ItemStackHandler(5) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -286,7 +284,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
         Optional<ToolStationRecipe> recipe = getCurrentRecipe();
         ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
 
-        ItemStack originalItem = this.itemHandler.getStackInSlot(INPUT_SLOT);
+        ItemStack originalItem = this.itemHandler.getStackInSlot(UPGRADE_ITEM_SLOT);
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
         this.itemHandler.extractItem(UPGRADE_ITEM_SLOT, 1, false);
         this.itemHandler.extractItem(UPGRADE_SLOT, 1, false);
