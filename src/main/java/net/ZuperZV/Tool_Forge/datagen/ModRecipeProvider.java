@@ -1,28 +1,18 @@
 
 package net.ZuperZV.Tool_Forge.datagen;
 
-import net.ZuperZV.Tool_Forge.Tool_Forge;
-
 import net.ZuperZV.Tool_Forge.block.ModBlocks;
-import net.ZuperZV.Tool_Forge.datagen.custom.ToolStationRecipeBuilder;
 import net.ZuperZV.Tool_Forge.item.ModItems;
-import net.ZuperZV.Tool_Forge.recipe.ToolStationRecipe;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
 import java.util.List;
 import java.util.function.Consumer;
-
-import static net.minecraft.world.item.Items.GILDED_BLACKSTONE;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     private static final List<ItemLike> GILDED_ORES = List.of(ModItems.RAW_GILDED_GOLD.get(),
@@ -86,6 +76,28 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).build()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE.get())
+                .pattern("CAC")
+                .pattern("CBC")
+                .pattern("CCC")
+                .define('A', ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE.get())
+                .define('B', Items.GILDED_BLACKSTONE)
+                .define('D', ModItems.GILDED_GOLD.get())
+                .unlockedBy("has_netherite_upgrade_smithing_template", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE.get()).build()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE.get())
+                .pattern("CAC")
+                .pattern("CBC")
+                .pattern("CCC")
+                .define('A', ModItems.GILDED_DIAMOND_UPGRADE_SMITHING_TEMPLATE.get())
+                .define('B', Items.GILDED_BLACKSTONE)
+                .define('D', ModItems.GILDED_GOLD.get())
+                .unlockedBy("has_netherite_upgrade_smithing_template", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.GILDED_DIAMOND_UPGRADE_SMITHING_TEMPLATE.get()).build()))
+                .save(pWriter);
+
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, ModItems.BISMUTH.get(), RecipeCategory.MISC, ModBlocks.BISMUTH_BLOCK.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, ModItems.LILLIUM.get(), RecipeCategory.MISC, ModBlocks.LILLIUM_BLOCK.get());
 
@@ -97,7 +109,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         oreSmelting(pWriter, LILLIUM_SMELTABLES, RecipeCategory.MISC, ModItems.LILLIUM.get(), 0.55f, 350, "LILLIUM");
         oreBlasting(pWriter, LILLIUM_SMELTABLES, RecipeCategory.MISC, ModItems.LILLIUM.get(), 0.55f, 250, "LILLIUM");
-
     }
 
 }

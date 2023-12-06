@@ -42,7 +42,7 @@ public class ToolStationScreen extends AbstractContainerScreen<ToolStationMenu> 
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        renderFluidTooltipArea(guiGraphics, pMouseX, pMouseY, x, y, menu.blockEntity.getFluid(), 26, 11, fluidRenderer);
+        renderFluidTooltipArea(guiGraphics, pMouseX, pMouseY, x, y, menu.blockEntity.getFluid(), 41, 13, fluidRenderer);
     }
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
@@ -55,8 +55,6 @@ public class ToolStationScreen extends AbstractContainerScreen<ToolStationMenu> 
         guiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
         renderProgressArrow(guiGraphics, x, y);
-
-        renderFluidTooltipArea(guiGraphics, pMouseX, pMouseY, x, y, menu.blockEntity.getFluid(), 41, 14, fluidRenderer);
 
         fluidRenderer.render(guiGraphics,x + 41,y + 14, menu.blockEntity.getFluid());
     }

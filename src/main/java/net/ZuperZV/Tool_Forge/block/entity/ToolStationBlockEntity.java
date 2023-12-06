@@ -1,7 +1,6 @@
 package net.ZuperZV.Tool_Forge.block.entity;
 
 import net.ZuperZV.Tool_Forge.block.custom.ToolStationBlock;
-import net.ZuperZV.Tool_Forge.item.ModItems;
 import net.ZuperZV.Tool_Forge.recipe.ToolStationRecipe;
 import net.ZuperZV.Tool_Forge.screen.ToolStationMenu;
 import net.ZuperZV.Tool_Forge.util.InventoryDirectionEntry;
@@ -23,20 +22,16 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
@@ -70,6 +65,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     };
 
 
+
     private static final int FLUID_INPUT_SLOT = 0;
     private static final int INPUT_SLOT = 1;
     private static final int UPGRADE_ITEM_SLOT = 2;
@@ -92,7 +88,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     private int progress = 0;
     private int maxProgress = 78;
 
-    private final FluidTank FLUID_TANK = createFluidTank();
+    public final FluidTank FLUID_TANK = createFluidTank();
 
     private FluidTank createFluidTank() {
         return new FluidTank(6000) {

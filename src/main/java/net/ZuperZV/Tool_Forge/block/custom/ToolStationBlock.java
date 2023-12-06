@@ -25,8 +25,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
-import static net.minecraft.world.level.block.WeepingVinesPlantBlock.SHAPE;
-
 public class ToolStationBlock extends BaseEntityBlock {
     private static final Component CONTAINER_TITLE = Component.translatable("container.upgrade");
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -60,9 +58,12 @@ public class ToolStationBlock extends BaseEntityBlock {
     public BlockState mirror(BlockState pState, Mirror pMirror) {
         return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
     }
+
+    public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 16, 16);
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return SHAPE;
+
 
 
     }
