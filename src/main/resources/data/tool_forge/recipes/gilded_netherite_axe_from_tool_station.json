@@ -1,5 +1,8 @@
 {
   "type": "tool_forge:tool_station",
+  "craftTime": 90,
+  "fluidAmount": 1000,
+  "fluidType": "minecraft:lava",
   "ingredients": [
     {
       "item": "tool_forge:gilded_netherite_upgrade_smithing_template"

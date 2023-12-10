@@ -27,7 +27,6 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -44,6 +43,8 @@ import java.util.Optional;
 
 public class ToolStationBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(5) {
+
+
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -72,6 +73,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     private static final int UPGRADE_SLOT = 3;
     private static final int OUTPUT_SLOT = 4;
 
+
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
     private final Map<Direction, LazyOptional<WrappedHandler>> directionWrappedHandlerMap =
@@ -87,6 +89,9 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 78;
+    private final int DEFAULT_MAX_PROGRESS = 79;
+
+    private FluidStack neededFluidStack = FluidStack.EMPTY;
 
     public final FluidTank FLUID_TANK = createFluidTank();
 
@@ -203,6 +208,10 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", itemHandler.serializeNBT());
+        pTag.putInt("tool_station.progress", progress);
+        pTag.putInt("tool_station.max_progress", maxProgress);
+        neededFluidStack.writeToNBT(pTag);
+
         pTag = FLUID_TANK.writeToNBT(pTag);
 
         super.saveAdditional(pTag);
@@ -212,6 +221,9 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     public void load(CompoundTag pTag) {
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
+        progress = pTag.getInt("tool_station.progress");
+        maxProgress = pTag.getInt("tool_station.max_progress");
+        neededFluidStack = FluidStack.loadFluidStackFromNBT(pTag);
         FLUID_TANK.readFromNBT(pTag);
 
     }
@@ -243,7 +255,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     }
 
     private void extractFluid() {
-        this.FLUID_TANK.drain(1000, IFluidHandler.FluidAction.EXECUTE);
+        this.FLUID_TANK.drain(neededFluidStack.getAmount(), IFluidHandler.FluidAction.EXECUTE);
     }
 
     private void fillUpOnFluid() {
@@ -257,10 +269,8 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
             int drainAmount = Math.min(this.FLUID_TANK.getSpace(), 1000);
 
             FluidStack stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
-            if(stack.getFluid() == Fluids.LAVA) {
-                stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
-                fillTankWithFluid(stack, iFluidHandlerItem.getContainer());
-            }
+            stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
+            fillTankWithFluid(stack, iFluidHandlerItem.getContainer());
         });
     }
 
@@ -314,6 +324,10 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
             return false;
         }
 
+        maxProgress = recipe.get().getCraftTime();
+        neededFluidStack = recipe.get().getFluidStack();
+
+
         ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
 
         return canInsertAmountIntoOutputSlot(resultItem.getCount())
@@ -324,7 +338,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
 
 
     private boolean hasEnoughFluidToCraft() {
-        return this.FLUID_TANK.getFluidAmount() >= 1000;
+        return this.FLUID_TANK.getFluidAmount() >= neededFluidStack.getAmount();
     }
 
     private Optional<ToolStationRecipe> getCurrentRecipe() {
@@ -360,4 +374,12 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     public CompoundTag getUpdateTag() {
         return saveWithoutMetadata();
     }
+
+
+
+    public FluidStack getFluidStack() {
+        return FLUID_TANK.getFluid();
+    }
+
+
 }

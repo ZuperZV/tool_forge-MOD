@@ -12,17 +12,23 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class ToolStationRecipe implements Recipe<SimpleContainer> {
     private final NonNullList<Ingredient> inputItems;
     private final ItemStack output;
     private final ResourceLocation id;
-    
+    private final int craftTime;
+    private final FluidStack fluidStack;
 
-    public ToolStationRecipe(NonNullList<Ingredient> inputItems, ItemStack output, ResourceLocation id) {
+
+    public ToolStationRecipe(NonNullList<Ingredient> inputItems, ItemStack output, ResourceLocation id, int craftTime, FluidStack fluidStack) {
         this.inputItems = inputItems;
         this.output = output;
         this.id = id;
+        this.craftTime = craftTime;
+        this.fluidStack = fluidStack;
     }
 
     @Override
@@ -56,6 +62,14 @@ public class ToolStationRecipe implements Recipe<SimpleContainer> {
         return this.inputItems;
     }
 
+    public int getCraftTime() {
+        return craftTime;
+    }
+
+    public FluidStack getFluidStack() {
+        return fluidStack;
+    }
+
     @Override
     public ResourceLocation getId() {
         return id;
@@ -85,6 +99,8 @@ public class ToolStationRecipe implements Recipe<SimpleContainer> {
         @Override
         public ToolStationRecipe fromJson(ResourceLocation id, JsonObject json) {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
+            FluidStack fluidStack = new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation(json.get("fluiType").getAsString())),
+                    json.get("fluidAmount").getAsInt());
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
             NonNullList<Ingredient> inputs = NonNullList.withSize(3, Ingredient.EMPTY);
@@ -93,28 +109,34 @@ public class ToolStationRecipe implements Recipe<SimpleContainer> {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 
-            return new ToolStationRecipe(inputs, output, id);
+            int craftTime = json.get("craftTime").getAsInt();
+            return new ToolStationRecipe(inputs, output, id, craftTime, fluidStack);
         }
 
         @Override
         public ToolStationRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
             NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
+            FluidStack fluidStack = buf.readFluidStack();
 
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromNetwork(buf));
             }
 
+            int craftTime = buf.readInt();
             ItemStack output = buf.readItem();
-            return new ToolStationRecipe(inputs, output, id);
+            return new ToolStationRecipe(inputs, output, id, craftTime, fluidStack);
         }
 
         @Override
         public void toNetwork(FriendlyByteBuf buf, ToolStationRecipe recipe) {
             buf.writeInt(recipe.getIngredients().size());
+            buf.writeFluidStack(recipe.fluidStack);
 
             for (Ingredient ing : recipe.getIngredients()) {
                 ing.toNetwork(buf);
             }
+
+            buf.writeInt(recipe.craftTime);
             buf.writeItemStack(recipe.getResultItem(null), false);
         }
     }

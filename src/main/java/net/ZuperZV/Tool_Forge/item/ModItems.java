@@ -33,6 +33,7 @@ public class ModItems {
     public static final RegistryObject<Item> RAW_GILDED_GOLD = ITEMS.register("raw_gilded_gold",
             () -> new Item(new Item.Properties()));
 
+
     public static final RegistryObject<Item> GILDED_NETHERITE_SWORD = ITEMS.register("gilded_netherite_sword",
             () -> new SwordItem(ModToolTiers.GILDED_NETERITE, 3, -2.4F, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> GILDED_NETHERITE_PICKAXE = ITEMS.register("gilded_netherite_pickaxe",

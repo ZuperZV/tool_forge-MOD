@@ -1,5 +1,8 @@
 {
   "type": "tool_forge:tool_station",
+  "craftTime": 160,
+  "fluidAmount": 2000,
+  "fluidType": "minecraft:lava",
   "ingredients": [
     {
       "item": "tool_forge:gilded_diamond_upgrade_smithing_template"

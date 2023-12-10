@@ -27,6 +27,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
+
+        //armor
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_GOLD.get())
                 .pattern("AAA")
                 .pattern("AAA")
@@ -65,38 +67,54 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         of(Items.CRAFTING_TABLE).build()))
                 .save(pWriter);
 
+
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE.get())
                 .pattern(" C ")
                 .pattern("BAB")
                 .pattern(" C ")
                 .define('A', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
                 .define('B', ModItems.GILDED_GOLD.get())
-                .define('C', Items.OBSIDIAN)
+                .define('C', Items.GILDED_BLACKSTONE)
                 .unlockedBy("has_netherite_upgrade_smithing_template", inventoryTrigger(ItemPredicate.Builder.item().
                         of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).build()))
                 .save(pWriter);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE)
                 .pattern("CAC")
                 .pattern("CBC")
                 .pattern("CCC")
                 .define('A', ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE.get())
                 .define('B', Items.GILDED_BLACKSTONE)
-                .define('D', ModItems.GILDED_GOLD.get())
+                .define('C', ModItems.GILDED_GOLD.get())
                 .unlockedBy("has_netherite_upgrade_smithing_template", inventoryTrigger(ItemPredicate.Builder.item().
                         of(ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE.get()).build()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE.get())
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_DIAMOND_UPGRADE_SMITHING_TEMPLATE.get())
                 .pattern("CAC")
                 .pattern("CBC")
                 .pattern("CCC")
                 .define('A', ModItems.GILDED_DIAMOND_UPGRADE_SMITHING_TEMPLATE.get())
                 .define('B', Items.GILDED_BLACKSTONE)
-                .define('D', ModItems.GILDED_GOLD.get())
+                .define('C', ModItems.GILDED_GOLD.get())
                 .unlockedBy("has_netherite_upgrade_smithing_template", inventoryTrigger(ItemPredicate.Builder.item().
                         of(ModItems.GILDED_DIAMOND_UPGRADE_SMITHING_TEMPLATE.get()).build()))
                 .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.COAST_ARMOR_TRIM_SMITHING_TEMPLATE)
+                .pattern(" C ")
+                .pattern("BAB")
+                .pattern(" C ")
+                .define('A', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
+                .define('B', ModItems.GILDED_GOLD.get())
+                .define('C', Items.BLACKSTONE)
+                .unlockedBy("has_netherite_upgrade_smithing_template", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).build()))
+                .save(pWriter);
+
+
+
 
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, ModItems.BISMUTH.get(), RecipeCategory.MISC, ModBlocks.BISMUTH_BLOCK.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, ModItems.LILLIUM.get(), RecipeCategory.MISC, ModBlocks.LILLIUM_BLOCK.get());
@@ -109,6 +127,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         oreSmelting(pWriter, LILLIUM_SMELTABLES, RecipeCategory.MISC, ModItems.LILLIUM.get(), 0.55f, 350, "LILLIUM");
         oreBlasting(pWriter, LILLIUM_SMELTABLES, RecipeCategory.MISC, ModItems.LILLIUM.get(), 0.55f, 250, "LILLIUM");
+
+
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.ZOMBIE_HEAD)
+                .pattern("AAA")
+                .pattern("ABA")
+                .pattern("ACA")
+                .define('A', Items.ROTTEN_FLESH)
+                .define('B', Items.SKELETON_SKULL)
+                .define('C', Items.BONE)
+                .unlockedBy("has_netherite_upgrade_smithing_template", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(Items.SKELETON_SKULL).build()))
+                .save(pWriter);
     }
 
 }
