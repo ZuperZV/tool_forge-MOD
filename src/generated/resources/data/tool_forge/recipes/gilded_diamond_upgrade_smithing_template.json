@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "tool_forge:gilded_diamond_upgrade_smithing_template"
+    },
+    "B": {
+      "item": "minecraft:gilded_blackstone"
+    },
+    "C": {
+      "item": "tool_forge:gilded_gold"
+    }
+  },
+  "pattern": [
+    "CAC",
+    "CBC",
+    "CCC"
+  ],
+  "result": {
+    "item": "tool_forge:gilded_diamond_upgrade_smithing_template"
+  },
+  "show_notification": true
+}
