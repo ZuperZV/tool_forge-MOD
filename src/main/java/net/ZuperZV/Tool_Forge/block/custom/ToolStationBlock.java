@@ -22,12 +22,15 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 public class ToolStationBlock extends BaseEntityBlock {
     private static final Component CONTAINER_TITLE = Component.translatable("container.upgrade");
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+
+
     public ToolStationBlock(Properties pProperties) {
         super(pProperties);
     }
@@ -98,7 +101,7 @@ public class ToolStationBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new ToolStationBlockEntity(  pPos, pState);
+        return new ToolStationBlockEntity(  pPos, pState, fluidTank);
     }
 
     @Nullable

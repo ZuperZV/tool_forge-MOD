@@ -99,7 +99,7 @@ public class ToolStationRecipe implements Recipe<SimpleContainer> {
         @Override
         public ToolStationRecipe fromJson(ResourceLocation id, JsonObject json) {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
-            FluidStack fluidStack = new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation(json.get("fluiType").getAsString())),
+            FluidStack fluidStack = new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation(json.get("fluidType").getAsString())),
                     json.get("fluidAmount").getAsInt());
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");

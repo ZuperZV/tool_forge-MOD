@@ -39,6 +39,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 public class ToolStationBlockEntity extends BlockEntity implements MenuProvider {
@@ -84,6 +85,10 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
                     new InventoryDirectionEntry(Direction.EAST, INPUT_SLOT, true),
                     new InventoryDirectionEntry(Direction.WEST, UPGRADE_SLOT, true),
                     new InventoryDirectionEntry(Direction.UP, FLUID_INPUT_SLOT, true)).directionsMap;
+
+
+
+
     private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
 
     protected final ContainerData data;
@@ -95,7 +100,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
 
     public final FluidTank FLUID_TANK = createFluidTank();
 
-    private FluidTank createFluidTank() {
+    public FluidTank createFluidTank() {
         return new FluidTank(6000) {
             @Override
             protected void onContentsChanged() {
@@ -112,6 +117,9 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
         };
     }
 
+
+
+
     public ItemStack getRenderStack() {
         ItemStack stack = itemHandler.getStackInSlot(OUTPUT_SLOT);
 
@@ -123,8 +131,11 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     }
 
 
-    public ToolStationBlockEntity(BlockPos pPos, BlockState pBlockState) {
+
+
+    public ToolStationBlockEntity(BlockPos pPos, BlockState pBlockState, @Nullable FluidTank fluidTank) {
         super(ModBlockEntities.TOOL_STATION_BE.get(), pPos, pBlockState);
+        this.fluidTank = fluidTank;
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
@@ -149,6 +160,9 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
             }
         };
     }
+
+
+    FluidStack fluid = FLUID_TANK.getFluid();
 
     public FluidStack getFluid() {
         return FLUID_TANK.getFluid();
@@ -226,6 +240,32 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
         neededFluidStack = FluidStack.loadFluidStackFromNBT(pTag);
         FLUID_TANK.readFromNBT(pTag);
 
+    }
+
+    @Nullable
+    public final FluidTank getFluidTank() {
+        return fluidTank;
+    }
+
+    @Nullable
+    private final FluidTank fluidTank;
+
+
+    //called when a player uses the block entity, before menu is may open.
+
+
+    /*
+    @Override
+    public InteractionResult onBlockEntityUsed(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        // TODO: Not a fan of the MachineFluidTank having actiions like this.
+        //       I want to review the tank in its entirety after alpha release.
+        return ((MachineFluidTank) getFluidTankNN()).onClickedWithPotentialFluidItem(player, hand);
+    }
+     */
+
+
+    protected final FluidTank getFluidTankNN() {
+        return Objects.requireNonNull(fluidTank);
     }
 
     public void drops() {
@@ -364,6 +404,8 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() < this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
     }
 
+
+
     @Nullable
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
@@ -380,6 +422,4 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     public FluidStack getFluidStack() {
         return FLUID_TANK.getFluid();
     }
-
-
 }
