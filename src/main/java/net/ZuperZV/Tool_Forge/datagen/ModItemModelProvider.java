@@ -1,7 +1,6 @@
 package net.ZuperZV.Tool_Forge.datagen;
 
 import net.ZuperZV.Tool_Forge.Tool_Forge;
-import net.ZuperZV.Tool_Forge.Tool_Forge;
 import net.ZuperZV.Tool_Forge.block.ModBlocks;
 import net.ZuperZV.Tool_Forge.item.ModItems;
 import net.minecraft.data.PackOutput;
@@ -35,6 +34,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.GILDED_NETHERITE_AXE);
         handheldItem(ModItems.GILDED_NETHERITE_SHOVEL);
         handheldItem(ModItems.GILDED_NETHERITE_HOE);
+
 
         simpleItem(ModItems.ECTOPLASM);
         simpleItem(ModItems.SOUL_SHARD);

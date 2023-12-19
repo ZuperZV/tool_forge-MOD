@@ -84,6 +84,7 @@ public class Tool_Forge {
             event.accept(ModItems.GILDED_DIAMOND_BOOTS);
 
 
+
         }
 
         if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
@@ -91,6 +92,7 @@ public class Tool_Forge {
             event.accept(ModItems.GILDED_NETHERITE_AXE);
             event.accept(ModItems.GILDED_NETHERITE_SHOVEL);
             event.accept(ModItems.GILDED_NETHERITE_HOE);
+
         }
 
         if(event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {

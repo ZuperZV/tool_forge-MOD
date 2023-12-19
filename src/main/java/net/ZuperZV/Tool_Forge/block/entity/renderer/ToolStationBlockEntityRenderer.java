@@ -18,6 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 
 
+
 public class ToolStationBlockEntityRenderer implements BlockEntityRenderer<ToolStationBlockEntity> {
 
     public ToolStationBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
@@ -42,11 +43,8 @@ public class ToolStationBlockEntityRenderer implements BlockEntityRenderer<ToolS
                 pBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, pPoseStack, pBufferSource, pBlockEntity.getLevel(), 1);
         pPoseStack.popPose();
 
-
-
-        //https://github.com/Team-EnderIO/EnderIO/blob/dev/1.20.1/src/machines/java/com/enderio/machines/client/rendering/blockentity/FluidTankBER.java
-
     }
+
 
 
     private int getLightLevel(Level level, BlockPos pos) {

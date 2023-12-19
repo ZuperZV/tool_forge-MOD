@@ -46,13 +46,13 @@ public class ModItems {
             () -> new HoeItem(ModToolTiers.GILDED_NETERITE, -4, 0.0F, new Item.Properties().durability(2000).fireResistant() .rarity(Rarity.EPIC)));
 
     public static final RegistryObject<Item> GILDED_NETHERITE_HELMET = ITEMS.register("gilded_netherite_helmet",
-            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.HELMET, new Item.Properties().fireResistant() .rarity(Rarity.EPIC)));
+            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.HELMET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> GILDED_NETHERITE_CHESTPLATE = ITEMS.register("gilded_netherite_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant() .rarity(Rarity.EPIC)));
+            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> GILDED_NETHERITE_LEGGINGS = ITEMS.register("gilded_netherite_leggings",
-            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant() .rarity(Rarity.EPIC)));
+            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> GILDED_NETHERITE_BOOTS = ITEMS.register("gilded_netherite_boots",
-            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant() .rarity(Rarity.EPIC)));
+            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 
     public static final RegistryObject<Item> GILDED_DIAMOND_HELMET = ITEMS.register("gilded_diamond_helmet",
             () -> new ArmorItem(ModArmorMaterials.DIAMOND_GILDED, ArmorItem.Type.HELMET, new Item.Properties()));

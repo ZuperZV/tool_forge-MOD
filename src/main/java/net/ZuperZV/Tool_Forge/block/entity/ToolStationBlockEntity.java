@@ -130,6 +130,10 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
         return stack;
     }
 
+    public int getTank(){
+        return this.FLUID_TANK.getFluidAmount();
+    }
+
 
 
 
