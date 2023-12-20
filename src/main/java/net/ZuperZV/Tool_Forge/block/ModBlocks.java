@@ -1,6 +1,7 @@
 package net.ZuperZV.Tool_Forge.block;
 
 import net.ZuperZV.Tool_Forge.Tool_Forge;
+import net.ZuperZV.Tool_Forge.block.custom.DeepslateFurnace;
 import net.ZuperZV.Tool_Forge.block.custom.ToolStationBlock;
 import net.ZuperZV.Tool_Forge.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -28,6 +29,10 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> GILDED_GOLD_BLOCK = registerBlock("gilded_gold_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_BLOCK)));
+
+    public static final RegistryObject<Block> DEPPSLATE_FURNACE = registerBlock("deeppslate_furnace",
+            () -> new DeepslateFurnace(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
+
     //bismuth
     public static final RegistryObject<Block> BISMUTH_BLOCK = registerBlock("bismuth_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_BLOCK)));

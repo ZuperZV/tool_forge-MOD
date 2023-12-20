@@ -14,7 +14,7 @@ public class ModBlockEntities {
 
     public static final RegistryObject<BlockEntityType<ToolStationBlockEntity>> TOOL_STATION_BE =
             BLOCK_ENTITIES.register("tool_station_block_entity", () ->
-                    BlockEntityType.Builder.of((pPos, pBlockState) -> new ToolStationBlockEntity(pPos, pBlockState, fluidTank),
+                    BlockEntityType.Builder.of(ToolStationBlockEntity::new,
                             ModBlocks.TOOL_STATION.get()).build(null));
 
     public static void register(IEventBus eventBus) {

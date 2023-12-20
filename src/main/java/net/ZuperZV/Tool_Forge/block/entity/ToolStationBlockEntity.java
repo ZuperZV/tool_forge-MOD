@@ -39,7 +39,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 public class ToolStationBlockEntity extends BlockEntity implements MenuProvider {
@@ -166,7 +165,6 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     }
 
 
-    FluidStack fluid = FLUID_TANK.getFluid();
 
     public FluidStack getFluid() {
         return FLUID_TANK.getFluid();
@@ -253,24 +251,6 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
 
     @Nullable
     private final FluidTank fluidTank;
-
-
-    //called when a player uses the block entity, before menu is may open.
-
-
-    /*
-    @Override
-    public InteractionResult onBlockEntityUsed(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        // TODO: Not a fan of the MachineFluidTank having actiions like this.
-        //       I want to review the tank in its entirety after alpha release.
-        return ((MachineFluidTank) getFluidTankNN()).onClickedWithPotentialFluidItem(player, hand);
-    }
-     */
-
-
-    protected final FluidTank getFluidTankNN() {
-        return Objects.requireNonNull(fluidTank);
-    }
 
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
