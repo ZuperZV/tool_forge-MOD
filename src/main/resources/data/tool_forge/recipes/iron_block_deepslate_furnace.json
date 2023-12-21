@@ -1,0 +1,10 @@
+{
+  "type": "tool_forge:deepslate_furnace",
+  "category": "misc",
+  "cookingtime": 50,
+  "experience": 0.5,
+  "ingredient": {
+    "item": "minecraft:raw_iron_block"
+  },
+  "result": "minecraft:iron_block"
+}

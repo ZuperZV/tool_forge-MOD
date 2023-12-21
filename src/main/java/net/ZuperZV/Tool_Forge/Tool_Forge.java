@@ -8,6 +8,7 @@ import net.ZuperZV.Tool_Forge.entity.client.SoulRenderer;
 import net.ZuperZV.Tool_Forge.item.ModItems;
 import net.ZuperZV.Tool_Forge.loot.ModLootModifiers;
 import net.ZuperZV.Tool_Forge.recipe.ModRecipes;
+import net.ZuperZV.Tool_Forge.screen.DeepslateFurnaceScreen;
 import net.ZuperZV.Tool_Forge.screen.ModMenuTypes;
 import net.ZuperZV.Tool_Forge.screen.ToolStationScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -131,6 +132,7 @@ public class Tool_Forge {
                 EntityRenderers.register(ModEntities.SOUL.get(), SoulRenderer::new);
 
                 MenuScreens.register(ModMenuTypes.TOOL_STATION_MENU.get(), ToolStationScreen::new);
+                MenuScreens.register(ModMenuTypes.DEEPSLATE_FURNACE_MENU.get(), DeepslateFurnaceScreen::new);
             });
         }
     }

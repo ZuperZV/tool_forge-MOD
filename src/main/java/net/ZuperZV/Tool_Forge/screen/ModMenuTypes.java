@@ -17,6 +17,9 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<ToolStationMenu>> TOOL_STATION_MENU =
             registerMenuType(ToolStationMenu::new, "tool_station_menu");
 
+    public static final RegistryObject<MenuType<DeepslateFurnaceMenu>> DEEPSLATE_FURNACE_MENU =
+            registerMenuType(DeepslateFurnaceMenu::new, "deepslate_furnace_menu");
+
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory, String name) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

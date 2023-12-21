@@ -44,7 +44,6 @@ import java.util.Optional;
 public class ToolStationBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(5) {
 
-
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -136,9 +135,9 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
 
 
 
-    public ToolStationBlockEntity(BlockPos pPos, BlockState pBlockState, @Nullable FluidTank fluidTank) {
+
+    public ToolStationBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.TOOL_STATION_BE.get(), pPos, pBlockState);
-        this.fluidTank = fluidTank;
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
@@ -244,13 +243,6 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
 
     }
 
-    @Nullable
-    public final FluidTank getFluidTank() {
-        return fluidTank;
-    }
-
-    @Nullable
-    private final FluidTank fluidTank;
 
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());

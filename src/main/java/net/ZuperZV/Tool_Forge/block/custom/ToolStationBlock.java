@@ -22,7 +22,6 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
@@ -101,7 +100,7 @@ public class ToolStationBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new ToolStationBlockEntity(  pPos, pState, fluidTank);
+        return new ToolStationBlockEntity(pPos, pState);
     }
 
     @Nullable

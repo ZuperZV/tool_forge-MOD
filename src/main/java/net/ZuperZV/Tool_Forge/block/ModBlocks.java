@@ -30,7 +30,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> GILDED_GOLD_BLOCK = registerBlock("gilded_gold_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_BLOCK)));
 
-    public static final RegistryObject<Block> DEPPSLATE_FURNACE = registerBlock("deeppslate_furnace",
+    public static final RegistryObject<Block> DEEPSLATE_FURNACE = registerBlock("deepslate_furnace",
             () -> new DeepslateFurnace(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
 
     //bismuth

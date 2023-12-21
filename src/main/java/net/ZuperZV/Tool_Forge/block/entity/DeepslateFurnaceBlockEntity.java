@@ -1,6 +1,8 @@
 package net.ZuperZV.Tool_Forge.block.entity;
 
 import net.ZuperZV.Tool_Forge.item.ModItems;
+import net.ZuperZV.Tool_Forge.recipe.DeepslateFurnaceRecipe;
+import net.ZuperZV.Tool_Forge.screen.DeepslateFurnaceMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
@@ -17,7 +19,7 @@ public class DeepslateFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
             Map.of(ModItems.ECTOPLASM.get(), 200,
                     ModItems.SOUL_SHARD.get(), 400);
     public DeepslateFurnaceBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(pType, pPos, pBlockState, pRecipeType);
+        super(ModBlockEntities.DEPPSLATE_FURNACE_BLOCK_ENTITY.get(), pPos, pBlockState, DeepslateFurnaceRecipe.Type.INSTANCE);
     }
 
     @Override
@@ -27,11 +29,11 @@ public class DeepslateFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
 
     @Override
     protected AbstractContainerMenu createMenu(int pContainerId, Inventory pInventory) {
-        return
+        return new DeepslateFurnaceMenu(pContainerId, pInventory, this, dataAccess);
     }
 
     @Override
     protected int getBurnDuration(ItemStack pFuel) {
-        return BURN_DURATION_MAP.getOrDefault(pFuel.getItem(), 0)
+        return BURN_DURATION_MAP.getOrDefault(pFuel.getItem(), 0);
     }
 }

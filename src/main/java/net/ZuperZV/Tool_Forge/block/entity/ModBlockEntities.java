@@ -17,7 +17,13 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(ToolStationBlockEntity::new,
                             ModBlocks.TOOL_STATION.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<DeepslateFurnaceBlockEntity>> DEPPSLATE_FURNACE_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("deepslate_furnace_block_entity", () ->
+                    BlockEntityType.Builder.of(DeepslateFurnaceBlockEntity::new,
+                            ModBlocks.DEEPSLATE_FURNACE.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }
 }
+
