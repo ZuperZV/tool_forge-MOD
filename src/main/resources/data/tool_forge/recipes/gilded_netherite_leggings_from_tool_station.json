@@ -1,5 +1,6 @@
 {
   "type": "tool_forge:tool_station",
+  "type": "tool_forge:tool_station",
   "craftTime": 200,
   "fluidAmount": 2500,
   "fluidType": "minecraft:lava",

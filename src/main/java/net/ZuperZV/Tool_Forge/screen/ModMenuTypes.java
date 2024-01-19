@@ -17,6 +17,9 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<ToolStationMenu>> TOOL_STATION_MENU =
             registerMenuType(ToolStationMenu::new, "tool_station_menu");
 
+    public static final RegistryObject<MenuType<AlloyProcessorMenu>> ALLOY_PROCESSOR_MENU =
+            registerMenuType(AlloyProcessorMenu::new, "alloy_processor_menu");
+
     public static final RegistryObject<MenuType<DeepslateFurnaceMenu>> DEEPSLATE_FURNACE_MENU =
             registerMenuType(DeepslateFurnaceMenu::new, "deepslate_furnace_menu");
 

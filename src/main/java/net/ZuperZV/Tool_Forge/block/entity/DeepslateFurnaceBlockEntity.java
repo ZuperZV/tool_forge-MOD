@@ -9,6 +9,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -16,8 +17,10 @@ import java.util.Map;
 
 public class DeepslateFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
     private Map<Item, Integer> BURN_DURATION_MAP =
-            Map.of(ModItems.ECTOPLASM.get(), 200,
-                    ModItems.SOUL_SHARD.get(), 400);
+            Map.of(ModItems.ECTOPLASM.get(), 100,
+                    ModItems.SOUL_SHARD.get(), 200,
+                    Items.BLAZE_POWDER, 800);
+
     public DeepslateFurnaceBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.DEPPSLATE_FURNACE_BLOCK_ENTITY.get(), pPos, pBlockState, DeepslateFurnaceRecipe.Type.INSTANCE);
     }
@@ -37,3 +40,5 @@ public class DeepslateFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
         return BURN_DURATION_MAP.getOrDefault(pFuel.getItem(), 0);
     }
 }
+
+

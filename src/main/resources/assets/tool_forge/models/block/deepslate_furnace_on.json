@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/orientable",
   "textures": {
-    "front": "tool_forge:block/deepslate_furnace",
+    "front": "tool_forge:block/deepslate_furnace_on",
     "side": "tool_forge:block/deepslate_furnace_side",
     "top": "tool_forge:block/deepslate_furnace_top"
   }

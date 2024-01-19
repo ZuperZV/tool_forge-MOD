@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 public class DeepslateFurnaceScreen extends AbstractFurnaceScreen<DeepslateFurnaceMenu> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Tool_Forge.MOD_ID, "textures/gui/Deepslate_furnace.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(Tool_Forge.MOD_ID, "textures/gui/deepslate_furnace.png");
 
     public DeepslateFurnaceScreen(DeepslateFurnaceMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, new DeepslateFurnaceRecipeBookComponent(), pPlayerInventory, pTitle, TEXTURE);

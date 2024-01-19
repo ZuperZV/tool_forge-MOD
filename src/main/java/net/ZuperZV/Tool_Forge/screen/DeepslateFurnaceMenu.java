@@ -7,9 +7,10 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractFurnaceMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.RecipeBookType;
+import net.minecraft.world.item.ItemStack;
 
 public class DeepslateFurnaceMenu extends AbstractFurnaceMenu {
-    protected DeepslateFurnaceMenu(int pContainerId, Inventory pPlayerInventory, FriendlyByteBuf friendlybytebuf) {
+    protected DeepslateFurnaceMenu(int pContainerId, Inventory pPlayerInventory, FriendlyByteBuf friendlyByteBuf) {
         this(pContainerId, pPlayerInventory);
     }
 
@@ -19,5 +20,10 @@ public class DeepslateFurnaceMenu extends AbstractFurnaceMenu {
 
     public DeepslateFurnaceMenu(int pContainerId, Inventory pPlayerInventory) {
         super(ModMenuTypes.DEEPSLATE_FURNACE_MENU.get(), DeepslateFurnaceRecipe.Type.INSTANCE, RecipeBookType.FURNACE, pContainerId, pPlayerInventory);
+    }
+
+    @Override
+    protected boolean isFuel(ItemStack pStack) {
+        return true;
     }
 }

@@ -1,7 +1,8 @@
 package net.ZuperZV.Tool_Forge.screen;
 
 import net.ZuperZV.Tool_Forge.block.ModBlocks;
-import net.ZuperZV.Tool_Forge.block.entity.ToolStationBlockEntity;
+import net.ZuperZV.Tool_Forge.block.entity.AlloyProcessorBlockEntity;
+import net.ZuperZV.Tool_Forge.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -12,34 +13,13 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ToolStationMenu extends AbstractContainerMenu {
-    public final ToolStationBlockEntity blockEntity;
+public class AlloyProcessorMenu extends AbstractContainerMenu {
+    public final AlloyProcessorBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
-    public ToolStationMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
+    public AlloyProcessorMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
-    }
-
-    public ToolStationMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.TOOL_STATION_MENU.get(), pContainerId);
-        checkContainerSize(inv, 4);
-        blockEntity = ((ToolStationBlockEntity) entity);
-        this.level = inv.player.level();
-        this.data = data;
-
-        addPlayerInventory(inv);
-        addPlayerHotbar(inv);
-
-        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 17, 48));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 59, 13));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 80, 7));
-            this.addSlot(new SlotItemHandler(iItemHandler, 3, 101, 13));
-            this.addSlot(new SlotItemHandler(iItemHandler, 4, 80, 58));
-        });
-
-        addDataSlots(data);
     }
 
     public boolean isCrafting() {
@@ -49,9 +29,31 @@ public class ToolStationMenu extends AbstractContainerMenu {
     public int getScaledProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);  // Max Progress
-        int progressArrowSize = 26; // This is the height in pixels of your arrow
+        int progressArrowSize = 29; // This is the height in pixels of your arrow
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
+
+    public AlloyProcessorMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
+        super(ModMenuTypes.ALLOY_PROCESSOR_MENU.get(), pContainerId);
+        checkContainerSize(inv, 4);
+        blockEntity = ((AlloyProcessorBlockEntity) entity);
+        this.level = inv.player.level();
+        this.data = data;
+
+        addPlayerInventory(inv);
+        addPlayerHotbar(inv);
+
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 65, 14));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 79, 5));
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 102, 14));
+            this.addSlot(new SlotItemHandler(iItemHandler, 3, 39, 60));
+            this.addSlot(new SlotItemHandler(iItemHandler, 4, 79, 60));
+            this.addSlot(new SlotItemHandler(iItemHandler, 5, 80, 11));
+        });
+
+        addDataSlots(data);
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -70,7 +72,7 @@ public class ToolStationMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 4;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 6;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
@@ -107,7 +109,7 @@ public class ToolStationMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                pPlayer, ModBlocks.TOOL_STATION.get());
+                pPlayer, ModBlocks.ALLOY_PROCESSOR.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

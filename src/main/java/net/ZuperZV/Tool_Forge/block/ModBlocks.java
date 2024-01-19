@@ -27,6 +27,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> TOOL_STATION = registerBlock("tool_station",
             () -> new ToolStationBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_TILES).noOcclusion()));
 
+    public static final RegistryObject<Block> ALLOY_PROCESSOR = registerBlock("alloy_processor",
+            () -> new ToolStationBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+
+
     public static final RegistryObject<Block> GILDED_GOLD_BLOCK = registerBlock("gilded_gold_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_BLOCK)));
 

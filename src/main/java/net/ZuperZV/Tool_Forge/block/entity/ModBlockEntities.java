@@ -17,6 +17,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(ToolStationBlockEntity::new,
                             ModBlocks.TOOL_STATION.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<AlloyProcessorBlockEntity>> ALLOY_PROCESSOR_BE =
+            BLOCK_ENTITIES.register("alloy_processor_block_entity", () ->
+                    BlockEntityType.Builder.of(AlloyProcessorBlockEntity::new,
+                            ModBlocks.ALLOY_PROCESSOR.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<DeepslateFurnaceBlockEntity>> DEPPSLATE_FURNACE_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("deepslate_furnace_block_entity", () ->
                     BlockEntityType.Builder.of(DeepslateFurnaceBlockEntity::new,
