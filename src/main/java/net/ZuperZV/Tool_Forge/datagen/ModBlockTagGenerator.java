@@ -2,11 +2,9 @@ package net.ZuperZV.Tool_Forge.datagen;
 
 import net.ZuperZV.Tool_Forge.Tool_Forge;
 import net.ZuperZV.Tool_Forge.block.ModBlocks;
-import net.ZuperZV.Tool_Forge.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -28,7 +26,10 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .add(ModBlocks.BISMUTH_ORE.get())
                 .add(ModBlocks.BISMUTH_ENDSTONE_ORE.get())
                 .add(ModBlocks.DEPPSLATE_BISMUTH_ORE.get())
-                .add(ModBlocks.LILLIUM_ORE.get());
+                .add(ModBlocks.LILLIUM_ORE.get())
+                .add(ModBlocks.ALLOY_PROCESSOR.get())
+                .add(ModBlocks.TOOL_STATION.get())
+                .add(ModBlocks.DEEPSLATE_FURNACE.get());
 
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
@@ -39,6 +40,11 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.GILDED_GOLD_BLOCK.get());
+
+        this.tag(BlockTags.NEEDS_STONE_TOOL)
+                .add(ModBlocks.TOOL_STATION.get())
+                .add(ModBlocks.ALLOY_PROCESSOR.get())
+                .add(ModBlocks.DEEPSLATE_FURNACE.get());
     }
 
     @Override

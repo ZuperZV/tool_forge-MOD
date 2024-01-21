@@ -1,0 +1,11 @@
+// 1.20.1	2024-01-20T18:39:04.3929089	Loot Tables
+9bc1a123ed5abe9c1c1e91638c9ad79c5689cb23 data/tool_forge/loot_tables/blocks/alloy_processor.json
+8a73d4bf855f0da11d8f3098dbc9f5c3d48146ff data/tool_forge/loot_tables/blocks/bismuth_block.json
+89189dd223724329aefa01e92c58fe2d0f03a6a3 data/tool_forge/loot_tables/blocks/bismuth_endstone_ore.json
+ebbd6ac56984ea6b05fd2d60733b135d04a1e274 data/tool_forge/loot_tables/blocks/bismuth_ore.json
+73eb19b721cb7c4b7a7552c96b3e1951aed6f479 data/tool_forge/loot_tables/blocks/deepslate_bismuth_ore.json
+56c1335cd2f8d683165564f9f360509c423e9a42 data/tool_forge/loot_tables/blocks/deepslate_furnace.json
+34fad9c12bce6344a29814da1caaa05ec89a6eb3 data/tool_forge/loot_tables/blocks/gilded_gold_block.json
+0bdcb6cf9be3fc74650ab71ab4a11dcbb6bddac9 data/tool_forge/loot_tables/blocks/lillium_block.json
+2b1557335846ce894b1e252769b4da44e722a36b data/tool_forge/loot_tables/blocks/lillium_ore.json
+110e02f134bbc0e8ecace8c8071194743836f3f6 data/tool_forge/loot_tables/blocks/tool_station.json

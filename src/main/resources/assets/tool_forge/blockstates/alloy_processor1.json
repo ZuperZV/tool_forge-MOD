@@ -5,21 +5,21 @@
       "y": 90
     },
     "facing=east,lit=true": {
-      "model": "tool_forge:block/alloy_processor",
+      "model": "tool_forge:block/alloy_processor_on",
       "y": 90
     },
     "facing=north,lit=false": {
-      "model": "tool_forge:block/alloy_processor"
+      "model": "tool_forge:block/alloy_processor_on"
     },
     "facing=north,lit=true": {
-      "model": "tool_forge:block/alloy_processor"
+      "model": "tool_forge:block/alloy_processor_on"
     },
     "facing=south,lit=false": {
-      "model": "tool_forge:block/alloy_processor",
+      "model": "tool_forge:block/alloy_processor_on",
       "y": 180
     },
     "facing=south,lit=true": {
-      "model": "tool_forge:block/alloy_processor",
+      "model": "tool_forge:block/alloy_processor_on",
       "y": 180
     },
     "facing=west,lit=false": {

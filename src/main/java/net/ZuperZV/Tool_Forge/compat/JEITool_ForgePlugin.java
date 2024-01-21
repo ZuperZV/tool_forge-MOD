@@ -3,15 +3,18 @@ package net.ZuperZV.Tool_Forge.compat;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
+import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.ZuperZV.Tool_Forge.Tool_Forge;
+import net.ZuperZV.Tool_Forge.block.ModBlocks;
 import net.ZuperZV.Tool_Forge.recipe.DeepslateFurnaceRecipe;
 import net.ZuperZV.Tool_Forge.recipe.ToolStationRecipe;
 import net.ZuperZV.Tool_Forge.screen.DeepslateFurnaceScreen;
 import net.ZuperZV.Tool_Forge.screen.ToolStationScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
 
 import java.util.List;
@@ -51,7 +54,14 @@ public class JEITool_ForgePlugin implements IModPlugin {
         registration.addRecipeClickArea(ToolStationScreen.class, 112, 38, 7, 26,
                 ToolStationRecipeCategory.TOOL_STATION_TYPE);
 
-        registration.addRecipeClickArea(DeepslateFurnaceScreen.class, 81, 38, 22, 14,
+        registration.addRecipeClickArea(DeepslateFurnaceScreen.class, 81, 38, 22, 54,
                 DeepslateFurnaceRecipeCategory.FURNACE_RECIPE_RECIPE_TYPE);
     }
+
+    @Override
+    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.TOOL_STATION.get()), ToolStationRecipeCategory.TOOL_STATION_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.DEEPSLATE_FURNACE.get()), DeepslateFurnaceRecipeCategory.FURNACE_RECIPE_RECIPE_TYPE);
+    }
+
 }

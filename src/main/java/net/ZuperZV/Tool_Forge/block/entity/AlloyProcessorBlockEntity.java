@@ -1,7 +1,9 @@
 package net.ZuperZV.Tool_Forge.block.entity;
 
+import net.ZuperZV.Tool_Forge.recipe.AlloyProcessorRecipe;
 import net.ZuperZV.Tool_Forge.screen.AlloyProcessorMenu;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Containers;
@@ -11,15 +13,20 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(6) {
@@ -102,6 +109,15 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
     }
 
     @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if(cap == ForgeCapabilities.ITEM_HANDLER) {
+            return lazyItemHandler.cast();
+        }
+
+        return super.getCapability(cap, side);
+    }
+
+    @Override
     public void onLoad() {
         super.onLoad();
         lazyItemHandler = LazyOptional.of(() -> itemHandler);
@@ -128,5 +144,77 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
     }
 
     public void tick(Level level, BlockPos pPos, BlockState pState) {
+        if (isOutputSlotEmptyOrReceivable() && hasRecipe()) {
+            increaseCraftingProcess();
+            setChanged(level, pPos, pState);
+
+            if (hasProgressFinished()) {
+                craftItem();
+                resetProgress();
+            }
+        } else {
+            resetProgress();
+        }
+    }
+
+    private void craftItem() {
+        Optional<AlloyProcessorRecipe> recipe = getCurrentRecipe();
+        ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
+
+        this.itemHandler.extractItem(INPUT_SLOT, 3, false);
+
+        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(resultItem.getItem(),
+                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + resultItem.getCount()));
+    }
+
+
+    private void resetProgress() {
+        this.progress = 0;
+    }
+
+    private boolean hasProgressFinished() {
+        return this.progress >= this.maxProgress;
+    }
+    private void increaseCraftingProcess() {
+        this.progress++;
+    }
+
+    private boolean hasRecipe() {
+        Optional<AlloyProcessorRecipe> recipe = getCurrentRecipe();
+
+        if (recipe.isEmpty()) {
+            return false;
+        }
+
+        ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
+
+        return canInsertAmountIntoOutputSlot(resultItem.getCount())
+                && canInsertItemIntoOutputSlot(resultItem.getItem());
+
+    }
+
+
+    private Optional<AlloyProcessorRecipe> getCurrentRecipe() {
+        SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
+        for(int i = 0; i < this.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, this.itemHandler.getStackInSlot(i));
+        }
+
+        return this.level.getRecipeManager().getRecipeFor(AlloyProcessorRecipe.Type.INSTANCE, inventory, level);
+    }
+
+
+    private boolean canInsertItemIntoOutputSlot(Item item) {
+        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item);
+    }
+
+    private boolean canInsertAmountIntoOutputSlot(int count) {
+        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize() >=
+                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count;
+    }
+
+    private boolean isOutputSlotEmptyOrReceivable() {
+        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
+                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() < this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
     }
 }

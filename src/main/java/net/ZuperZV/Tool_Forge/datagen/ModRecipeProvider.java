@@ -1,11 +1,13 @@
 
 package net.ZuperZV.Tool_Forge.datagen;
 
+import net.ZuperZV.Tool_Forge.Tool_Forge;
 import net.ZuperZV.Tool_Forge.block.ModBlocks;
 import net.ZuperZV.Tool_Forge.item.ModItems;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
@@ -53,7 +55,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .define('C', Items.GOLD_INGOT)
                     .unlockedBy("has_gilded_netherite_ingot", inventoryTrigger(ItemPredicate.Builder.item().
                             of(ModItems.GILDED_GOLD_NUGGET.get()).build()))
-                    .save(pWriter);
+                    .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "gilded_diamond_ingot"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.TOOL_STATION.get())
                 .pattern("DAD")
@@ -65,21 +67,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('L', Blocks.GLASS)
                 .unlockedBy("has_crafting_table", inventoryTrigger(ItemPredicate.Builder.item().
                         of(Items.CRAFTING_TABLE).build()))
-                .save(pWriter);
-
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "tool_station_recipe"));
 
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE.get())
-                .pattern(" C ")
-                .pattern("BAB")
-                .pattern(" C ")
-                .define('A', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
-                .define('B', ModItems.GILDED_GOLD.get())
-                .define('C', Items.GILDED_BLACKSTONE)
-                .unlockedBy("has_netherite_upgrade_smithing_template", inventoryTrigger(ItemPredicate.Builder.item().
-                        of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).build()))
-                .save(pWriter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE)
                 .pattern("CAC")
                 .pattern("CBC")
                 .pattern("CCC")
@@ -88,9 +79,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('C', ModItems.GILDED_GOLD.get())
                 .unlockedBy("has_netherite_upgrade_smithing_template", inventoryTrigger(ItemPredicate.Builder.item().
                         of(ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE.get()).build()))
-                .save(pWriter);
-
-
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "gilded_netherite_smithing_template"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_DIAMOND_UPGRADE_SMITHING_TEMPLATE.get())
                 .pattern("CAC")
@@ -101,17 +90,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('C', ModItems.GILDED_GOLD.get())
                 .unlockedBy("has_netherite_upgrade_smithing_template", inventoryTrigger(ItemPredicate.Builder.item().
                         of(ModItems.GILDED_DIAMOND_UPGRADE_SMITHING_TEMPLATE.get()).build()))
-                .save(pWriter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.COAST_ARMOR_TRIM_SMITHING_TEMPLATE)
-                .pattern(" C ")
-                .pattern("BAB")
-                .pattern(" C ")
-                .define('A', Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
-                .define('B', ModItems.GILDED_GOLD.get())
-                .define('C', Items.BLACKSTONE)
-                .unlockedBy("has_netherite_upgrade_smithing_template", inventoryTrigger(ItemPredicate.Builder.item().
-                        of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).build()))
-                .save(pWriter);
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "gilded_diamond_smithing_template"));
+
+
+
 
 
 
@@ -130,7 +112,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
-
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.ZOMBIE_HEAD)
                 .pattern("AAA")
                 .pattern("ABA")
@@ -141,6 +122,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_netherite_upgrade_smithing_template", inventoryTrigger(ItemPredicate.Builder.item().
                         of(Items.SKELETON_SKULL).build()))
                 .save(pWriter);
+
+
+        //SmithingTransformRecipeBuilder.smithing(template, item to upgrade, upgradeitem, category, result)
     }
 
 }

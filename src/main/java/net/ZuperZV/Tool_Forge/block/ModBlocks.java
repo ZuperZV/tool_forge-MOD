@@ -1,6 +1,7 @@
 package net.ZuperZV.Tool_Forge.block;
 
 import net.ZuperZV.Tool_Forge.Tool_Forge;
+import net.ZuperZV.Tool_Forge.block.custom.AlloyProcessorBlock;
 import net.ZuperZV.Tool_Forge.block.custom.DeepslateFurnace;
 import net.ZuperZV.Tool_Forge.block.custom.ToolStationBlock;
 import net.ZuperZV.Tool_Forge.item.ModItems;
@@ -28,7 +29,7 @@ public class ModBlocks {
             () -> new ToolStationBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_TILES).noOcclusion()));
 
     public static final RegistryObject<Block> ALLOY_PROCESSOR = registerBlock("alloy_processor",
-            () -> new ToolStationBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+            () -> new AlloyProcessorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
 
     public static final RegistryObject<Block> GILDED_GOLD_BLOCK = registerBlock("gilded_gold_block",

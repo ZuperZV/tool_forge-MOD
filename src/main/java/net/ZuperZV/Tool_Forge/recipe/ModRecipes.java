@@ -17,6 +17,9 @@ public class ModRecipes {
     public static final RegistryObject<RecipeSerializer<DeepslateFurnaceRecipe>> DEEPSLATE_FURNACE_SERIALIZER =
             SERIALIZERS.register("deepslate_furnace", () -> DeepslateFurnaceRecipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<AlloyProcessorRecipe>> ALLOY_PROCESSOR_SERIALIZER =
+            SERIALIZERS.register("alloy_processor", () -> AlloyProcessorRecipe.Serializer.INSTANCE);
+
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
     }

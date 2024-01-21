@@ -4,6 +4,9 @@
     "tool_forge:bismuth_ore",
     "tool_forge:bismuth_endstone_ore",
     "tool_forge:deepslate_bismuth_ore",
-    "tool_forge:lillium_ore"
+    "tool_forge:lillium_ore",
+    "tool_forge:alloy_processor",
+    "tool_forge:tool_station",
+    "tool_forge:deepslate_furnace"
   ]
 }

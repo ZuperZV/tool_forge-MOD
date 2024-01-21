@@ -17,6 +17,13 @@ public class AlloyProcessorScreen extends AbstractContainerScreen<AlloyProcessor
     }
 
     @Override
+    protected void init() {
+        super.init();
+        this.inventoryLabelY = 100000;
+        this.titleLabelY = 100000;
+    }
+
+    @Override
     protected void renderBg(GuiGraphics guiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
@@ -32,6 +39,7 @@ public class AlloyProcessorScreen extends AbstractContainerScreen<AlloyProcessor
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
             guiGraphics.blit(TEXTURE, x + 50, y + 24, 176, 0, 63, menu.getScaledProgress());
+            //63
         }
     }
 

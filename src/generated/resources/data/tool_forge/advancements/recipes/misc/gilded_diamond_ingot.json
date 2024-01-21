@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_netherite_upgrade_smithing_template": {
+    "has_gilded_netherite_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "tool_forge:gilded_netherite_upgrade_smithing_template"
+              "tool_forge:gilded_gold_nugget"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:sentry_armor_trim_smithing_template"
+        "recipe": "tool_forge:gilded_diamond_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_netherite_upgrade_smithing_template",
+      "has_gilded_netherite_ingot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:sentry_armor_trim_smithing_template"
+      "tool_forge:gilded_diamond_ingot"
     ]
   },
   "sends_telemetry_event": false

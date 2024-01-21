@@ -2,7 +2,6 @@ package net.ZuperZV.Tool_Forge.screen;
 
 import net.ZuperZV.Tool_Forge.block.ModBlocks;
 import net.ZuperZV.Tool_Forge.block.entity.AlloyProcessorBlockEntity;
-import net.ZuperZV.Tool_Forge.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -29,7 +28,7 @@ public class AlloyProcessorMenu extends AbstractContainerMenu {
     public int getScaledProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);  // Max Progress
-        int progressArrowSize = 29; // This is the height in pixels of your arrow
+        int progressArrowSize = 31; // This is the height in pixels of your arrow
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
@@ -45,12 +44,12 @@ public class AlloyProcessorMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 65, 14));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 79, 5));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 102, 14));
-            this.addSlot(new SlotItemHandler(iItemHandler, 3, 39, 60));
-            this.addSlot(new SlotItemHandler(iItemHandler, 4, 79, 60));
-            this.addSlot(new SlotItemHandler(iItemHandler, 5, 80, 11));
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 57, 14));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 80, 5));
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 103, 14));
+            this.addSlot(new SlotItemHandler(iItemHandler, 3, 37, 60));
+            this.addSlot(new SlotItemHandler(iItemHandler, 4, 80, 60));
+            this.addSlot(new SlotItemHandler(iItemHandler, 5, 106, 60));
         });
 
         addDataSlots(data);

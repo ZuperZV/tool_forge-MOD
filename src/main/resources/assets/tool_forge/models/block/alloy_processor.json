@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/orientable",
   "textures": {
-    "front": "tool_forge:block/alloy_processor",
+    "front": "tool_forge:block/alloy_processor_front",
     "side": "tool_forge:block/alloy_processor_side",
     "top": "tool_forge:block/alloy_processor_top"
   }

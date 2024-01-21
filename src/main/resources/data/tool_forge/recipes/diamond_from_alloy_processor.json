@@ -1,0 +1,15 @@
+{
+  "type": "tool_forge:alloy_processor",
+  "ingredients": [
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:flint"
+    }
+  ],
+  "output": {
+    "item": "minecraft:diamond",
+    "count": 1
+  }
+}

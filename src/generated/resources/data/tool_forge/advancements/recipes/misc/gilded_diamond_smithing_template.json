@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_crafting_table": {
+    "has_netherite_upgrade_smithing_template": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:crafting_table"
+              "tool_forge:gilded_diamond_upgrade_smithing_template"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tool_forge:tool_station"
+        "recipe": "tool_forge:gilded_diamond_smithing_template"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_crafting_table",
+      "has_netherite_upgrade_smithing_template",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "tool_forge:tool_station"
+      "tool_forge:gilded_diamond_smithing_template"
     ]
   },
   "sends_telemetry_event": false
