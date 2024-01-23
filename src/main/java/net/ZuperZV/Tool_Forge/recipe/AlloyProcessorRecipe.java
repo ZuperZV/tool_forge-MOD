@@ -1,6 +1,6 @@
 package net.ZuperZV.Tool_Forge.recipe;
 
- import com.google.gson.JsonArray;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.ZuperZV.Tool_Forge.Tool_Forge;
 import net.minecraft.core.NonNullList;
@@ -11,7 +11,7 @@ import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
-        import net.minecraft.world.level.Level;
+import net.minecraft.world.level.Level;
 
 public class AlloyProcessorRecipe implements Recipe<SimpleContainer> {
     private final NonNullList<Ingredient> inputItems;
@@ -114,6 +114,7 @@ public class AlloyProcessorRecipe implements Recipe<SimpleContainer> {
             for (Ingredient ing : recipe.getIngredients()) {
                 ing.toNetwork(buf);
             }
+            
             buf.writeItemStack(recipe.getResultItem(null), false);
         }
     }

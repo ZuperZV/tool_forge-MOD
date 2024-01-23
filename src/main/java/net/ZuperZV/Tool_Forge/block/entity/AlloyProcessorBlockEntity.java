@@ -18,9 +18,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
@@ -38,12 +42,9 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch (slot){
-                case 0 -> true;
-                case 1 -> true;
-                case 2 -> true;
-                case 3 -> true;
-                case 4 -> false;
-                case 5 -> false;
+                case 0, 1, 2 -> true;
+                case 3 -> stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
+                case 4, 5 -> false;
                 default -> super.isItemValid(slot, stack);
             };
         }
@@ -52,14 +53,36 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
     private static final int INPUT_SLOT = 0;
     private static final int INPUT_SLOT_2 = 1;
     private static final int INPUT_SLOT_3 = 2;
-    private static final int OUTPUT_SLOT = 3;
-    private static final int OUTPUT_SLOT_2 = 4;
+    private static final int FLUID_INPUT_SLOT = 3;
+    private static final int OUTPUT_SLOT = 4;
+    private static final int OUTPUT_SLOT_2 = 5;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
+    private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
 
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 85;
+    private FluidStack neededFluidStack = FluidStack.EMPTY;
+    public final FluidTank FLUID_TANK = createFluidTank();
+
+
+    public FluidTank createFluidTank() {
+        return new FluidTank(10000) {
+            @Override
+            protected void onContentsChanged() {
+                setChanged();
+                if(!level.isClientSide()) {
+                    level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+                }
+            }
+
+            @Override
+            public boolean isFluidValid(FluidStack stack) {
+                return stack.getFluid() == Fluids.LAVA;
+            }
+        };
+    }
 
     public AlloyProcessorBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.ALLOY_PROCESSOR_BE.get(), pPos, pBlockState);
@@ -68,7 +91,7 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
             public int get(int pIndex) {
                 return switch (pIndex) {
                     case 0 -> AlloyProcessorBlockEntity.this.progress;
-                    case 1 -> AlloyProcessorBlockEntity.this.progress;
+                    case 1 -> AlloyProcessorBlockEntity.this.maxProgress;
                     default -> 0;
                 };
             }
@@ -77,7 +100,7 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
             public void set(int pIndex, int pValue) {
                 switch (pIndex) {
                     case 0 -> AlloyProcessorBlockEntity.this.progress = pValue;
-                    case 1 -> AlloyProcessorBlockEntity.this.progress = pValue;
+                    case 1 -> AlloyProcessorBlockEntity.this.maxProgress = pValue;
                 }
             }
 
@@ -86,6 +109,10 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
                 return 2;
             }
         };
+    }
+
+    public FluidStack getFluid() {
+        return FLUID_TANK.getFluid();
     }
 
     public void drops() {
@@ -114,6 +141,10 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
             return lazyItemHandler.cast();
         }
 
+        if(cap == ForgeCapabilities.FLUID_HANDLER) {
+            return lazyFluidHandler.cast();
+        }
+
         return super.getCapability(cap, side);
     }
 
@@ -121,17 +152,20 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
     public void onLoad() {
         super.onLoad();
         lazyItemHandler = LazyOptional.of(() -> itemHandler);
+        lazyFluidHandler = LazyOptional.of(() -> FLUID_TANK);
     }
 
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
         lazyItemHandler.invalidate();
+        lazyFluidHandler.invalidate();
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", itemHandler.serializeNBT());
+        pTag = FLUID_TANK.writeToNBT(pTag);
 
         super.saveAdditional(pTag);
     }
@@ -140,16 +174,19 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
     public void load(CompoundTag pTag) {
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
+        FLUID_TANK.readFromNBT(pTag);
 
     }
 
     public void tick(Level level, BlockPos pPos, BlockState pState) {
+        fillUpOnFluid();
         if (isOutputSlotEmptyOrReceivable() && hasRecipe()) {
             increaseCraftingProcess();
             setChanged(level, pPos, pState);
 
             if (hasProgressFinished()) {
                 craftItem();
+                extractFluid();
                 resetProgress();
             }
         } else {
@@ -157,11 +194,47 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
         }
     }
 
+    private void extractFluid() {
+        this.FLUID_TANK.drain(500, IFluidHandler.FluidAction.EXECUTE);
+    }
+
+    private void fillUpOnFluid() {
+        if(hasFluidSourceInSlot(FLUID_INPUT_SLOT)) {
+            transferItemFluidToTank(FLUID_INPUT_SLOT);
+        }
+    }
+
+    private void transferItemFluidToTank(int fluidInputSlot) {
+        this.itemHandler.getStackInSlot(fluidInputSlot).getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(iFluidHandlerItem -> {
+            int drainAmount = Math.min(this.FLUID_TANK.getSpace(), 1000);
+
+            FluidStack stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
+            if (stack.getFluid() == Fluids.LAVA) {
+                stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
+                fillTankWithFluid(stack, iFluidHandlerItem.getContainer());
+            }
+        });
+    }
+
+    private void fillTankWithFluid(FluidStack stack, ItemStack container) {
+        this.FLUID_TANK.fill(new FluidStack(stack.getFluid(), stack.getAmount()), IFluidHandler.FluidAction.EXECUTE);
+
+        this.itemHandler.extractItem(FLUID_INPUT_SLOT, 1, false);
+        this.itemHandler.insertItem(FLUID_INPUT_SLOT, container, false);
+    }
+
+    private boolean hasFluidSourceInSlot(int fluidInputSlot) {
+        return this.itemHandler.getStackInSlot(fluidInputSlot).getCount() > 0 &&
+                this.itemHandler.getStackInSlot(fluidInputSlot).getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
+    }
+
     private void craftItem() {
         Optional<AlloyProcessorRecipe> recipe = getCurrentRecipe();
         ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
 
-        this.itemHandler.extractItem(INPUT_SLOT, 3, false);
+        this.itemHandler.extractItem(INPUT_SLOT, 1, false);
+        this.itemHandler.extractItem(INPUT_SLOT_2, 1, false);
+        this.itemHandler.extractItem(INPUT_SLOT_3, 1, false);
 
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(resultItem.getItem(),
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + resultItem.getCount()));
@@ -175,6 +248,7 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
     private boolean hasProgressFinished() {
         return this.progress >= this.maxProgress;
     }
+
     private void increaseCraftingProcess() {
         this.progress++;
     }
@@ -186,13 +260,19 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
             return false;
         }
 
+
+
         ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
 
         return canInsertAmountIntoOutputSlot(resultItem.getCount())
-                && canInsertItemIntoOutputSlot(resultItem.getItem());
+                && canInsertItemIntoOutputSlot(resultItem.getItem()) &&
+                hasEnoughFluidToCraft();
 
     }
 
+    private boolean hasEnoughFluidToCraft() {
+        return this.FLUID_TANK.getFluidAmount() >= 500;
+    }
 
     private Optional<AlloyProcessorRecipe> getCurrentRecipe() {
         SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
@@ -216,5 +296,13 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
     private boolean isOutputSlotEmptyOrReceivable() {
         return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() < this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
+    }
+
+    public int getTank(){
+        return this.FLUID_TANK.getFluidAmount();
+    }
+
+    public FluidStack getFluidStack() {
+        return FLUID_TANK.getFluid();
     }
 }
