@@ -8,10 +8,7 @@ import net.ZuperZV.Tool_Forge.entity.client.SoulRenderer;
 import net.ZuperZV.Tool_Forge.item.ModItems;
 import net.ZuperZV.Tool_Forge.loot.ModLootModifiers;
 import net.ZuperZV.Tool_Forge.recipe.ModRecipes;
-import net.ZuperZV.Tool_Forge.screen.AlloyProcessorScreen;
-import net.ZuperZV.Tool_Forge.screen.DeepslateFurnaceScreen;
-import net.ZuperZV.Tool_Forge.screen.ModMenuTypes;
-import net.ZuperZV.Tool_Forge.screen.ToolStationScreen;
+import net.ZuperZV.Tool_Forge.screen.*;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -134,6 +131,7 @@ public class Tool_Forge {
 
                 MenuScreens.register(ModMenuTypes.TOOL_STATION_MENU.get(), ToolStationScreen::new);
                 MenuScreens.register(ModMenuTypes.ALLOY_PROCESSOR_MENU.get(), AlloyProcessorScreen::new);
+                MenuScreens.register(ModMenuTypes.GOLDEN_EXTRACER_MENU.get(), GoldenExtracerScreen::new);
 
                 MenuScreens.register(ModMenuTypes.DEEPSLATE_FURNACE_MENU.get(), DeepslateFurnaceScreen::new);
             });

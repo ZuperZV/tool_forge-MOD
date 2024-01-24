@@ -1,6 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"parent": "tool_station",
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "tool_forge:block/tool_station_si",
 		"2": "tool_forge:block/tool_station_top",

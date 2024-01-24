@@ -1,7 +1,11 @@
 package net.ZuperZV.Tool_Forge.block.entity;
 
-import net.ZuperZV.Tool_Forge.recipe.AlloyProcessorRecipe;
-import net.ZuperZV.Tool_Forge.screen.AlloyProcessorMenu;
+import net.ZuperZV.Tool_Forge.block.custom.ToolStationBlock;
+import net.ZuperZV.Tool_Forge.recipe.ToolStationRecipe;
+import net.ZuperZV.Tool_Forge.screen.ToolStationMenu;
+import net.ZuperZV.Tool_Forge.util.InventoryDirectionEntry;
+import net.ZuperZV.Tool_Forge.util.InventoryDirectionWrapper;
+import net.ZuperZV.Tool_Forge.util.WrappedHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -18,10 +22,11 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -33,45 +38,66 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
 import java.util.Optional;
 
-public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(6) {
+public class GoldenExtracerBlockEntity extends BlockEntity implements MenuProvider {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
+
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
+            if (!level.isClientSide()) {
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
         }
 
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-            return switch (slot){
-                case 0, 1, 2 -> true;
-                case 3 -> stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
-                case 4, 5 -> false;
+            return switch (slot) {
+                case 0 -> stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
+                case 1 -> true;
+                case 2 -> false;
                 default -> super.isItemValid(slot, stack);
+
             };
         }
     };
 
-    private static final int INPUT_SLOT = 0;
-    private static final int INPUT_SLOT_2 = 1;
-    private static final int INPUT_SLOT_3 = 2;
-    private static final int FLUID_INPUT_SLOT = 3;
-    private static final int OUTPUT_SLOT = 4;
-    private static final int OUTPUT_SLOT_2 = 5;
+
+
+    private static final int FLUID_INPUT_SLOT = 0;
+    private static final int INPUT_SLOT = 1;
+    private static final int OUTPUT_SLOT = 2;
+
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
+
+    private final Map<Direction, LazyOptional<WrappedHandler>> directionWrappedHandlerMap =
+            new InventoryDirectionWrapper(itemHandler,
+                    new InventoryDirectionEntry(Direction.DOWN, OUTPUT_SLOT, false),
+                    new InventoryDirectionEntry(Direction.NORTH, FLUID_INPUT_SLOT, true),
+                    new InventoryDirectionEntry(Direction.SOUTH, INPUT_SLOT, true),
+                    new InventoryDirectionEntry(Direction.EAST, INPUT_SLOT, true),
+                    new InventoryDirectionEntry(Direction.WEST, OUTPUT_SLOT, true),
+                    new InventoryDirectionEntry(Direction.UP, FLUID_INPUT_SLOT, true)).directionsMap;
+
+
+
+
     private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 85;
+    private int maxProgress = 78;
+    private final int DEFAULT_MAX_PROGRESS = 79;
+
     private FluidStack neededFluidStack = FluidStack.EMPTY;
+
     public final FluidTank FLUID_TANK = createFluidTank();
 
-
     public FluidTank createFluidTank() {
-        return new FluidTank(20000) {
+        return new FluidTank(6000) {
             @Override
             protected void onContentsChanged() {
                 setChanged();
@@ -82,19 +108,40 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
 
             @Override
             public boolean isFluidValid(FluidStack stack) {
-                return stack.getFluid() == Fluids.LAVA;
+                return true;
             }
         };
     }
 
-    public AlloyProcessorBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.ALLOY_PROCESSOR_BE.get(), pPos, pBlockState);
+
+
+
+    public ItemStack getRenderStack() {
+        ItemStack stack = itemHandler.getStackInSlot(OUTPUT_SLOT);
+
+        if (stack.isEmpty()) {
+            stack = itemHandler.getStackInSlot(INPUT_SLOT);
+        }
+
+        return stack;
+    }
+
+    public int getTank(){
+        return this.FLUID_TANK.getFluidAmount();
+    }
+
+
+
+
+
+    public GoldenExtracerBlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModBlockEntities.GOLDEN_EXTRACER_BE.get(), pPos, pBlockState);
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
                 return switch (pIndex) {
-                    case 0 -> AlloyProcessorBlockEntity.this.progress;
-                    case 1 -> AlloyProcessorBlockEntity.this.maxProgress;
+                    case 0 -> GoldenExtracerBlockEntity.this.progress;
+                    case 1 -> GoldenExtracerBlockEntity.this.maxProgress;
                     default -> 0;
                 };
             }
@@ -102,8 +149,8 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
             @Override
             public void set(int pIndex, int pValue) {
                 switch (pIndex) {
-                    case 0 -> AlloyProcessorBlockEntity.this.progress = pValue;
-                    case 1 -> AlloyProcessorBlockEntity.this.maxProgress = pValue;
+                    case 2 ->GoldenExtracerBlockEntity.this.progress = pValue;
+                    case 0 ->GoldenExtracerBlockEntity.this.maxProgress = pValue;
                 }
             }
 
@@ -114,38 +161,44 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
         };
     }
 
+
+
     public FluidStack getFluid() {
         return FLUID_TANK.getFluid();
     }
 
-    public void drops() {
-        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for (int i = 0; i < itemHandler.getSlots(); i++) {
-            inventory.setItem(i, itemHandler.getStackInSlot(i));
-        }
-
-        Containers.dropContents(this.level, this.worldPosition, inventory);
-    }
-
     @Override
     public Component getDisplayName() {
-        return Component.literal("Alloy Processor");
+        return Component.literal("Golden Extracer");
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return new AlloyProcessorMenu(pContainerId, pPlayerInventory, this, this.data);
+        return new ToolStationMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         if(cap == ForgeCapabilities.ITEM_HANDLER) {
-            return lazyItemHandler.cast();
-        }
+            if(side == null) {
+                return lazyItemHandler.cast();
+            }
 
-        if(cap == ForgeCapabilities.FLUID_HANDLER) {
-            return lazyFluidHandler.cast();
+            if(directionWrappedHandlerMap.containsKey(side)) {
+                Direction localDir = this.getBlockState().getValue(ToolStationBlock.FACING);
+
+                if(side == Direction.DOWN ||side == Direction.UP) {
+                    return directionWrappedHandlerMap.get(side).cast();
+                }
+
+                return switch (localDir) {
+                    default -> directionWrappedHandlerMap.get(side.getOpposite()).cast();
+                    case EAST -> directionWrappedHandlerMap.get(side.getClockWise()).cast();
+                    case SOUTH -> directionWrappedHandlerMap.get(side).cast();
+                    case WEST -> directionWrappedHandlerMap.get(side.getCounterClockWise()).cast();
+                };
+            }
         }
 
         return super.getCapability(cap, side);
@@ -168,6 +221,10 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", itemHandler.serializeNBT());
+        pTag.putInt("golden_extracer.progress", progress);
+        pTag.putInt("golden_extracer.max_progress", maxProgress);
+        neededFluidStack.writeToNBT(pTag);
+
         pTag = FLUID_TANK.writeToNBT(pTag);
 
         super.saveAdditional(pTag);
@@ -177,12 +234,26 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
     public void load(CompoundTag pTag) {
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
+        progress = pTag.getInt("golden_extracer.progress");
+        maxProgress = pTag.getInt("golden_extracer.max_progress");
+        neededFluidStack = FluidStack.loadFluidStackFromNBT(pTag);
         FLUID_TANK.readFromNBT(pTag);
 
     }
 
+
+    public void drops() {
+        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
+            inventory.setItem(i, itemHandler.getStackInSlot(i));
+        }
+
+        Containers.dropContents(this.level, this.worldPosition, inventory);
+    }
+
     public void tick(Level level, BlockPos pPos, BlockState pState) {
         fillUpOnFluid();
+
         if (isOutputSlotEmptyOrReceivable() && hasRecipe()) {
             increaseCraftingProcess();
             setChanged(level, pPos, pState);
@@ -198,7 +269,7 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
     }
 
     private void extractFluid() {
-        this.FLUID_TANK.drain(500, IFluidHandler.FluidAction.EXECUTE);
+        this.FLUID_TANK.drain(neededFluidStack.getAmount(), IFluidHandler.FluidAction.EXECUTE);
     }
 
     private void fillUpOnFluid() {
@@ -212,10 +283,8 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
             int drainAmount = Math.min(this.FLUID_TANK.getSpace(), 1000);
 
             FluidStack stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
-            if (stack.getFluid() == Fluids.LAVA) {
-                stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
-                fillTankWithFluid(stack, iFluidHandlerItem.getContainer());
-            }
+            stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
+            fillTankWithFluid(stack, iFluidHandlerItem.getContainer());
         });
     }
 
@@ -232,17 +301,21 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
     }
 
     private void craftItem() {
-        Optional<AlloyProcessorRecipe> recipe = getCurrentRecipe();
+        Optional<ToolStationRecipe> recipe = getCurrentRecipe();
         ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
 
+        ItemStack originalItem = this.itemHandler.getStackInSlot(INPUT_SLOT);
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
-        this.itemHandler.extractItem(INPUT_SLOT_2, 1, false);
-        this.itemHandler.extractItem(INPUT_SLOT_3, 1, false);
 
-        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(resultItem.getItem(),
-                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + resultItem.getCount()));
+        Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(originalItem);
+
+        ItemStack newItem = new ItemStack(resultItem.getItem(), resultItem.getCount());
+        newItem.setTag(originalItem.getOrCreateTag().copy());
+
+        EnchantmentHelper.setEnchantments(enchantments, newItem);
+
+        this.itemHandler.setStackInSlot(OUTPUT_SLOT, newItem);
     }
-
 
     private void resetProgress() {
         this.progress = 0;
@@ -257,35 +330,37 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
     }
 
     private boolean hasRecipe() {
-        Optional<AlloyProcessorRecipe> recipe = getCurrentRecipe();
+        Optional<ToolStationRecipe> recipe = getCurrentRecipe();
 
         if (recipe.isEmpty()) {
             return false;
         }
 
+        maxProgress = recipe.get().getCraftTime();
+        neededFluidStack = recipe.get().getFluidStack();
 
 
         ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
 
         return canInsertAmountIntoOutputSlot(resultItem.getCount())
-                && canInsertItemIntoOutputSlot(resultItem.getItem()) &&
-                hasEnoughFluidToCraft();
-
+                && canInsertItemIntoOutputSlot(resultItem.getItem())
+                && hasEnoughFluidToCraft();
     }
+
+
 
     private boolean hasEnoughFluidToCraft() {
-        return this.FLUID_TANK.getFluidAmount() >= 500;
+        return this.FLUID_TANK.getFluidAmount() >= neededFluidStack.getAmount();
     }
 
-    private Optional<AlloyProcessorRecipe> getCurrentRecipe() {
+    private Optional<ToolStationRecipe> getCurrentRecipe() {
         SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
-        for(int i = 0; i < this.itemHandler.getSlots(); i++) {
+        for (int i = 0; i < this.itemHandler.getSlots(); i++) {
             inventory.setItem(i, this.itemHandler.getStackInSlot(i));
         }
 
-        return this.level.getRecipeManager().getRecipeFor(AlloyProcessorRecipe.Type.INSTANCE, inventory, level);
+        return this.level.getRecipeManager().getRecipeFor(ToolStationRecipe.Type.INSTANCE, inventory, level);
     }
-
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
         return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item);
@@ -301,14 +376,9 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() < this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
     }
 
-    public int getTank(){
-        return this.FLUID_TANK.getFluidAmount();
-    }
 
-    public FluidStack getFluidStack() {
-        return FLUID_TANK.getFluid();
-    }
 
+    @Nullable
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
@@ -317,5 +387,11 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
     @Override
     public CompoundTag getUpdateTag() {
         return saveWithoutMetadata();
+    }
+
+
+
+    public FluidStack getFluidStack() {
+        return FLUID_TANK.getFluid();
     }
 }

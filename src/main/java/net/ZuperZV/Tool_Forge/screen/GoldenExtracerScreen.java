@@ -15,36 +15,35 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Optional;
 
-public class AlloyProcessorScreen extends AbstractContainerScreen<AlloyProcessorMenu> {
+public class GoldenExtracerScreen extends AbstractContainerScreen<GoldenExtracerMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(Tool_Forge.MOD_ID,"textures/gui/alloy_processor_gui.png");
+            new ResourceLocation(Tool_Forge.MOD_ID,"textures/gui/golden_extracer.png");
     private FluidTankRenderer fluidRenderer;
-    public AlloyProcessorScreen(AlloyProcessorMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
+
+    public GoldenExtracerScreen(GoldenExtracerMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
     }
 
     @Override
     protected void init() {
         super.init();
-        this.inventoryLabelY = 100000;
-        this.titleLabelY = 100000;
+        this.inventoryLabelY = 10000;
+        this.titleLabelY = 10000;
 
         assignFluidRenderer();
     }
 
     private void assignFluidRenderer() {
-        fluidRenderer = new FluidTankRenderer(20000, true, 8, 44);
+        fluidRenderer = new FluidTankRenderer(6000, true, 10, 30);
     }
-
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int pMouseX, int pMouseY) {
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        renderFluidTooltipArea(guiGraphics, pMouseX, pMouseY, x, y, menu.blockEntity.getFluid(), 41, 9, fluidRenderer);
+        renderFluidTooltipArea(guiGraphics, pMouseX, pMouseY, x, y, menu.blockEntity.getFluid(), 41, 14, fluidRenderer);
     }
-
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
@@ -57,7 +56,7 @@ public class AlloyProcessorScreen extends AbstractContainerScreen<AlloyProcessor
 
         renderProgressArrow(guiGraphics, x, y);
 
-        fluidRenderer.render(guiGraphics, x + 41, y + 9, menu.blockEntity.getFluid());
+        fluidRenderer.render(guiGraphics,x + 41,y + 14, menu.blockEntity.getFluid());
     }
 
     private void renderFluidTooltipArea(GuiGraphics guiGraphics, int pMouseX, int pMouseY, int x, int y,
@@ -72,7 +71,7 @@ public class AlloyProcessorScreen extends AbstractContainerScreen<AlloyProcessor
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(TEXTURE, x + 50, y + 22, 176, 0, 65, menu.getScaledProgress());
+            guiGraphics.blit(TEXTURE, x + 112, y + 38, 176, 0, 8, menu.getScaledProgress());
         }
     }
 
@@ -82,6 +81,7 @@ public class AlloyProcessorScreen extends AbstractContainerScreen<AlloyProcessor
         super.render(guiGraphics, mouseX, mouseY, delta);
         renderTooltip(guiGraphics, mouseX, mouseY);
     }
+
 
     private boolean isMouseAboveArea(int pMouseX, int pMouseY, int x, int y, int offsetX, int offsetY, FluidTankRenderer renderer) {
         return MouseUtil.isMouseOver(pMouseX, pMouseY, x + offsetX, y + offsetY, renderer.getWidth(), renderer.getHeight());

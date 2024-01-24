@@ -34,6 +34,8 @@
 
   "block.tool_forge.tool_station": "Tool Station",
   "block.tool_forge.deepslate_furnace": "Deepslate Furnace",
+  "block.tool_forge.alloy_processor": "Alloy Processor",
+  "block.tool_forge.golden_extracer": "Golden Extracer",
 
   "block.tool_forge.bismuth_block": "Bismuth Block",
   "block.tool_forge.bismuth_ore": "Bismuth Ore",

@@ -3,6 +3,7 @@ package net.ZuperZV.Tool_Forge.block;
 import net.ZuperZV.Tool_Forge.Tool_Forge;
 import net.ZuperZV.Tool_Forge.block.custom.AlloyProcessorBlock;
 import net.ZuperZV.Tool_Forge.block.custom.DeepslateFurnace;
+import net.ZuperZV.Tool_Forge.block.custom.GoldenExtracerBlock;
 import net.ZuperZV.Tool_Forge.block.custom.ToolStationBlock;
 import net.ZuperZV.Tool_Forge.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -30,6 +31,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ALLOY_PROCESSOR = registerBlock("alloy_processor",
             () -> new AlloyProcessorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+
+    public static final RegistryObject<Block> GOLDEN_EXTRACER = registerBlock("golden_extracer",
+            () -> new GoldenExtracerBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS).noOcclusion()));
 
 
     public static final RegistryObject<Block> GILDED_GOLD_BLOCK = registerBlock("gilded_gold_block",
