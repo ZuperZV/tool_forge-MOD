@@ -1,0 +1,39 @@
+{
+  "parent": "tool_forge:gilded_netherite",
+  "criteria": {
+    "has_gilded_diamond": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:gilded_netherite_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Sword not included with Gilded Netherite"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "tool_forge:gilded_netherite_sword",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Gilded Netherite Sword"
+    }
+  },
+  "requirements": [
+    [
+      "has_gilded_diamond"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

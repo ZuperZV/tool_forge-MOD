@@ -29,6 +29,12 @@
   "item.tool_forge.gilded_diamond_leggings": "Gilded Diamond Leggings",
   "item.tool_forge.gilded_diamond_boots": "Gilded Diamond Boots",
 
+  "item.tool_forge.gilded_diamond_sword": "Gilded Diamond Sword",
+  "item.tool_forge.gilded_diamond_pickaxe": "Gilded Diamond Pickaxe",
+  "item.tool_forge.gilded_diamond_shovel": "Gilded Diamond Shovel",
+  "item.tool_forge.gilded_diamond_axe": "Gilded Diamond Axe",
+  "item.tool_forge.gilded_diamond_hoe": "Gilded Diamond Hoe",
+
   "block.tool_forge.gilded_gold_block": "Gilded Gold Block",
   "item.tool_forge.lava_container": "Lava Container",
 

@@ -1,9 +1,10 @@
-// 1.20.1	2024-01-20T18:45:04.6212383	Block States: tool_forge
+// 1.20.1	2024-01-24T20:11:23.0261699	Block States: tool_forge
 16d97d6476a40ce9e36f3e36b2735682ae04349a assets/tool_forge/blockstates/bismuth_block.json
 101958e4d83fcb5181490b3c0cdea968c73936f1 assets/tool_forge/blockstates/bismuth_endstone_ore.json
 5b63c0402e7e0b8acd684dc19dcce0c4f24204eb assets/tool_forge/blockstates/bismuth_ore.json
 a72f8b945f08c39bec46e9ea2b4a89324e782b10 assets/tool_forge/blockstates/deepslate_bismuth_ore.json
 e9aa3f163413afbab2e35c90de49951efdaeda8e assets/tool_forge/blockstates/gilded_gold_block.json
+09fdf2171e55698252a91d847977c2879a32024b assets/tool_forge/blockstates/golden_extracer.json
 fc4e0ebcfdc4657ca90d2aab119dbf588834794c assets/tool_forge/blockstates/lillium_block.json
 d310b46681faaafb3bb3fdbbd2f50f74168d1b9e assets/tool_forge/blockstates/lillium_ore.json
 edcc9598dca3c1b2a535499cd633c64d4e660e5b assets/tool_forge/blockstates/tool_station.json

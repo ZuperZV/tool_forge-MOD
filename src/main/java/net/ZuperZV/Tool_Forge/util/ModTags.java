@@ -23,6 +23,8 @@ public class ModTags {
     public static class Blocks{
         public static final TagKey<Block> NEEDS_GILDED_NETHERITE_TOOL = tag("needs_gilded_netherite_tool");
 
+        public static final TagKey<Block> NEEDS_GILDED_DIAMOND_TOOL = tag("needs_gilded_diamond_tool");
+
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(Tool_Forge.MOD_ID, name));
         }

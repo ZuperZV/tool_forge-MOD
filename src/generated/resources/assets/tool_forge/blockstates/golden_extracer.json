@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "tool_forge:block/golden_extracer"
+    }
+  }
+}

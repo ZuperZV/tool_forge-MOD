@@ -15,12 +15,12 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Optional;
 
-public class GoldenExtracerScreen extends AbstractContainerScreen<GoldenExtracerMenu> {
+public class GoldenExporterScreen extends AbstractContainerScreen<GoldenExporterMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(Tool_Forge.MOD_ID,"textures/gui/golden_extracer.png");
+            new ResourceLocation(Tool_Forge.MOD_ID,"textures/gui/golden_exporter.png");
     private FluidTankRenderer fluidRenderer;
 
-    public GoldenExtracerScreen(GoldenExtracerMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
+    public GoldenExporterScreen(GoldenExporterMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
     }
 

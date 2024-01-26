@@ -1,0 +1,21 @@
+{
+  "type": "tool_forge:tool_station",
+  "craftTime": 90,
+  "fluidAmount": 1000,
+  "fluidType": "minecraft:lava",
+  "ingredients": [
+    {
+      "item": "tool_forge:gilded_diamond_upgrade_smithing_template"
+    },
+    {
+      "item": "minecraft:diamond_hoe"
+    },
+    {
+      "item": "tool_forge:gilded_diamond"
+    }
+  ],
+  "output": {
+    "item": "tool_forge:gilded_diamond_hoe",
+    "count": 1
+  }
+}

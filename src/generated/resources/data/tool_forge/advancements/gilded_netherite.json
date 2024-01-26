@@ -1,0 +1,38 @@
+{
+  "parent": "tool_forge:gilded_gold",
+  "criteria": {
+    "has_gilded_netherite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:gilded_netherite_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Netherite and Gilded"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "tool_forge:gilded_netherite_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Gilded Glory"
+    }
+  },
+  "requirements": [
+    [
+      "has_gilded_netherite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,38 @@
+{
+  "parent": "tool_forge:gilded_gold",
+  "criteria": {
+    "has_gilded_diamond": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:gilded_diamond"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Gilded is a Diamond"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "tool_forge:gilded_diamond"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Diamond but Gilded"
+    }
+  },
+  "requirements": [
+    [
+      "has_gilded_diamond"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

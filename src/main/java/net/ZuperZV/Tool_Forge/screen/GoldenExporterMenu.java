@@ -1,7 +1,7 @@
 package net.ZuperZV.Tool_Forge.screen;
 
 import net.ZuperZV.Tool_Forge.block.ModBlocks;
-import net.ZuperZV.Tool_Forge.block.entity.GoldenExtracerBlockEntity;
+import net.ZuperZV.Tool_Forge.block.entity.GoldenExporterBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -12,19 +12,19 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class GoldenExtracerMenu extends AbstractContainerMenu {
-    public final GoldenExtracerBlockEntity blockEntity;
+public class GoldenExporterMenu extends AbstractContainerMenu {
+    public final GoldenExporterBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
-    public GoldenExtracerMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
+    public GoldenExporterMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
-    public GoldenExtracerMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.GOLDEN_EXTRACER_MENU.get(), pContainerId);
+    public GoldenExporterMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
+        super(ModMenuTypes.GOLDEN_EXPORTER_MENU.get(), pContainerId);
         checkContainerSize(inv, 3);
-        blockEntity = ((GoldenExtracerBlockEntity) entity);
+        blockEntity = ((GoldenExporterBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
 
@@ -68,7 +68,7 @@ public class GoldenExtracerMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 4;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
@@ -105,7 +105,7 @@ public class GoldenExtracerMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                pPlayer, ModBlocks.GOLDEN_EXTRACER.get());
+                pPlayer, ModBlocks.GOLDEN_EXPORTER.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

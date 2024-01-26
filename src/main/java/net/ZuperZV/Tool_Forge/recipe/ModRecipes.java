@@ -20,6 +20,9 @@ public class ModRecipes {
     public static final RegistryObject<RecipeSerializer<AlloyProcessorRecipe>> ALLOY_PROCESSOR_SERIALIZER =
             SERIALIZERS.register("alloy_processor", () -> AlloyProcessorRecipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<GoldenExporterRecipe>> GOLDEN_EXPORTER_SERIALIZER =
+            SERIALIZERS.register("golden_exporter", () -> GoldenExporterRecipe.Serializer.INSTANCE);
+
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
     }

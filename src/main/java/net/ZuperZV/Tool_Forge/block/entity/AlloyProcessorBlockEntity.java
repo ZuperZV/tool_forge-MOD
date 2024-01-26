@@ -241,6 +241,7 @@ public class AlloyProcessorBlockEntity extends BlockEntity implements MenuProvid
 
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(resultItem.getItem(),
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + resultItem.getCount()));
+
     }
 
 

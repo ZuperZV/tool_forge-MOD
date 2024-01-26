@@ -1,0 +1,39 @@
+{
+  "parent": "tool_forge:tool_forge",
+  "criteria": {
+    "has_wooden_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:wooden_pickaxe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "wood is god to begging with"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:wooden_pickaxe",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "The Wooden Start"
+    }
+  },
+  "requirements": [
+    [
+      "has_wooden_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

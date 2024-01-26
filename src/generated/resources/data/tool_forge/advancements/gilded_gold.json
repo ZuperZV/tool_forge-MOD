@@ -1,0 +1,38 @@
+{
+  "parent": "tool_forge:tool_forge",
+  "criteria": {
+    "has_gilded_gold": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:gilded_gold"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Gilded is as good as gold"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "tool_forge:gilded_gold"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Gilded is better"
+    }
+  },
+  "requirements": [
+    [
+      "has_gilded_gold"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

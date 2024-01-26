@@ -15,7 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class GoldenExtracerRecipe implements Recipe<SimpleContainer> {
+public class GoldenExporterRecipe implements Recipe<SimpleContainer> {
     private final NonNullList<Ingredient> inputItems;
     private final ItemStack output;
     private final ResourceLocation id;
@@ -23,7 +23,7 @@ public class GoldenExtracerRecipe implements Recipe<SimpleContainer> {
     private final FluidStack fluidStack;
 
 
-    public GoldenExtracerRecipe(NonNullList<Ingredient> inputItems, ItemStack output, ResourceLocation id, int craftTime, FluidStack fluidStack) {
+    public GoldenExporterRecipe(NonNullList<Ingredient> inputItems, ItemStack output, ResourceLocation id, int craftTime, FluidStack fluidStack) {
         this.inputItems = inputItems;
         this.output = output;
         this.id = id;
@@ -83,19 +83,19 @@ public class GoldenExtracerRecipe implements Recipe<SimpleContainer> {
         return Type.INSTANCE;
     }
 
-    public static class Type implements RecipeType<GoldenExtracerRecipe> {
+    public static class Type implements RecipeType<GoldenExporterRecipe> {
         private Type() { }
         public static final Type INSTANCE = new Type();
-        public static final String ID = "golden_extracer";
+        public static final String ID = "golden_exporter";
     }
 
-    public static class Serializer implements RecipeSerializer<GoldenExtracerRecipe> {
+    public static class Serializer implements RecipeSerializer<GoldenExporterRecipe> {
         public static final Serializer INSTANCE = new Serializer();
         public static final ResourceLocation ID =
-                new ResourceLocation(Tool_Forge.MOD_ID,"golden_extracer");
+                new ResourceLocation(Tool_Forge.MOD_ID,"golden_exporter");
 
         @Override
-        public GoldenExtracerRecipe fromJson(ResourceLocation id, JsonObject json) {
+        public GoldenExporterRecipe fromJson(ResourceLocation id, JsonObject json) {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
             FluidStack fluidStack = new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation(json.get("fluidType").getAsString())),
                     json.get("fluidAmount").getAsInt());
@@ -108,11 +108,11 @@ public class GoldenExtracerRecipe implements Recipe<SimpleContainer> {
             }
 
             int craftTime = json.get("craftTime").getAsInt();
-            return new GoldenExtracerRecipe(inputs, output, id, craftTime, fluidStack);
+            return new GoldenExporterRecipe(inputs, output, id, craftTime, fluidStack);
         }
 
         @Override
-        public GoldenExtracerRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        public GoldenExporterRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
             NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
             FluidStack fluidStack = buf.readFluidStack();
 
@@ -122,11 +122,11 @@ public class GoldenExtracerRecipe implements Recipe<SimpleContainer> {
 
             int craftTime = buf.readInt();
             ItemStack output = buf.readItem();
-            return new GoldenExtracerRecipe(inputs, output, id, craftTime, fluidStack);
+            return new GoldenExporterRecipe(inputs, output, id, craftTime, fluidStack);
         }
 
         @Override
-        public void toNetwork(FriendlyByteBuf buf, GoldenExtracerRecipe recipe) {
+        public void toNetwork(FriendlyByteBuf buf, GoldenExporterRecipe recipe) {
             buf.writeInt(recipe.getIngredients().size());
             buf.writeFluidStack(recipe.fluidStack);
 

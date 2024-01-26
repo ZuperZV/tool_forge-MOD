@@ -82,6 +82,9 @@ public class Tool_Forge {
             event.accept(ModItems.GILDED_DIAMOND_LEGGINGS);
             event.accept(ModItems.GILDED_DIAMOND_BOOTS);
 
+            event.accept(ModItems.GILDED_DIAMOND_SWORD);
+            event.accept(ModItems.GILDED_DIAMOND_AXE);
+
 
 
         }
@@ -92,6 +95,11 @@ public class Tool_Forge {
             event.accept(ModItems.GILDED_NETHERITE_SHOVEL);
             event.accept(ModItems.GILDED_NETHERITE_HOE);
 
+            event.accept(ModItems.GILDED_DIAMOND_PICKAXE);
+            event.accept(ModItems.GILDED_DIAMOND_AXE);
+            event.accept(ModItems.GILDED_DIAMOND_SHOVEL);
+            event.accept(ModItems.GILDED_DIAMOND_HOE);
+
         }
 
         if(event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
@@ -100,6 +108,8 @@ public class Tool_Forge {
 
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(ModBlocks.TOOL_STATION);
+            event.accept(ModBlocks.ALLOY_PROCESSOR);
+            event.accept(ModBlocks.GOLDEN_EXPORTER);
 
         }
 
@@ -131,7 +141,7 @@ public class Tool_Forge {
 
                 MenuScreens.register(ModMenuTypes.TOOL_STATION_MENU.get(), ToolStationScreen::new);
                 MenuScreens.register(ModMenuTypes.ALLOY_PROCESSOR_MENU.get(), AlloyProcessorScreen::new);
-                MenuScreens.register(ModMenuTypes.GOLDEN_EXTRACER_MENU.get(), GoldenExtracerScreen::new);
+                MenuScreens.register(ModMenuTypes.GOLDEN_EXPORTER_MENU.get(), GoldenExporterScreen::new);
 
                 MenuScreens.register(ModMenuTypes.DEEPSLATE_FURNACE_MENU.get(), DeepslateFurnaceScreen::new);
             });

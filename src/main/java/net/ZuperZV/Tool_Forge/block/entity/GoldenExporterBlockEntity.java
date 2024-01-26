@@ -1,8 +1,8 @@
 package net.ZuperZV.Tool_Forge.block.entity;
 
-import net.ZuperZV.Tool_Forge.block.custom.ToolStationBlock;
-import net.ZuperZV.Tool_Forge.recipe.ToolStationRecipe;
-import net.ZuperZV.Tool_Forge.screen.ToolStationMenu;
+import net.ZuperZV.Tool_Forge.block.custom.GoldenExporterBlock;
+import net.ZuperZV.Tool_Forge.recipe.GoldenExporterRecipe;
+import net.ZuperZV.Tool_Forge.screen.GoldenExporterMenu;
 import net.ZuperZV.Tool_Forge.util.InventoryDirectionEntry;
 import net.ZuperZV.Tool_Forge.util.InventoryDirectionWrapper;
 import net.ZuperZV.Tool_Forge.util.WrappedHandler;
@@ -41,7 +41,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
-public class GoldenExtracerBlockEntity extends BlockEntity implements MenuProvider {
+public class GoldenExporterBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
 
         @Override
@@ -134,14 +134,14 @@ public class GoldenExtracerBlockEntity extends BlockEntity implements MenuProvid
 
 
 
-    public GoldenExtracerBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.GOLDEN_EXTRACER_BE.get(), pPos, pBlockState);
+    public GoldenExporterBlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModBlockEntities.GOLDEN_EXPORTER_BE.get(), pPos, pBlockState);
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
                 return switch (pIndex) {
-                    case 0 -> GoldenExtracerBlockEntity.this.progress;
-                    case 1 -> GoldenExtracerBlockEntity.this.maxProgress;
+                    case 0 -> GoldenExporterBlockEntity.this.progress;
+                    case 1 -> GoldenExporterBlockEntity.this.maxProgress;
                     default -> 0;
                 };
             }
@@ -149,8 +149,8 @@ public class GoldenExtracerBlockEntity extends BlockEntity implements MenuProvid
             @Override
             public void set(int pIndex, int pValue) {
                 switch (pIndex) {
-                    case 2 ->GoldenExtracerBlockEntity.this.progress = pValue;
-                    case 0 ->GoldenExtracerBlockEntity.this.maxProgress = pValue;
+                    case 2 ->GoldenExporterBlockEntity.this.progress = pValue;
+                    case 0 ->GoldenExporterBlockEntity.this.maxProgress = pValue;
                 }
             }
 
@@ -169,13 +169,13 @@ public class GoldenExtracerBlockEntity extends BlockEntity implements MenuProvid
 
     @Override
     public Component getDisplayName() {
-        return Component.literal("Golden Extracer");
+        return Component.literal("Golden Exporter");
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return new ToolStationMenu(pContainerId, pPlayerInventory, this, this.data);
+        return new GoldenExporterMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
     @Override
@@ -186,7 +186,7 @@ public class GoldenExtracerBlockEntity extends BlockEntity implements MenuProvid
             }
 
             if(directionWrappedHandlerMap.containsKey(side)) {
-                Direction localDir = this.getBlockState().getValue(ToolStationBlock.FACING);
+                Direction localDir = this.getBlockState().getValue(GoldenExporterBlock.FACING);
 
                 if(side == Direction.DOWN ||side == Direction.UP) {
                     return directionWrappedHandlerMap.get(side).cast();
@@ -234,8 +234,8 @@ public class GoldenExtracerBlockEntity extends BlockEntity implements MenuProvid
     public void load(CompoundTag pTag) {
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
-        progress = pTag.getInt("golden_extracer.progress");
-        maxProgress = pTag.getInt("golden_extracer.max_progress");
+        progress = pTag.getInt("golden_exporter.progress");
+        maxProgress = pTag.getInt("golden_exporter.max_progress");
         neededFluidStack = FluidStack.loadFluidStackFromNBT(pTag);
         FLUID_TANK.readFromNBT(pTag);
 
@@ -301,7 +301,7 @@ public class GoldenExtracerBlockEntity extends BlockEntity implements MenuProvid
     }
 
     private void craftItem() {
-        Optional<ToolStationRecipe> recipe = getCurrentRecipe();
+        Optional<GoldenExporterRecipe> recipe = getCurrentRecipe();
         ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
 
         ItemStack originalItem = this.itemHandler.getStackInSlot(INPUT_SLOT);
@@ -330,7 +330,7 @@ public class GoldenExtracerBlockEntity extends BlockEntity implements MenuProvid
     }
 
     private boolean hasRecipe() {
-        Optional<ToolStationRecipe> recipe = getCurrentRecipe();
+        Optional<GoldenExporterRecipe> recipe = getCurrentRecipe();
 
         if (recipe.isEmpty()) {
             return false;
@@ -353,13 +353,13 @@ public class GoldenExtracerBlockEntity extends BlockEntity implements MenuProvid
         return this.FLUID_TANK.getFluidAmount() >= neededFluidStack.getAmount();
     }
 
-    private Optional<ToolStationRecipe> getCurrentRecipe() {
+    private Optional<GoldenExporterRecipe> getCurrentRecipe() {
         SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
         for (int i = 0; i < this.itemHandler.getSlots(); i++) {
             inventory.setItem(i, this.itemHandler.getStackInSlot(i));
         }
 
-        return this.level.getRecipeManager().getRecipeFor(ToolStationRecipe.Type.INSTANCE, inventory, level);
+        return this.level.getRecipeManager().getRecipeFor(GoldenExporterRecipe.Type.INSTANCE, inventory, level);
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {

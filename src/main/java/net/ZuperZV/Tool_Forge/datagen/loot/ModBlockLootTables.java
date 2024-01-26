@@ -21,6 +21,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.LILLIUM_BLOCK.get());
         this.dropSelf(ModBlocks.DEEPSLATE_FURNACE.get());
         this.dropSelf(ModBlocks.TOOL_STATION.get());
+        this.dropSelf(ModBlocks.GOLDEN_EXPORTER.get());
         this.dropSelf(ModBlocks.ALLOY_PROCESSOR.get());
 
         this.add(ModBlocks.BISMUTH_ORE.get(),

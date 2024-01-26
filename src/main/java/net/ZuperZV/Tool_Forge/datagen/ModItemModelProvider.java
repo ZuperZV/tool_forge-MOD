@@ -35,6 +35,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.GILDED_NETHERITE_SHOVEL);
         handheldItem(ModItems.GILDED_NETHERITE_HOE);
 
+        handheldItem(ModItems.GILDED_DIAMOND_SWORD);
+        handheldItem(ModItems.GILDED_DIAMOND_PICKAXE);
+        handheldItem(ModItems.GILDED_DIAMOND_AXE);
+        handheldItem(ModItems.GILDED_DIAMOND_SHOVEL);
+        handheldItem(ModItems.GILDED_DIAMOND_HOE);
+
 
         simpleItem(ModItems.ECTOPLASM);
         simpleItem(ModItems.SOUL_SHARD);
@@ -43,6 +49,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.LILLIUM);
 
         complexBlock(ModBlocks.TOOL_STATION.get());
+        complexBlock(ModBlocks.GOLDEN_EXPORTER.get());
 
         withExistingParent(ModItems.SOUL_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }

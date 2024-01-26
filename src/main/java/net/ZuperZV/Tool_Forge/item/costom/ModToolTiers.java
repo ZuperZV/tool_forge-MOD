@@ -17,4 +17,11 @@ public class ModToolTiers {
             new ForgeTier(4, 2031, 9.0F, 4.0F, 18,
                     ModTags.Blocks.NEEDS_GILDED_NETHERITE_TOOL, () -> Ingredient.of(ModItems.GILDED_NETHERITE_INGOT.get())),
             new ResourceLocation(Tool_Forge.MOD_ID, "gilded_netherite_ingot"), List.of(Tiers.NETHERITE), List.of());
+
+    public static final Tier GILDED_DIAMOND = TierSortingRegistry.registerTier(
+            new ForgeTier(3, 1551, 8.0F, 3.0F, 16,
+                    ModTags.Blocks.NEEDS_GILDED_DIAMOND_TOOL, () -> Ingredient.of(ModItems.GILDED_DIAMOND.get())),
+            new ResourceLocation(Tool_Forge.MOD_ID, "gilded_diamond_ingot"), List.of(Tiers.DIAMOND), List.of());
+
+
 }

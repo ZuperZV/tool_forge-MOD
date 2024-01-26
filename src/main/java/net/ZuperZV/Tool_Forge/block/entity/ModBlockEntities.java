@@ -17,10 +17,10 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(ToolStationBlockEntity::new,
                             ModBlocks.TOOL_STATION.get()).build(null));
 
-    public static final RegistryObject<BlockEntityType<GoldenExtracerBlockEntity>> GOLDEN_EXTRACER_BE =
-            BLOCK_ENTITIES.register("golden_extracer_block_entity", () ->
-                    BlockEntityType.Builder.of(GoldenExtracerBlockEntity::new,
-                            ModBlocks.GOLDEN_EXTRACER.get()).build(null));
+    public static final RegistryObject<BlockEntityType<GoldenExporterBlockEntity>> GOLDEN_EXPORTER_BE =
+            BLOCK_ENTITIES.register("golden_exporter_block_entity", () ->
+                    BlockEntityType.Builder.of(GoldenExporterBlockEntity::new,
+                            ModBlocks.GOLDEN_EXPORTER.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<AlloyProcessorBlockEntity>> ALLOY_PROCESSOR_BE =
             BLOCK_ENTITIES.register("alloy_processor_block_entity", () ->

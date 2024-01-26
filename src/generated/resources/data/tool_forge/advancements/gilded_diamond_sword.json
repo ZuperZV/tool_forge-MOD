@@ -1,0 +1,39 @@
+{
+  "parent": "tool_forge:gilded_gold",
+  "criteria": {
+    "has_gilded_diamond": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:gilded_diamond_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "The master sword"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "tool_forge:gilded_diamond_sword",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Gilded Diamond Sword"
+    }
+  },
+  "requirements": [
+    [
+      "has_gilded_diamond"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
