@@ -1,6 +1,10 @@
 {
   "entries": [
-    "tool_forge:raw_gilded_gold_from_gilded_blackstone"
+    "tool_forge:gilded_netherite_upgrade_smithing_template_from_nether_bridge",
+    "tool_forge:soul_stone_sword_from_simple_dungeon",
+    "tool_forge:gilded_diamond_upgrade_smithing_template_from_nether_bridge",
+    "tool_forge:soul_stone_sword_from_jungle_temple",
+    "tool_forge:gilded_diamond_upgrade_smithing_template_from_bastion_treasure"
   ],
   "replace": false
 }

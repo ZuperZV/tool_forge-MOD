@@ -41,6 +41,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.GILDED_DIAMOND_SHOVEL);
         handheldItem(ModItems.GILDED_DIAMOND_HOE);
 
+        handheldItem(ModItems.SOUL_STONE_SWORD);
 
         simpleItem(ModItems.ECTOPLASM);
         simpleItem(ModItems.SOUL_SHARD);

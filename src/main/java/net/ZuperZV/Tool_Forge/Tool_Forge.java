@@ -85,6 +85,8 @@ public class Tool_Forge {
             event.accept(ModItems.GILDED_DIAMOND_SWORD);
             event.accept(ModItems.GILDED_DIAMOND_AXE);
 
+            event.accept(ModItems.SOUL_STONE_SWORD);
+
 
 
         }
@@ -111,6 +113,14 @@ public class Tool_Forge {
             event.accept(ModBlocks.ALLOY_PROCESSOR);
             event.accept(ModBlocks.GOLDEN_EXPORTER);
 
+        }
+        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModBlocks.SOUL_STONE_BRICKS);
+            event.accept(ModBlocks.SOUL_STONE_BIG_BRICKS);
+            event.accept(ModBlocks.COBEL_SOUL_STONE);
+            event.accept(ModBlocks.COBEL_SOUL_STONE_BRICKS);
+            event.accept(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS);
+            event.accept(ModBlocks.CHIESLED_SOUL_STONE);
         }
 
         if(event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {

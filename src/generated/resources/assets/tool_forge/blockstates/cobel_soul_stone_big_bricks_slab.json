@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "tool_forge:block/cobel_soul_stone_big_bricks_slab"
+    },
+    "type=double": {
+      "model": "tool_forge:block/cobel_soul_stone_big_bricks"
+    },
+    "type=top": {
+      "model": "tool_forge:block/cobel_soul_stone_big_bricks_slab_top"
+    }
+  }
+}

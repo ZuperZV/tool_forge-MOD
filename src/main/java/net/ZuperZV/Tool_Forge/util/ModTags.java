@@ -25,6 +25,8 @@ public class ModTags {
 
         public static final TagKey<Block> NEEDS_GILDED_DIAMOND_TOOL = tag("needs_gilded_diamond_tool");
 
+        public static final TagKey<Block> NEEDS_SOUL_SONE_TOOL = tag("needs_soul_stone_tool");
+
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(Tool_Forge.MOD_ID, name));
         }

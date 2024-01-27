@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tool_forge:soul_stone_bricks"
+    },
+    {
+      "item": "tool_forge:soul_stone_bricks"
+    },
+    {
+      "item": "tool_forge:soul_stone_bricks"
+    },
+    {
+      "item": "tool_forge:soul_stone_bricks"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "tool_forge:soul_stone_big_bricks"
+  }
+}

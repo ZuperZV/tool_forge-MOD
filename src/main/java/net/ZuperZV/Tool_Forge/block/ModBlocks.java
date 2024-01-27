@@ -9,9 +9,7 @@ import net.ZuperZV.Tool_Forge.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -32,7 +30,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> ALLOY_PROCESSOR = registerBlock("alloy_processor",
             () -> new AlloyProcessorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
-    public static final RegistryObject<Block> GOLDEN_EXPORTER = registerBlock("golden_extracer",
+    public static final RegistryObject<Block> GOLDEN_EXPORTER = registerBlock("golden_exporter",
             () -> new GoldenExporterBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS).noOcclusion()));
 
 
@@ -41,6 +39,43 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> DEEPSLATE_FURNACE = registerBlock("deepslate_furnace",
             () -> new DeepslateFurnace(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
+
+    public static final RegistryObject<Block> SOUL_STONE = registerBlock("soul_stone",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> COBEL_SOUL_STONE = registerBlock("cobel_soul_stone",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> SOUL_STONE_BRICKS = registerBlock("soul_stone_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> COBEL_SOUL_STONE_BRICKS = registerBlock("cobel_soul_stone_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> SOUL_STONE_BIG_BRICKS = registerBlock("soul_stone_big_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> COBEL_SOUL_STONE_BIG_BRICKS = registerBlock("cobel_soul_stone_big_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> CHIESLED_SOUL_STONE = registerBlock("chiseled_soul_stone",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+
+    public static final RegistryObject<Block> SOUL_STONE_STAIRS = registerBlock("soul_stone_stairs",
+            () -> new StairBlock(() -> ModBlocks.SOUL_STONE.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
+    public static final RegistryObject<Block> COBEL_SOUL_STONE_STAIRS = registerBlock("cobel_soul_stone_stairs",
+            () -> new StairBlock(() -> ModBlocks.COBEL_SOUL_STONE.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
+    public static final RegistryObject<Block> SOUL_STONE_BIG_BRICKS_STAIRS = registerBlock("soul_stone_big_bricks_stairs",
+            () -> new StairBlock(() -> ModBlocks.SOUL_STONE_BIG_BRICKS.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
+    public static final RegistryObject<Block> COBEL_SOUL_STONE_BIG_BRICKS_STAIRS = registerBlock("cobel_soul_stone_big_bricks_stairs",
+            () -> new StairBlock(() -> ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
+
+    public static final RegistryObject<Block> SOUL_STONE_SLAB = registerBlock("soul_stone_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
+    public static final RegistryObject<Block> COBEL_SOUL_STONE_SLAB = registerBlock("cobel_soul_stone_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
+    public static final RegistryObject<Block> SOUL_STONE_BIG_BRICKS_SLAB = registerBlock("soul_stone_big_bricks_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
+    public static final RegistryObject<Block> COBEL_SOUL_STONE_BIG_BRICKS_SLAB = registerBlock("cobel_soul_stone_big_bricks_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
 
     //bismuth
     public static final RegistryObject<Block> BISMUTH_BLOCK = registerBlock("bismuth_block",

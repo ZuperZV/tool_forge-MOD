@@ -2,6 +2,21 @@
   "values": [
     "tool_forge:tool_station",
     "tool_forge:alloy_processor",
-    "tool_forge:deepslate_furnace"
+    "tool_forge:deepslate_furnace",
+    "tool_forge:soul_stone",
+    "tool_forge:soul_stone_bricks",
+    "tool_forge:soul_stone_big_bricks",
+    "tool_forge:cobel_soul_stone",
+    "tool_forge:cobel_soul_stone_bricks",
+    "tool_forge:cobel_soul_stone_big_bricks",
+    "tool_forge:chiseled_soul_stone",
+    "tool_forge:soul_stone_stairs",
+    "tool_forge:cobel_soul_stone_stairs",
+    "tool_forge:soul_stone_big_bricks_stairs",
+    "tool_forge:cobel_soul_stone_big_bricks_stairs",
+    "tool_forge:soul_stone_slab",
+    "tool_forge:cobel_soul_stone_slab",
+    "tool_forge:soul_stone_big_bricks_slab",
+    "tool_forge:cobel_soul_stone_big_bricks_slab"
   ]
 }

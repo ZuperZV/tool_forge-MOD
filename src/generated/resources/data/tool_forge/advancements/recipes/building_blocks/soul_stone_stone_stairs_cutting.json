@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_soul_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:soul_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tool_forge:soul_stone_stone_stairs_cutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_soul_stone",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tool_forge:soul_stone_stone_stairs_cutting"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,18 @@
+{
+  "type": "tool_forge:alloy_processor",
+  "ingredients": [
+    {
+      "item": "minecraft:stone"
+    },
+    {
+      "item": "minecraft:soul_sand"
+    },
+    {
+      "item": "minecraft:stone"
+    }
+  ],
+  "output": {
+    "item": "tool_forge:soul_stone",
+    "count": 1
+  }
+}

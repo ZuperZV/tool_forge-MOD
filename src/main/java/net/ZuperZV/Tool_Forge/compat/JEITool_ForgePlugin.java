@@ -8,9 +8,13 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.ZuperZV.Tool_Forge.Tool_Forge;
 import net.ZuperZV.Tool_Forge.block.ModBlocks;
+import net.ZuperZV.Tool_Forge.recipe.AlloyProcessorRecipe;
 import net.ZuperZV.Tool_Forge.recipe.DeepslateFurnaceRecipe;
+import net.ZuperZV.Tool_Forge.recipe.GoldenExporterRecipe;
 import net.ZuperZV.Tool_Forge.recipe.ToolStationRecipe;
+import net.ZuperZV.Tool_Forge.screen.AlloyProcessorScreen;
 import net.ZuperZV.Tool_Forge.screen.DeepslateFurnaceScreen;
+import net.ZuperZV.Tool_Forge.screen.GoldenExporterScreen;
 import net.ZuperZV.Tool_Forge.screen.ToolStationScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -34,6 +38,12 @@ public class JEITool_ForgePlugin implements IModPlugin {
         registration.addRecipeCategories(new ToolStationRecipeCategory(
                 registration.getJeiHelpers().getGuiHelper()));
 
+        registration.addRecipeCategories(new AlloyProcessorRecipeCategory(
+                registration.getJeiHelpers().getGuiHelper()));
+
+        registration.addRecipeCategories(new GoldenExporterRecipeCategory(
+                registration.getJeiHelpers().getGuiHelper()));
+
         registration.addRecipeCategories(new DeepslateFurnaceRecipeCategory(
                 registration.getJeiHelpers().getGuiHelper()));
     }
@@ -45,14 +55,26 @@ public class JEITool_ForgePlugin implements IModPlugin {
         List<ToolStationRecipe> tool_stationRecipes = recipeManager.getAllRecipesFor(ToolStationRecipe.Type.INSTANCE);
         registration.addRecipes(ToolStationRecipeCategory.TOOL_STATION_TYPE, tool_stationRecipes);
 
-        List<DeepslateFurnaceRecipe> kaupenFurnaceRecipes = recipeManager.getAllRecipesFor(DeepslateFurnaceRecipe.Type.INSTANCE);
-        registration.addRecipes(DeepslateFurnaceRecipeCategory.FURNACE_RECIPE_RECIPE_TYPE, kaupenFurnaceRecipes);
+        List<GoldenExporterRecipe> golden_expoterRecipes = recipeManager.getAllRecipesFor(GoldenExporterRecipe.Type.INSTANCE);
+        registration.addRecipes(GoldenExporterRecipeCategory.GOLDEN_EXPORTER_TYPE, golden_expoterRecipes);
+
+        List<AlloyProcessorRecipe> alloy_processorRecipes = recipeManager.getAllRecipesFor(AlloyProcessorRecipe.Type.INSTANCE);
+        registration.addRecipes(AlloyProcessorRecipeCategory.ALLOY_PROCESSOR_TYPE, alloy_processorRecipes);
+
+        List<DeepslateFurnaceRecipe> DeepslateFurnaceRecipes = recipeManager.getAllRecipesFor(DeepslateFurnaceRecipe.Type.INSTANCE);
+        registration.addRecipes(DeepslateFurnaceRecipeCategory.FURNACE_RECIPE_RECIPE_TYPE, DeepslateFurnaceRecipes);
     }
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
         registration.addRecipeClickArea(ToolStationScreen.class, 112, 38, 7, 26,
                 ToolStationRecipeCategory.TOOL_STATION_TYPE);
+
+        registration.addRecipeClickArea(GoldenExporterScreen.class, 112, 38, 7, 26,
+                GoldenExporterRecipeCategory.GOLDEN_EXPORTER_TYPE);
+
+        registration.addRecipeClickArea(AlloyProcessorScreen.class, 64, 31, 48, 14,
+                AlloyProcessorRecipeCategory.ALLOY_PROCESSOR_TYPE);
 
         registration.addRecipeClickArea(DeepslateFurnaceScreen.class, 81, 38, 22, 54,
                 DeepslateFurnaceRecipeCategory.FURNACE_RECIPE_RECIPE_TYPE);
@@ -61,6 +83,8 @@ public class JEITool_ForgePlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.TOOL_STATION.get()), ToolStationRecipeCategory.TOOL_STATION_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ALLOY_PROCESSOR.get()), AlloyProcessorRecipeCategory.ALLOY_PROCESSOR_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.GOLDEN_EXPORTER.get()), GoldenExporterRecipeCategory.GOLDEN_EXPORTER_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.DEEPSLATE_FURNACE.get()), DeepslateFurnaceRecipeCategory.FURNACE_RECIPE_RECIPE_TYPE);
     }
 

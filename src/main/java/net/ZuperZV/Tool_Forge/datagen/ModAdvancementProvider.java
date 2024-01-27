@@ -12,6 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.ForgeAdvancementProvider;
 
@@ -38,12 +39,21 @@ public class ModAdvancementProvider  implements ForgeAdvancementProvider.Advance
                 .addCriterion("has_wooden_pickaxe", InventoryChangeTrigger.TriggerInstance.hasItems(Items.WOODEN_PICKAXE))
                 .save(saver, new ResourceLocation(Tool_Forge.MOD_ID, "wooden_pickaxe"), existingFileHelper);
 
+        Advancement Gilded_Blackstone = Advancement.Builder.advancement()
+                .display(new DisplayInfo(new ItemStack(Blocks.GILDED_BLACKSTONE),
+                        Component.literal("what is Gilded"), Component.literal("what can you use it for"),
+                        null, FrameType.TASK,
+                        true, true, false))
+                .parent(rootAdvancement)
+                .addCriterion("has_gilded_blackstone", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.GILDED_BLACKSTONE))
+                .save(saver, new ResourceLocation(Tool_Forge.MOD_ID, "gilded_blackstone"), existingFileHelper);
+
         Advancement Tools = Advancement.Builder.advancement()
                 .display(new DisplayInfo(new ItemStack(ModItems.GILDED_GOLD.get()),
                         Component.literal("Gilded is better"), Component.literal("Gilded is as good as gold"),
                         null, FrameType.TASK,
                         true, true, false))
-                .parent(rootAdvancement)
+                .parent(Gilded_Blackstone)
                 .addCriterion("has_gilded_gold", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GILDED_GOLD.get()))
                 .save(saver, new ResourceLocation(Tool_Forge.MOD_ID, "gilded_gold"), existingFileHelper);
 
@@ -79,8 +89,35 @@ public class ModAdvancementProvider  implements ForgeAdvancementProvider.Advance
                         Component.literal("Gilded Diamond Sword"), Component.literal("The master sword"),
                         null, FrameType.TASK,
                         true, true, false))
-                .parent(Tools)
+                .parent(Gilded_Diamond)
                 .addCriterion("has_gilded_diamond", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.GILDED_DIAMOND_SWORD.get()))
                 .save(saver, new ResourceLocation(Tool_Forge.MOD_ID, "gilded_diamond_sword"), existingFileHelper);
+
+        Advancement Soul_Stone = Advancement.Builder.advancement()
+                .display(new DisplayInfo(new ItemStack(ModBlocks.SOUL_STONE.get()),
+                        Component.literal("A soul in a box"), Component.literal("Spooky Stone"),
+                        null, FrameType.TASK,
+                        true, true, false))
+                .parent(rootAdvancement)
+                .addCriterion("has_soul_stone", InventoryChangeTrigger.TriggerInstance.hasItems(ModBlocks.SOUL_STONE.get()))
+                .save(saver, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone"), existingFileHelper);
+
+        Advancement Soul_Stone_Sword = Advancement.Builder.advancement()
+                .display(new DisplayInfo(new ItemStack(ModItems.SOUL_STONE_SWORD.get()),
+                        Component.literal("almost diamonds"), Component.literal("why are souls almost as strong as diamonds"),
+                        null, FrameType.TASK,
+                        true, true, false))
+                .parent(Soul_Stone)
+                .addCriterion("has_soul_stone_sword", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.SOUL_STONE_SWORD.get()))
+                .save(saver, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_sword"), existingFileHelper);
+
+        Advancement Cobel_Soul_Stone = Advancement.Builder.advancement()
+                .display(new DisplayInfo(new ItemStack(ModBlocks.COBEL_SOUL_STONE.get()),
+                        Component.literal("Arr what are you think"), Component.literal("you can't just melt me"),
+                        null, FrameType.TASK,
+                        true, true, false))
+                .parent(Soul_Stone)
+                .addCriterion("has_soul_stone", InventoryChangeTrigger.TriggerInstance.hasItems(ModBlocks.COBEL_SOUL_STONE.get()))
+                .save(saver, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone"), existingFileHelper);
     }
 }

@@ -1,6 +1,7 @@
 package net.ZuperZV.Tool_Forge.item.costom;
 
 import net.ZuperZV.Tool_Forge.Tool_Forge;
+import net.ZuperZV.Tool_Forge.block.ModBlocks;
 import net.ZuperZV.Tool_Forge.item.ModItems;
 import net.ZuperZV.Tool_Forge.util.ModTags;
 import net.minecraft.resources.ResourceLocation;
@@ -23,5 +24,9 @@ public class ModToolTiers {
                     ModTags.Blocks.NEEDS_GILDED_DIAMOND_TOOL, () -> Ingredient.of(ModItems.GILDED_DIAMOND.get())),
             new ResourceLocation(Tool_Forge.MOD_ID, "gilded_diamond_ingot"), List.of(Tiers.DIAMOND), List.of());
 
+    public static final Tier SOUL_STONE = TierSortingRegistry.registerTier(
+            new ForgeTier(2, 2161, 7.0F, 2.6F, 4,
+                    ModTags.Blocks.NEEDS_SOUL_SONE_TOOL, () -> Ingredient.of(ModBlocks.SOUL_STONE.get())),
+            new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone"), List.of(Tiers.DIAMOND), List.of());
 
 }

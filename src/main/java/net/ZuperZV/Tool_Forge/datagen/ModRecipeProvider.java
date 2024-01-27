@@ -9,6 +9,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
@@ -19,6 +21,8 @@ import java.util.function.Consumer;
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     private static final List<ItemLike> GILDED_ORES = List.of(ModItems.RAW_GILDED_GOLD.get(),
             Blocks.GILDED_BLACKSTONE);
+
+    private static final List<ItemLike> SOUL_STONE = List.of(ModBlocks.SOUL_STONE.get());
 
     private static final List<ItemLike> BISMUTH_SMELTABLES = List.of(ModBlocks.BISMUTH_ORE.get(),
             ModBlocks.BISMUTH_ENDSTONE_ORE.get(),ModBlocks.DEPPSLATE_BISMUTH_ORE.get());
@@ -92,11 +96,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         of(ModItems.GILDED_DIAMOND_UPGRADE_SMITHING_TEMPLATE.get()).build()))
                 .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "gilded_diamond_smithing_template"));
 
-
-
-
-
-
+        oreSmelting(pWriter, SOUL_STONE, RecipeCategory.MISC, ModBlocks.COBEL_SOUL_STONE.get(), 0.50f, 170, "SOUL_STONE");
 
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, ModItems.BISMUTH.get(), RecipeCategory.MISC, ModBlocks.BISMUTH_BLOCK.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, ModItems.LILLIUM.get(), RecipeCategory.MISC, ModBlocks.LILLIUM_BLOCK.get());
@@ -109,6 +109,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         oreSmelting(pWriter, LILLIUM_SMELTABLES, RecipeCategory.MISC, ModItems.LILLIUM.get(), 0.55f, 350, "LILLIUM");
         oreBlasting(pWriter, LILLIUM_SMELTABLES, RecipeCategory.MISC, ModItems.LILLIUM.get(), 0.55f, 250, "LILLIUM");
+
+        stonecutting(Ingredient.of(Blocks.GILDED_BLACKSTONE)
+                ,RecipeCategory.BUILDING_BLOCKS, ModItems.RAW_GILDED_GOLD.get())
+                .unlockedBy(getHasName(Blocks.GILDED_BLACKSTONE), has(Blocks.GILDED_BLACKSTONE))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "raw_gilded_gold_from_stone_cutting"));
 
 
 
@@ -123,8 +128,114 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         of(Items.SKELETON_SKULL).build()))
                 .save(pWriter);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModBlocks.SOUL_STONE_BRICKS.get(), 4)
+                .requires(ModBlocks.SOUL_STONE.get())
+                .requires(ModBlocks.SOUL_STONE.get())
+                .requires(ModBlocks.SOUL_STONE.get())
+                .requires(ModBlocks.SOUL_STONE.get())
+                .unlockedBy("has_soul_stone", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModBlocks.SOUL_STONE.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_bricks"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModBlocks.SOUL_STONE_BIG_BRICKS.get(), 4)
+                .requires(ModBlocks.SOUL_STONE_BRICKS.get())
+                .requires(ModBlocks.SOUL_STONE_BRICKS.get())
+                .requires(ModBlocks.SOUL_STONE_BRICKS.get())
+                .requires(ModBlocks.SOUL_STONE_BRICKS.get())
+                .unlockedBy("has_soul_stone_bricks", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModBlocks.SOUL_STONE_BRICKS.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_big_bricks"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModBlocks.COBEL_SOUL_STONE_BRICKS.get(), 4)
+                .requires(ModBlocks.COBEL_SOUL_STONE.get())
+                .requires(ModBlocks.COBEL_SOUL_STONE.get())
+                .requires(ModBlocks.COBEL_SOUL_STONE.get())
+                .requires(ModBlocks.COBEL_SOUL_STONE.get())
+                .unlockedBy("has_soul_stone", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModBlocks.SOUL_STONE.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone_bricks"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS.get(), 4)
+                .requires(ModBlocks.COBEL_SOUL_STONE_BRICKS.get())
+                .requires(ModBlocks.COBEL_SOUL_STONE_BRICKS.get())
+                .requires(ModBlocks.COBEL_SOUL_STONE_BRICKS.get())
+                .requires(ModBlocks.COBEL_SOUL_STONE_BRICKS.get())
+                .unlockedBy("has_soul_stone_bricks", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModBlocks.SOUL_STONE_BRICKS.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone_big_bricks"));
+
+        stonecutting(Ingredient.of(ModBlocks.SOUL_STONE.get())
+                ,RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_STONE_BRICKS.get())
+                .unlockedBy(getHasName(ModBlocks.SOUL_STONE.get()), has(ModBlocks.SOUL_STONE.get()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_bricks_stone_cutting"));
+
+        stonecutting(Ingredient.of(ModBlocks.SOUL_STONE.get())
+                ,RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_STONE_BIG_BRICKS.get())
+                .unlockedBy(getHasName(ModBlocks.SOUL_STONE.get()), has(ModBlocks.SOUL_STONE.get()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_bricks_big_stone_cutting"));
+
+        stonecutting(Ingredient.of(ModBlocks.COBEL_SOUL_STONE.get())
+                ,RecipeCategory.BUILDING_BLOCKS, ModBlocks.COBEL_SOUL_STONE_BRICKS.get())
+                .unlockedBy(getHasName(ModBlocks.COBEL_SOUL_STONE.get()), has(ModBlocks.COBEL_SOUL_STONE.get()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone_bricks_stone_cutting"));
+
+        stonecutting(Ingredient.of(ModBlocks.COBEL_SOUL_STONE.get())
+                ,RecipeCategory.BUILDING_BLOCKS, ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS.get())
+                .unlockedBy(getHasName(ModBlocks.COBEL_SOUL_STONE.get()), has(ModBlocks.COBEL_SOUL_STONE.get()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone_big_bricks_stone_cutting"));
+
+        stonecutting(Ingredient.of(ModBlocks.SOUL_STONE.get())
+                ,RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHIESLED_SOUL_STONE.get())
+                .unlockedBy(getHasName(ModBlocks.SOUL_STONE.get()), has(ModBlocks.SOUL_STONE.get()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "chiseled_soul_stone_stone_cutting"));
+
+
+        stonecutting(Ingredient.of(ModBlocks.SOUL_STONE.get())
+                ,RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_STONE_SLAB.get())
+                .unlockedBy(getHasName(ModBlocks.SOUL_STONE.get()), has(ModBlocks.SOUL_STONE.get()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_slab_stone_cutting"));
+
+        stonecutting(Ingredient.of(ModBlocks.COBEL_SOUL_STONE.get())
+                ,RecipeCategory.BUILDING_BLOCKS, ModBlocks.COBEL_SOUL_STONE_SLAB.get())
+                .unlockedBy(getHasName(ModBlocks.COBEL_SOUL_STONE.get()), has(ModBlocks.COBEL_SOUL_STONE.get()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone_slab_stone_cutting"));
+
+        stonecutting(Ingredient.of(ModBlocks.SOUL_STONE.get())
+                ,RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_STONE_BIG_BRICKS_SLAB.get())
+                .unlockedBy(getHasName(ModBlocks.SOUL_STONE.get()), has(ModBlocks.SOUL_STONE.get()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_big_bricks_slab_stone_cutting"));
+
+        stonecutting(Ingredient.of(ModBlocks.COBEL_SOUL_STONE.get())
+                ,RecipeCategory.BUILDING_BLOCKS, ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS_SLAB.get())
+                .unlockedBy(getHasName(ModBlocks.COBEL_SOUL_STONE.get()), has(ModBlocks.COBEL_SOUL_STONE.get()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone_big_bricks_slab_stone_cutting"));
+
+
+        stonecutting(Ingredient.of(ModBlocks.SOUL_STONE.get())
+                ,RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_STONE_STAIRS.get())
+                .unlockedBy(getHasName(ModBlocks.SOUL_STONE.get()), has(ModBlocks.SOUL_STONE.get()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_stone_stairs_cutting"));
+
+        stonecutting(Ingredient.of(ModBlocks.COBEL_SOUL_STONE.get())
+                ,RecipeCategory.BUILDING_BLOCKS, ModBlocks.COBEL_SOUL_STONE_STAIRS.get())
+                .unlockedBy(getHasName(ModBlocks.COBEL_SOUL_STONE.get()), has(ModBlocks.COBEL_SOUL_STONE.get()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone_stone_stairs_cutting"));
+
+        stonecutting(Ingredient.of(ModBlocks.SOUL_STONE.get())
+                ,RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_STONE_BIG_BRICKS_STAIRS.get())
+                .unlockedBy(getHasName(ModBlocks.SOUL_STONE.get()), has(ModBlocks.SOUL_STONE.get()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_big_bricks_stairs_stone_cutting"));
+
+        stonecutting(Ingredient.of(ModBlocks.COBEL_SOUL_STONE.get())
+                ,RecipeCategory.BUILDING_BLOCKS, ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS_STAIRS.get())
+                .unlockedBy(getHasName(ModBlocks.COBEL_SOUL_STONE.get()), has(ModBlocks.COBEL_SOUL_STONE.get()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone_big_bricks_stairs_stone_cutting"));
+
 
         //SmithingTransformRecipeBuilder.smithing(template, item to upgrade, upgradeitem, category, result)
+    }
+    public static SingleItemRecipeBuilder stonecutting(Ingredient pIngredient, RecipeCategory pCategory, ItemLike pResult) {
+        return new SingleItemRecipeBuilder(pCategory, RecipeSerializer.STONECUTTER, pIngredient, pResult, 1);
     }
 
 }

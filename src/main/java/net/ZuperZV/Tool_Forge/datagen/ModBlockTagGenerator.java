@@ -29,7 +29,23 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .add(ModBlocks.LILLIUM_ORE.get())
                 .add(ModBlocks.ALLOY_PROCESSOR.get())
                 .add(ModBlocks.TOOL_STATION.get())
-                .add(ModBlocks.DEEPSLATE_FURNACE.get());
+                .add(ModBlocks.DEEPSLATE_FURNACE.get())
+                .add(ModBlocks.SOUL_STONE.get())
+                .add(ModBlocks.SOUL_STONE_BRICKS.get())
+                .add(ModBlocks.SOUL_STONE_BIG_BRICKS.get())
+                .add(ModBlocks.COBEL_SOUL_STONE.get())
+                .add(ModBlocks.COBEL_SOUL_STONE_BRICKS.get())
+                .add(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS.get())
+
+                .add(ModBlocks.SOUL_STONE_STAIRS.get())
+                .add(ModBlocks.COBEL_SOUL_STONE_STAIRS.get())
+                .add(ModBlocks.SOUL_STONE_BIG_BRICKS_STAIRS.get())
+                .add(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS_STAIRS.get())
+
+                .add(ModBlocks.SOUL_STONE_SLAB.get())
+                .add(ModBlocks.COBEL_SOUL_STONE_SLAB.get())
+                .add(ModBlocks.SOUL_STONE_BIG_BRICKS_SLAB.get())
+                .add(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS_SLAB.get());
 
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
@@ -44,7 +60,24 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.TOOL_STATION.get())
                 .add(ModBlocks.ALLOY_PROCESSOR.get())
-                .add(ModBlocks.DEEPSLATE_FURNACE.get());
+                .add(ModBlocks.DEEPSLATE_FURNACE.get())
+                .add(ModBlocks.SOUL_STONE.get())
+                .add(ModBlocks.SOUL_STONE_BRICKS.get())
+                .add(ModBlocks.SOUL_STONE_BIG_BRICKS.get())
+                .add(ModBlocks.COBEL_SOUL_STONE.get())
+                .add(ModBlocks.COBEL_SOUL_STONE_BRICKS.get())
+                .add(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS.get())
+                .add(ModBlocks.CHIESLED_SOUL_STONE.get())
+
+                .add(ModBlocks.SOUL_STONE_STAIRS.get())
+                .add(ModBlocks.COBEL_SOUL_STONE_STAIRS.get())
+                .add(ModBlocks.SOUL_STONE_BIG_BRICKS_STAIRS.get())
+                .add(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS_STAIRS.get())
+
+                .add(ModBlocks.SOUL_STONE_SLAB.get())
+                .add(ModBlocks.COBEL_SOUL_STONE_SLAB.get())
+                .add(ModBlocks.SOUL_STONE_BIG_BRICKS_SLAB.get())
+                .add(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS_SLAB.get());
     }
 
     @Override

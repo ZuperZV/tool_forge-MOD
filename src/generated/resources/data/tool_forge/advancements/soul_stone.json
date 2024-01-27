@@ -1,0 +1,38 @@
+{
+  "parent": "tool_forge:tool_forge",
+  "criteria": {
+    "has_soul_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:soul_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Spooky Stone"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "tool_forge:soul_stone"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "A soul in a box"
+    }
+  },
+  "requirements": [
+    [
+      "has_soul_stone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

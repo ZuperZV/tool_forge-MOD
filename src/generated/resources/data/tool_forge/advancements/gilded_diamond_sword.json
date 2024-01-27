@@ -1,5 +1,5 @@
 {
-  "parent": "tool_forge:gilded_gold",
+  "parent": "tool_forge:gilded_diamond",
   "criteria": {
     "has_gilded_diamond": {
       "conditions": {

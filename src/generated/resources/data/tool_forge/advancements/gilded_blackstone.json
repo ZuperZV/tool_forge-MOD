@@ -1,0 +1,38 @@
+{
+  "parent": "tool_forge:tool_forge",
+  "criteria": {
+    "has_gilded_blackstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:gilded_blackstone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "what can you use it for"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:gilded_blackstone"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "what is Gilded"
+    }
+  },
+  "requirements": [
+    [
+      "has_gilded_blackstone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -27,9 +27,6 @@ public class GoldenExporterScreen extends AbstractContainerScreen<GoldenExporter
     @Override
     protected void init() {
         super.init();
-        this.inventoryLabelY = 10000;
-        this.titleLabelY = 10000;
-
         assignFluidRenderer();
     }
 
@@ -66,9 +63,6 @@ public class GoldenExporterScreen extends AbstractContainerScreen<GoldenExporter
                     Optional.empty(), pMouseX - x, pMouseY - y);
         }
     }
-
-
-
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
             guiGraphics.blit(TEXTURE, x + 112, y + 38, 176, 0, 8, menu.getScaledProgress());

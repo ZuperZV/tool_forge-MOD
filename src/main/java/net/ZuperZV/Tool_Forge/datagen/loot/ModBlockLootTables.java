@@ -23,6 +23,28 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.TOOL_STATION.get());
         this.dropSelf(ModBlocks.GOLDEN_EXPORTER.get());
         this.dropSelf(ModBlocks.ALLOY_PROCESSOR.get());
+        this.dropSelf(ModBlocks.SOUL_STONE.get());
+        this.dropSelf(ModBlocks.COBEL_SOUL_STONE.get());
+        this.dropSelf(ModBlocks.COBEL_SOUL_STONE_BRICKS.get());
+        this.dropSelf(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS.get());
+        this.dropSelf(ModBlocks.SOUL_STONE_BRICKS.get());
+        this.dropSelf(ModBlocks.SOUL_STONE_BIG_BRICKS.get());
+        this.dropSelf(ModBlocks.CHIESLED_SOUL_STONE.get());
+
+        this.dropSelf(ModBlocks.SOUL_STONE_STAIRS.get());
+        this.dropSelf(ModBlocks.COBEL_SOUL_STONE_STAIRS.get());
+        this.dropSelf(ModBlocks.SOUL_STONE_BIG_BRICKS_STAIRS.get());
+        this.dropSelf(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS_STAIRS.get());
+
+        this.add(ModBlocks.SOUL_STONE_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.SOUL_STONE_SLAB.get()));
+        this.add(ModBlocks.COBEL_SOUL_STONE_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.COBEL_SOUL_STONE_SLAB.get()));
+        this.add(ModBlocks.SOUL_STONE_BIG_BRICKS_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.SOUL_STONE_BIG_BRICKS_SLAB.get()));
+        this.add(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS_SLAB.get()));
+
 
         this.add(ModBlocks.BISMUTH_ORE.get(),
                 block -> createOreDrop(ModBlocks.BISMUTH_ORE.get(), ModItems.BISMUTH.get()));

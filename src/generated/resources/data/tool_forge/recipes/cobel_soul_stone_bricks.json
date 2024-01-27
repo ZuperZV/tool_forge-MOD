@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tool_forge:cobel_soul_stone"
+    },
+    {
+      "item": "tool_forge:cobel_soul_stone"
+    },
+    {
+      "item": "tool_forge:cobel_soul_stone"
+    },
+    {
+      "item": "tool_forge:cobel_soul_stone"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "tool_forge:cobel_soul_stone_bricks"
+  }
+}

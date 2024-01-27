@@ -14,7 +14,6 @@ import net.ZuperZV.Tool_Forge.recipe.ToolStationRecipe;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.items.SlotItemHandler;
 
 public class ToolStationRecipeCategory implements IRecipeCategory<ToolStationRecipe> {
     public static final ResourceLocation UID = new ResourceLocation(Tool_Forge.MOD_ID, "tool_station");
@@ -28,7 +27,7 @@ public class ToolStationRecipeCategory implements IRecipeCategory<ToolStationRec
     private final IDrawable icon;
 
     public ToolStationRecipeCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 85);
+        this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 79);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.TOOL_STATION.get()));
     }
 

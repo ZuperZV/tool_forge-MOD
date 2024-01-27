@@ -10,6 +10,25 @@
   "item.tool_forge.raw_gilded_gold": "Raw Gilded Gold",
   "item.tool_forge.soul_spawn_egg": "Soul Spawn Egg",
 
+  "block.tool_forge.soul_stone": "Soul Stone",
+  "block.tool_forge.cobel_soul_stone": "Cobel Soul Stone",
+  "block.tool_forge.soul_stone_bricks": "Soul Stone Bricks",
+  "block.tool_forge.cobel_soul_stone_bricks": "Cobel Soul Stone Bricks",
+  "block.tool_forge.soul_stone_big_bricks": "Soul Stone Big Bricks",
+  "block.tool_forge.cobel_soul_stone_big_bricks": "Cobel Soul Stone Big Bricks",
+  "block.tool_forge.chiseled_soul_stone": "Chiseled Soul Stone",
+
+  "block.tool_forge.soul_stone_stairs": "Soul Stone Stairs",
+  "block.tool_forge.cobel_soul_stone_stairs": "Cobel Soul Stone Stairs",
+  "block.tool_forge.soul_stone_big_bricks_stairs": "Soul Stone big Bricks Stairs",
+  "block.tool_forge.cobel_soul_stone_big_bricks_stairs": "Cobel Soul Stone big Bricks Stairs",
+
+  "block.tool_forge.soul_stone_slab": "Soul Stone Slab",
+  "block.tool_forge.cobel_soul_stone_slab": "Cobel Soul Stone Slab",
+  "block.tool_forge.soul_stone_big_bricks_slab": "Soul Stone big Bricks Slab",
+  "block.tool_forge.cobel_soul_stone_big_bricks_slab": "Cobel Soul Stone big Bricks Slab",
+
+  "item.tool_forge.soul_stone_sword": "Soul Stone Sword",
 
   "item.tool_forge.gilded_netherite_sword": "Gilded Netherite Sword",
   "item.tool_forge.gilded_netherite_pickaxe": "Gilded Netherite Pickaxe",
@@ -41,7 +60,7 @@
   "block.tool_forge.tool_station": "Tool Station",
   "block.tool_forge.deepslate_furnace": "Deepslate Furnace",
   "block.tool_forge.alloy_processor": "Alloy Processor",
-  "block.tool_forge.golden_extracer": "Golden Extracer",
+  "block.tool_forge.golden_exporter": "Golden Exporter",
 
   "block.tool_forge.bismuth_block": "Bismuth Block",
   "block.tool_forge.bismuth_ore": "Bismuth Ore",

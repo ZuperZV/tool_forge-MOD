@@ -32,7 +32,7 @@ public class GoldenExporterMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 17, 15));
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 17, 51));
             this.addSlot(new SlotItemHandler(iItemHandler, 1, 80, 14));
             this.addSlot(new SlotItemHandler(iItemHandler, 2, 80, 58));
         });

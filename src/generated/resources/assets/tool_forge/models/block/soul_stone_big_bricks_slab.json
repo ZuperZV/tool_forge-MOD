@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "tool_forge:block/soul_stone_big_bricks",
+    "side": "tool_forge:block/soul_stone_big_bricks",
+    "top": "tool_forge:block/soul_stone_big_bricks"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "tool_forge:soul_stone"
+  },
+  "result": "tool_forge:soul_stone_slab"
+}

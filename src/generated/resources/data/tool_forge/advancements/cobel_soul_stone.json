@@ -1,0 +1,38 @@
+{
+  "parent": "tool_forge:soul_stone",
+  "criteria": {
+    "has_soul_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:cobel_soul_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "you can't just melt me"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "tool_forge:cobel_soul_stone"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Arr what are you think"
+    }
+  },
+  "requirements": [
+    [
+      "has_soul_stone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -65,6 +65,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> GILDED_DIAMOND_SWORD = ITEMS.register("gilded_diamond_sword",
             () -> new SwordItem(ModToolTiers.GILDED_DIAMOND, 3, -2.4F, new Item.Properties().rarity(Rarity.EPIC)));
+
+    public static final RegistryObject<Item> SOUL_STONE_SWORD = ITEMS.register("soul_stone_sword",
+            () -> new SwordItem(ModToolTiers.SOUL_STONE, 3, -2.4F, new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> GILDED_DIAMOND_PICKAXE = ITEMS.register("gilded_diamond_pickaxe",
             () -> new PickaxeItem(ModToolTiers.GILDED_DIAMOND, 1, -2.8F, new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> GILDED_DIAMOND_SHOVEL = ITEMS.register("gilded_diamond_shovel",

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "tool_forge:block/cobel_soul_stone"
+  }
+}

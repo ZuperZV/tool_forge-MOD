@@ -1,0 +1,39 @@
+{
+  "parent": "tool_forge:soul_stone",
+  "criteria": {
+    "has_soul_stone_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:soul_stone_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "why are souls almost as strong as diamonds"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "tool_forge:soul_stone_sword",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "almost diamonds"
+    }
+  },
+  "requirements": [
+    [
+      "has_soul_stone_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
