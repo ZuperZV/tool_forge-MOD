@@ -26,8 +26,6 @@ public class AlloyProcessorScreen extends AbstractContainerScreen<AlloyProcessor
     @Override
     protected void init() {
         super.init();
-        this.inventoryLabelY = 100000;
-        this.titleLabelY = 100000;
 
         assignFluidRenderer();
     }

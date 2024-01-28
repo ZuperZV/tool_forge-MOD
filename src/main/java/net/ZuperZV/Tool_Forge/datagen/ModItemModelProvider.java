@@ -21,6 +21,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         simpleItem(ModItems.GILDED_NETHERITE_INGOT);
+        simpleItem(ModItems.SOUL_STONE_INGOT);
         simpleItem(ModItems.GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE);
         simpleItem(ModItems.GILDED_DIAMOND);
         simpleItem(ModItems.GILDED_DIAMOND_UPGRADE_SMITHING_TEMPLATE);
@@ -51,6 +52,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         complexBlock(ModBlocks.TOOL_STATION.get());
         complexBlock(ModBlocks.GOLDEN_EXPORTER.get());
+        complexBlock(ModBlocks.ALLOY_PROCESSOR.get());
+        complexBlock(ModBlocks.TOOL_FORGE.get());
 
         withExistingParent(ModItems.SOUL_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }

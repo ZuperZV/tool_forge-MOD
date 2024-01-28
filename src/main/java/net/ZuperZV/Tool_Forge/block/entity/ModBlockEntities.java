@@ -17,6 +17,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(ToolStationBlockEntity::new,
                             ModBlocks.TOOL_STATION.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<ToolForgeBlockEntity>> TOOL_FORGE_BE =
+            BLOCK_ENTITIES.register("tool_forge_block_entity", () ->
+                    BlockEntityType.Builder.of(ToolForgeBlockEntity::new,
+                            ModBlocks.TOOL_FORGE.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<GoldenExporterBlockEntity>> GOLDEN_EXPORTER_BE =
             BLOCK_ENTITIES.register("golden_exporter_block_entity", () ->
                     BlockEntityType.Builder.of(GoldenExporterBlockEntity::new,

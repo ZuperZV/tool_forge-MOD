@@ -13,6 +13,8 @@ public class ModRecipes {
 
     public static final RegistryObject<RecipeSerializer<ToolStationRecipe>> TOOL_STATION_SERIALIZER =
             SERIALIZERS.register("tool_station", () -> ToolStationRecipe.Serializer.INSTANCE);
+    public static final RegistryObject<RecipeSerializer<ToolForgeRecipe>> TOOL_FORGE_SERIALIZER =
+            SERIALIZERS.register("tool_forge", () -> ToolForgeRecipe.Serializer.INSTANCE);
 
     public static final RegistryObject<RecipeSerializer<DeepslateFurnaceRecipe>> DEEPSLATE_FURNACE_SERIALIZER =
             SERIALIZERS.register("deepslate_furnace", () -> DeepslateFurnaceRecipe.Serializer.INSTANCE);

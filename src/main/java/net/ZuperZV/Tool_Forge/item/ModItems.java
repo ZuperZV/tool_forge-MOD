@@ -16,9 +16,11 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, Tool_Forge.MOD_ID);
 
     public static final RegistryObject<Item> GILDED_NETHERITE_INGOT = ITEMS.register("gilded_netherite_ingot",
-            () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+            () -> new Item(new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> SOUL_STONE_INGOT = ITEMS.register("soul_stone_ingot",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GILDED_DIAMOND = ITEMS.register("gilded_diamond",
-            () -> new Item(new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> GILDED_GOLD = ITEMS.register("gilded_gold",
             () -> new Item(new Item.Properties()));
@@ -35,47 +37,47 @@ public class ModItems {
 
 
     public static final RegistryObject<Item> GILDED_NETHERITE_SWORD = ITEMS.register("gilded_netherite_sword",
-            () -> new SwordItem(ModToolTiers.GILDED_NETERITE, 3, -2.4F, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new SwordItem(ModToolTiers.GILDED_NETERITE, 3, -2.4F, new Item.Properties()));
     public static final RegistryObject<Item> GILDED_NETHERITE_PICKAXE = ITEMS.register("gilded_netherite_pickaxe",
-            () -> new PickaxeItem(ModToolTiers.GILDED_NETERITE, 1, -2.8F, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new PickaxeItem(ModToolTiers.GILDED_NETERITE, 1, -2.8F, new Item.Properties()));
     public static final RegistryObject<Item> GILDED_NETHERITE_SHOVEL = ITEMS.register("gilded_netherite_shovel",
-            () -> new ShovelItem(ModToolTiers.GILDED_NETERITE, 1.5F, -3.0F, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new ShovelItem(ModToolTiers.GILDED_NETERITE, 1.5F, -3.0F, new Item.Properties()));
     public static final RegistryObject<Item> GILDED_NETHERITE_AXE = ITEMS.register("gilded_netherite_axe",
-            () -> new AxeItem(ModToolTiers.GILDED_NETERITE, 5.0F, -3.0F, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new AxeItem(ModToolTiers.GILDED_NETERITE, 5.0F, -3.0F, new Item.Properties()));
     public static final RegistryObject<Item> GILDED_NETHERITE_HOE = ITEMS.register("gilded_netherite_hoe",
-            () -> new HoeItem(ModToolTiers.GILDED_NETERITE, -4, 0.0F, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+            () -> new HoeItem(ModToolTiers.GILDED_NETERITE, -4, 0.0F, new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> GILDED_NETHERITE_HELMET = ITEMS.register("gilded_netherite_helmet",
-            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.HELMET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.HELMET, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> GILDED_NETHERITE_CHESTPLATE = ITEMS.register("gilded_netherite_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> GILDED_NETHERITE_LEGGINGS = ITEMS.register("gilded_netherite_leggings",
-            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> GILDED_NETHERITE_BOOTS = ITEMS.register("gilded_netherite_boots",
-            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+            () -> new ArmorItem(ModArmorMaterials.GILDED, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> GILDED_DIAMOND_HELMET = ITEMS.register("gilded_diamond_helmet",
-            () -> new ArmorItem(ModArmorMaterials.DIAMOND_GILDED, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new ArmorItem(ModArmorMaterials.DIAMOND_GILDED, ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> GILDED_DIAMOND_CHESTPLATE = ITEMS.register("gilded_diamond_chestplate",
-            () -> new ArmorItem(ModArmorMaterials.DIAMOND_GILDED, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new ArmorItem(ModArmorMaterials.DIAMOND_GILDED, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     public static final RegistryObject<Item> GILDED_DIAMOND_LEGGINGS = ITEMS.register("gilded_diamond_leggings",
-            () -> new ArmorItem(ModArmorMaterials.DIAMOND_GILDED, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new ArmorItem(ModArmorMaterials.DIAMOND_GILDED, ArmorItem.Type.LEGGINGS, new Item.Properties()));
     public static final RegistryObject<Item> GILDED_DIAMOND_BOOTS = ITEMS.register("gilded_diamond_boots",
-            () -> new ArmorItem(ModArmorMaterials.DIAMOND_GILDED, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new ArmorItem(ModArmorMaterials.DIAMOND_GILDED, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> GILDED_DIAMOND_SWORD = ITEMS.register("gilded_diamond_sword",
-            () -> new SwordItem(ModToolTiers.GILDED_DIAMOND, 3, -2.4F, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new SwordItem(ModToolTiers.GILDED_DIAMOND, 3, -2.4F, new Item.Properties()));
 
     public static final RegistryObject<Item> SOUL_STONE_SWORD = ITEMS.register("soul_stone_sword",
-            () -> new SwordItem(ModToolTiers.SOUL_STONE, 3, -2.4F, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new SwordItem(ModToolTiers.SOUL_STONE, 3, -2.4F, new Item.Properties()));
     public static final RegistryObject<Item> GILDED_DIAMOND_PICKAXE = ITEMS.register("gilded_diamond_pickaxe",
-            () -> new PickaxeItem(ModToolTiers.GILDED_DIAMOND, 1, -2.8F, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new PickaxeItem(ModToolTiers.GILDED_DIAMOND, 1, -2.8F, new Item.Properties()));
     public static final RegistryObject<Item> GILDED_DIAMOND_SHOVEL = ITEMS.register("gilded_diamond_shovel",
-            () -> new ShovelItem(ModToolTiers.GILDED_DIAMOND, 1.5F, -3.0F, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new ShovelItem(ModToolTiers.GILDED_DIAMOND, 1.5F, -3.0F, new Item.Properties()));
     public static final RegistryObject<Item> GILDED_DIAMOND_AXE = ITEMS.register("gilded_diamond_axe",
-            () -> new AxeItem(ModToolTiers.GILDED_DIAMOND, 5.0F, -3.0F, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new AxeItem(ModToolTiers.GILDED_DIAMOND, 5.0F, -3.0F, new Item.Properties()));
     public static final RegistryObject<Item> GILDED_DIAMOND_HOE = ITEMS.register("gilded_diamond_hoe",
-            () -> new HoeItem(ModToolTiers.GILDED_DIAMOND, -4, 0.0F, new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new HoeItem(ModToolTiers.GILDED_DIAMOND, -4, 0.0F, new Item.Properties()));
 
 
     public static final RegistryObject<Item> SOUL_SPAWN_EGG = ITEMS.register("soul_spawn_egg",

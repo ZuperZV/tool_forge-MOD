@@ -1,0 +1,15 @@
+{
+  "type": "tool_forge:golden_exporter",
+  "craftTime": 160,
+  "fluidAmount": 1000,
+  "fluidType": "minecraft:lava",
+  "ingredients": [
+    {
+      "item": "tool_forge:gilded_netherite_helmet"
+    }
+  ],
+  "output": {
+    "item": "minecraft:netherite_helmet",
+    "count": 1
+  }
+}

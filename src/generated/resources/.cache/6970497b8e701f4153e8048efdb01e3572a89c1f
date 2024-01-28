@@ -1,4 +1,5 @@
-// 1.20.1	2024-01-27T13:47:06.2875248	Item Models: tool_forge
+// 1.20.1	2024-01-28T21:20:30.9770682	Item Models: tool_forge
+f6c4b65a2a64c38931359845dc5b9cce94a3e20b assets/tool_forge/models/item/alloy_processor.json
 7168123f2e89662ad143a86bda185f1bfc216d21 assets/tool_forge/models/item/bismuth.json
 9b8dfb7756d46f5b5d9d671286cb226e9c0943e8 assets/tool_forge/models/item/ectoplasm.json
 88b3a6f86a60f4c71c83833b5b92e49762b59826 assets/tool_forge/models/item/gilded_diamond.json
@@ -22,5 +23,7 @@ d99dba2071bb8ed197d26757bd4f0a4bbbf186e4 assets/tool_forge/models/item/lillium.j
 54f447a6130ec6854f4403c318bc15e20950955f assets/tool_forge/models/item/raw_gilded_gold.json
 33d44642d6e8f00876b8416b06feb475d9e9082b assets/tool_forge/models/item/soul_shard.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/tool_forge/models/item/soul_spawn_egg.json
+8287c78a31dd2521a5dcb27fdd9251839a7e4990 assets/tool_forge/models/item/soul_stone_ingot.json
 f82214e41d369630b08d4b8eb4b70b14a3639ea9 assets/tool_forge/models/item/soul_stone_sword.json
+3c4aa2fd4a736a3bcc329e1b414f91c0973d7d14 assets/tool_forge/models/item/tool_forge.json
 f07ec0ce681e3bd533cfd715154532b657f6ab53 assets/tool_forge/models/item/tool_station.json

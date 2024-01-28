@@ -1,4 +1,4 @@
-// 1.20.1	2024-01-27T13:47:06.2850183	Loot Tables
+// 1.20.1	2024-01-28T21:04:56.2149309	Loot Tables
 9bc1a123ed5abe9c1c1e91638c9ad79c5689cb23 data/tool_forge/loot_tables/blocks/alloy_processor.json
 8a73d4bf855f0da11d8f3098dbc9f5c3d48146ff data/tool_forge/loot_tables/blocks/bismuth_block.json
 89189dd223724329aefa01e92c58fe2d0f03a6a3 data/tool_forge/loot_tables/blocks/bismuth_endstone_ore.json
@@ -24,4 +24,5 @@ f50711b642ceb733ce154678d54752bbda981ccc data/tool_forge/loot_tables/blocks/soul
 e1649aff6d5a62b1f1b2a8ad7a8f21e13fe969d6 data/tool_forge/loot_tables/blocks/soul_stone_bricks.json
 ad9ffb618aed819ebf735c91107448f333c821f1 data/tool_forge/loot_tables/blocks/soul_stone_slab.json
 8e9d4ae38d76dd78e4169512f6bda67c19eb1bc6 data/tool_forge/loot_tables/blocks/soul_stone_stairs.json
+76f54028cf3e33b0e15d7c40eda9767a60a662d1 data/tool_forge/loot_tables/blocks/tool_forge.json
 110e02f134bbc0e8ecace8c8071194743836f3f6 data/tool_forge/loot_tables/blocks/tool_station.json

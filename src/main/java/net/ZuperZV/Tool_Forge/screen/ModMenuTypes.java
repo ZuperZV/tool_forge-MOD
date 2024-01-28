@@ -17,6 +17,9 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<ToolStationMenu>> TOOL_STATION_MENU =
             registerMenuType(ToolStationMenu::new, "tool_station_menu");
 
+    public static final RegistryObject<MenuType<ToolForgeMenu>> TOOL_FORGE_MENU =
+            registerMenuType(ToolForgeMenu::new, "tool_forge_menu");
+
     public static final RegistryObject<MenuType<GoldenExporterMenu>> GOLDEN_EXPORTER_MENU =
             registerMenuType(GoldenExporterMenu::new, "golden_exporter_menu");
 

@@ -120,6 +120,18 @@ public class Tool_Forge {
             event.accept(ModBlocks.COBEL_SOUL_STONE);
             event.accept(ModBlocks.COBEL_SOUL_STONE_BRICKS);
             event.accept(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS);
+            event.accept(ModBlocks.SOUL_STONE);
+
+            event.accept(ModBlocks.SOUL_STONE_STAIRS);
+            event.accept(ModBlocks.COBEL_SOUL_STONE_STAIRS);
+            event.accept(ModBlocks.SOUL_STONE_BIG_BRICKS_STAIRS);
+            event.accept(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS_STAIRS);
+
+            event.accept(ModBlocks.SOUL_STONE_SLAB);
+            event.accept(ModBlocks.COBEL_SOUL_STONE_SLAB);
+            event.accept(ModBlocks.SOUL_STONE_BIG_BRICKS_SLAB);
+            event.accept(ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS_SLAB);
+
             event.accept(ModBlocks.CHIESLED_SOUL_STONE);
         }
 
@@ -150,6 +162,7 @@ public class Tool_Forge {
                 EntityRenderers.register(ModEntities.SOUL.get(), SoulRenderer::new);
 
                 MenuScreens.register(ModMenuTypes.TOOL_STATION_MENU.get(), ToolStationScreen::new);
+                MenuScreens.register(ModMenuTypes.TOOL_FORGE_MENU.get(), ToolForgeScreen::new);
                 MenuScreens.register(ModMenuTypes.ALLOY_PROCESSOR_MENU.get(), AlloyProcessorScreen::new);
                 MenuScreens.register(ModMenuTypes.GOLDEN_EXPORTER_MENU.get(), GoldenExporterScreen::new);
 

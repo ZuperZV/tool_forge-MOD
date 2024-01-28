@@ -27,6 +27,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -110,7 +111,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
 
             @Override
             public boolean isFluidValid(FluidStack stack) {
-                return true;
+                return stack.getFluid() == Fluids.LAVA;
             }
         };
     }
@@ -285,8 +286,10 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
             int drainAmount = Math.min(this.FLUID_TANK.getSpace(), 1000);
 
             FluidStack stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
-            stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
-            fillTankWithFluid(stack, iFluidHandlerItem.getContainer());
+            if (stack.getFluid() == Fluids.LAVA) {
+                stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
+                fillTankWithFluid(stack, iFluidHandlerItem.getContainer());
+            }
         });
     }
 
@@ -380,8 +383,6 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() < this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
     }
 
-
-
     @Nullable
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
@@ -392,9 +393,6 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     public CompoundTag getUpdateTag() {
         return saveWithoutMetadata();
     }
-
-
-
     public FluidStack getFluidStack() {
         return FLUID_TANK.getFluid();
     }

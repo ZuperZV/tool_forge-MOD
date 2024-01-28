@@ -27,6 +27,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -82,9 +83,6 @@ public class GoldenExporterBlockEntity extends BlockEntity implements MenuProvid
                     new InventoryDirectionEntry(Direction.WEST, OUTPUT_SLOT, true),
                     new InventoryDirectionEntry(Direction.UP, FLUID_INPUT_SLOT, true)).directionsMap;
 
-
-
-
     private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
 
     protected final ContainerData data;
@@ -108,7 +106,7 @@ public class GoldenExporterBlockEntity extends BlockEntity implements MenuProvid
 
             @Override
             public boolean isFluidValid(FluidStack stack) {
-                return true;
+                return stack.getFluid() == Fluids.WATER;
             }
         };
     }
@@ -283,8 +281,10 @@ public class GoldenExporterBlockEntity extends BlockEntity implements MenuProvid
             int drainAmount = Math.min(this.FLUID_TANK.getSpace(), 1000);
 
             FluidStack stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
-            stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
-            fillTankWithFluid(stack, iFluidHandlerItem.getContainer());
+            if (stack.getFluid() == Fluids.WATER) {
+                stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
+                fillTankWithFluid(stack, iFluidHandlerItem.getContainer());
+            }
         });
     }
 

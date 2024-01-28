@@ -96,6 +96,80 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         of(ModItems.GILDED_DIAMOND_UPGRADE_SMITHING_TEMPLATE.get()).build()))
                 .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "gilded_diamond_smithing_template"));
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SOUL_STONE_STAIRS.get(), 4)
+                .pattern("A  ")
+                .pattern("AA ")
+                .pattern("AAA")
+                .define('A', ModBlocks.SOUL_STONE.get())
+                .unlockedBy("has_soul_stone", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModBlocks.SOUL_STONE.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_stairs"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.COBEL_SOUL_STONE_STAIRS.get(), 4)
+                .pattern("A  ")
+                .pattern("AA ")
+                .pattern("AAA")
+                .define('A', ModBlocks.COBEL_SOUL_STONE.get())
+                .unlockedBy("has_cobel_soul_stone", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModBlocks.SOUL_STONE.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone_stairs"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SOUL_STONE_BIG_BRICKS_STAIRS.get(), 4)
+                .pattern("A  ")
+                .pattern("AA ")
+                .pattern("AAA")
+                .define('A', ModBlocks.SOUL_STONE_BIG_BRICKS.get())
+                .unlockedBy("has_soul_stone", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModBlocks.SOUL_STONE.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_big_bricks_stairs"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS_STAIRS.get(), 4)
+                .pattern("A  ")
+                .pattern("AA ")
+                .pattern("AAA")
+                .define('A', ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS.get())
+                .unlockedBy("has_soul_stone", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModBlocks.SOUL_STONE.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone_big_bricks_stairs"));
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SOUL_STONE_SLAB.get(), 6)
+                .pattern("AAA")
+                .define('A', ModBlocks.SOUL_STONE.get())
+                .unlockedBy("has_soul_stone", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModBlocks.SOUL_STONE.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_slab"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.COBEL_SOUL_STONE_SLAB.get(), 6)
+                .pattern("AAA")
+                .define('A', ModBlocks.COBEL_SOUL_STONE.get())
+                .unlockedBy("has_cobel_soul_stone", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModBlocks.SOUL_STONE.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone_slab"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SOUL_STONE_BIG_BRICKS_SLAB.get(), 6)
+                .pattern("AAA")
+                .define('A', ModBlocks.SOUL_STONE_BIG_BRICKS.get())
+                .unlockedBy("has_soul_stone", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModBlocks.SOUL_STONE.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_big_bricks_slab"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS_SLAB.get(), 6)
+                .pattern("AAA")
+                .define('A', ModBlocks.COBEL_SOUL_STONE_BIG_BRICKS.get())
+                .unlockedBy("has_soul_stone", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModBlocks.SOUL_STONE.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone_big_bricks_slab"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.CHIESLED_SOUL_STONE.get())
+                .pattern("A")
+                .pattern("A")
+                .define('A', ModBlocks.SOUL_STONE_BIG_BRICKS_SLAB.get())
+                .unlockedBy("has_soul_stone_big_bricks_slab", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.GILDED_GOLD_NUGGET.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "chiesled_soul_stone"));
+
+
         oreSmelting(pWriter, SOUL_STONE, RecipeCategory.MISC, ModBlocks.COBEL_SOUL_STONE.get(), 0.50f, 170, "SOUL_STONE");
 
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, ModItems.BISMUTH.get(), RecipeCategory.MISC, ModBlocks.BISMUTH_BLOCK.get());
