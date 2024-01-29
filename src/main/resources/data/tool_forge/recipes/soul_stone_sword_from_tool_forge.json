@@ -1,17 +1,24 @@
 {
   "type": "tool_forge:tool_station",
   "craftTime": 160,
-  "fluidAmount": 2000,
-  "fluidType": "minecraft:lava",
   "ingredients": [
+    {
+      "item": "minecraft:air"
+    },
+    {
+      "item": "tool_forge:soul_stone_ingot"
+    },
+    {
+      "item": "minecraft:air"
+    },
+    {
+      "item": "minecraft:air"
+    },
     {
       "item": "tool_forge:soul_stone_ingot"
     },
     {
       "item": "minecraft:stick"
-    },
-    {
-      "item": "tool_forge:soul_stone_ingot"
     }
   ],
   "output": {

@@ -1,8 +1,8 @@
 package net.ZuperZV.Tool_Forge.block.entity;
 
-import net.ZuperZV.Tool_Forge.block.custom.ToolStationBlock;
-import net.ZuperZV.Tool_Forge.recipe.ToolStationRecipe;
-import net.ZuperZV.Tool_Forge.screen.ToolStationMenu;
+import net.ZuperZV.Tool_Forge.block.custom.ToolForgeBlock;
+import net.ZuperZV.Tool_Forge.recipe.ToolForgeRecipe;
+import net.ZuperZV.Tool_Forge.screen.ToolForgeMenu;
 import net.ZuperZV.Tool_Forge.util.InventoryDirectionEntry;
 import net.ZuperZV.Tool_Forge.util.InventoryDirectionWrapper;
 import net.ZuperZV.Tool_Forge.util.WrappedHandler;
@@ -37,7 +37,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ToolForgeBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(7) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(6) {
 
         @Override
         protected void onContentsChanged(int slot) {
@@ -50,8 +50,8 @@ public class ToolForgeBlockEntity extends BlockEntity implements MenuProvider {
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch (slot) {
-                case 0, 1, 2, 3, 4, 5, 6 -> true;
-                case 7 -> false;
+                case 0, 1, 2, 3, 4, 5 -> true;
+                case 6 -> false;
                 default -> super.isItemValid(slot, stack);
 
             };
@@ -65,9 +65,7 @@ public class ToolForgeBlockEntity extends BlockEntity implements MenuProvider {
     private static final int INPUT_SLOT_3 = 3;
     private static final int INPUT_SLOT_4 = 4;
     private static final int INPUT_SLOT_5 = 5;
-    private static final int INPUT_SLOT_6 = 6;
-
-    private static final int OUTPUT_SLOT = 7;
+    private static final int OUTPUT_SLOT = 6;
 
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
@@ -132,7 +130,7 @@ public class ToolForgeBlockEntity extends BlockEntity implements MenuProvider {
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return new ToolStationMenu(pContainerId, pPlayerInventory, this, this.data);
+        return new ToolForgeMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
     @Override
@@ -143,7 +141,7 @@ public class ToolForgeBlockEntity extends BlockEntity implements MenuProvider {
             }
 
             if(directionWrappedHandlerMap.containsKey(side)) {
-                Direction localDir = this.getBlockState().getValue(ToolStationBlock.FACING);
+                Direction localDir = this.getBlockState().getValue(ToolForgeBlock.FACING);
 
                 if(side == Direction.DOWN ||side == Direction.UP) {
                     return directionWrappedHandlerMap.get(side).cast();
@@ -176,8 +174,8 @@ public class ToolForgeBlockEntity extends BlockEntity implements MenuProvider {
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", itemHandler.serializeNBT());
-        pTag.putInt("tool_station.progress", progress);
-        pTag.putInt("tool_station.max_progress", maxProgress);
+        pTag.putInt("tool_forge.progress", progress);
+        pTag.putInt("tool_forge.max_progress", maxProgress);
 
         super.saveAdditional(pTag);
     }
@@ -186,8 +184,8 @@ public class ToolForgeBlockEntity extends BlockEntity implements MenuProvider {
     public void load(CompoundTag pTag) {
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
-        progress = pTag.getInt("tool_station.progress");
-        maxProgress = pTag.getInt("tool_station.max_progress");
+        progress = pTag.getInt("tool_forge.progress");
+        maxProgress = pTag.getInt("tool_forge.max_progress");
 
     }
 
@@ -218,7 +216,7 @@ public class ToolForgeBlockEntity extends BlockEntity implements MenuProvider {
 
 
     private void craftItem() {
-        Optional<ToolStationRecipe> recipe = getCurrentRecipe();
+        Optional<ToolForgeRecipe> recipe = getCurrentRecipe();
         ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
 
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
@@ -227,7 +225,6 @@ public class ToolForgeBlockEntity extends BlockEntity implements MenuProvider {
         this.itemHandler.extractItem(INPUT_SLOT_3, 1, false);
         this.itemHandler.extractItem(INPUT_SLOT_4, 1, false);
         this.itemHandler.extractItem(INPUT_SLOT_5, 1, false);
-        this.itemHandler.extractItem(INPUT_SLOT_6, 1, false);
 
         ItemStack newItem = new ItemStack(resultItem.getItem(), resultItem.getCount());
 
@@ -247,7 +244,7 @@ public class ToolForgeBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private boolean hasRecipe() {
-        Optional<ToolStationRecipe> recipe = getCurrentRecipe();
+        Optional<ToolForgeRecipe> recipe = getCurrentRecipe();
 
         if (recipe.isEmpty()) {
             return false;
@@ -263,13 +260,13 @@ public class ToolForgeBlockEntity extends BlockEntity implements MenuProvider {
                 && canInsertItemIntoOutputSlot(resultItem.getItem());
     }
 
-    private Optional<ToolStationRecipe> getCurrentRecipe() {
+    private Optional<ToolForgeRecipe> getCurrentRecipe() {
         SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
         for (int i = 0; i < this.itemHandler.getSlots(); i++) {
             inventory.setItem(i, this.itemHandler.getStackInSlot(i));
         }
 
-        return this.level.getRecipeManager().getRecipeFor(ToolStationRecipe.Type.INSTANCE, inventory, level);
+        return this.level.getRecipeManager().getRecipeFor(ToolForgeRecipe.Type.INSTANCE, inventory, level);
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {

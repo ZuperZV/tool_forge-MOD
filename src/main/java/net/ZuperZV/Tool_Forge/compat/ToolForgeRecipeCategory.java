@@ -60,7 +60,6 @@ public class ToolForgeRecipeCategory implements IRecipeCategory<ToolForgeRecipe>
         builder.addSlot(RecipeIngredientRole.INPUT, 23, 38).addIngredients(recipe.getIngredients().get(3));
         builder.addSlot(RecipeIngredientRole.INPUT, 41, 38).addIngredients(recipe.getIngredients().get(4));
         builder.addSlot(RecipeIngredientRole.INPUT, 59, 38).addIngredients(recipe.getIngredients().get(5));
-        builder.addSlot(RecipeIngredientRole.INPUT, 42, 56).addIngredients(recipe.getIngredients().get(6));
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 122, 35).addItemStack(recipe.getResultItem(null));
 

@@ -38,8 +38,7 @@ public class ToolForgeRecipe implements Recipe<SimpleContainer> {
                 inputItems.get(2).test(pContainer.getItem(2)) &&
                 inputItems.get(3).test(pContainer.getItem(3)) &&
                 inputItems.get(4).test(pContainer.getItem(4)) &&
-                inputItems.get(5).test(pContainer.getItem(5)) &&
-                inputItems.get(6).test(pContainer.getItem(6));
+                inputItems.get(5).test(pContainer.getItem(5));
     }
 
     @Override
@@ -98,7 +97,7 @@ public class ToolForgeRecipe implements Recipe<SimpleContainer> {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(7, Ingredient.EMPTY);
+            NonNullList<Ingredient> inputs = NonNullList.withSize(5, Ingredient.EMPTY);
 
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));

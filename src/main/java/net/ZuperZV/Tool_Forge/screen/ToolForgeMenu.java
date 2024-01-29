@@ -23,7 +23,7 @@ public class ToolForgeMenu extends AbstractContainerMenu {
 
     public ToolForgeMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.TOOL_FORGE_MENU.get(), pContainerId);
-        checkContainerSize(inv, 7);
+        checkContainerSize(inv, 6);
         blockEntity = ((ToolForgeBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
@@ -32,14 +32,13 @@ public class ToolForgeMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 23, 2));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 41, 2));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 59, 2));
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 23, 20));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 41, 20));
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 59, 20));
             this.addSlot(new SlotItemHandler(iItemHandler, 3, 23, 38));
             this.addSlot(new SlotItemHandler(iItemHandler, 4, 41, 38));
-            this.addSlot(new SlotItemHandler(iItemHandler, 5, 59, 38));
-            this.addSlot(new SlotItemHandler(iItemHandler, 6, 42, 56));
-            this.addSlot(new SlotItemHandler(iItemHandler, 7, 122, 35));
+            this.addSlot(new SlotItemHandler(iItemHandler, 5, 41, 56));
+            this.addSlot(new SlotItemHandler(iItemHandler, 6, 122, 35));
         });
 
         addDataSlots(data);
@@ -73,7 +72,7 @@ public class ToolForgeMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 9;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 6;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
