@@ -71,7 +71,6 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     private static final int INPUT_SLOT = 1;
     private static final int UPGRADE_ITEM_SLOT = 2;
     private static final int UPGRADE_SLOT = 3;
-
     private static final int INPUT_SLOT_PATTERN = 4;
     private static final int OUTPUT_SLOT = 5;
 
