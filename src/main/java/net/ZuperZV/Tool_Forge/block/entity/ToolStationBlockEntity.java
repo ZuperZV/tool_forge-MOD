@@ -43,7 +43,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ToolStationBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(5) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(6) {
 
         @Override
         protected void onContentsChanged(int slot) {
@@ -57,8 +57,8 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch (slot) {
                 case 0 -> stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
-                case 1, 2, 3 -> true;
-                case 4 -> false;
+                case 1, 2, 3, 4 -> true;
+                case 5 -> false;
                 default -> super.isItemValid(slot, stack);
 
             };
@@ -71,8 +71,9 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
     private static final int INPUT_SLOT = 1;
     private static final int UPGRADE_ITEM_SLOT = 2;
     private static final int UPGRADE_SLOT = 3;
-    private static final int OUTPUT_SLOT = 4;
 
+    private static final int INPUT_SLOT_PATTERN = 4;
+    private static final int OUTPUT_SLOT = 5;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
@@ -313,6 +314,7 @@ public class ToolStationBlockEntity extends BlockEntity implements MenuProvider 
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
         this.itemHandler.extractItem(UPGRADE_ITEM_SLOT, 1, false);
         this.itemHandler.extractItem(UPGRADE_SLOT, 1, false);
+        this.itemHandler.extractItem(INPUT_SLOT_PATTERN, 0, false);
 
         Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(originalItem);
 

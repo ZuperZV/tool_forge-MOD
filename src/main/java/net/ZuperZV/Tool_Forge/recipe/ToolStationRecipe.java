@@ -39,7 +39,8 @@ public class ToolStationRecipe implements Recipe<SimpleContainer> {
 
         return inputItems.get(0).test(pContainer.getItem(1)) &&
                 inputItems.get(1).test(pContainer.getItem(2)) &&
-                inputItems.get(2).test(pContainer.getItem(3));
+                inputItems.get(2).test(pContainer.getItem(3)) &&
+                inputItems.get(3).test(pContainer.getItem(4));
     }
 
     @Override
@@ -103,7 +104,7 @@ public class ToolStationRecipe implements Recipe<SimpleContainer> {
                     json.get("fluidAmount").getAsInt());
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(3, Ingredient.EMPTY);
+            NonNullList<Ingredient> inputs = NonNullList.withSize(4, Ingredient.EMPTY);
 
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));

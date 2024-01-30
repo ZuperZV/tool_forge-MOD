@@ -57,6 +57,7 @@ public class ToolStationRecipeCategory implements IRecipeCategory<ToolStationRec
         builder.addSlot(RecipeIngredientRole.INPUT, 59, 13).addIngredients(recipe.getIngredients().get(0));
         builder.addSlot(RecipeIngredientRole.INPUT, 80, 7).addIngredients(recipe.getIngredients().get(1));
         builder.addSlot(RecipeIngredientRole.INPUT, 101, 13).addIngredients(recipe.getIngredients().get(2));
+        builder.addSlot(RecipeIngredientRole.INPUT, 38, 48).addIngredients(recipe.getIngredients().get(3));
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 80, 58).addItemStack(recipe.getResultItem(null));
 

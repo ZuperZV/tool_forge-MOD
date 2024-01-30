@@ -37,7 +37,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ToolForgeBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(6) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(7) {
 
         @Override
         protected void onContentsChanged(int slot) {

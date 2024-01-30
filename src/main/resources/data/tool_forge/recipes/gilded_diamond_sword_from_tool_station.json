@@ -12,6 +12,9 @@
     },
     {
       "item": "tool_forge:gilded_diamond"
+    },
+    {
+      "item": "minecraft:air"
     }
   ],
   "output": {

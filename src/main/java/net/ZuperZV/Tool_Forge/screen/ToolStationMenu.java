@@ -23,7 +23,7 @@ public class ToolStationMenu extends AbstractContainerMenu {
 
     public ToolStationMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.TOOL_STATION_MENU.get(), pContainerId);
-        checkContainerSize(inv, 4);
+        checkContainerSize(inv, 5);
         blockEntity = ((ToolStationBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
@@ -36,7 +36,8 @@ public class ToolStationMenu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(iItemHandler, 1, 59, 13));
             this.addSlot(new SlotItemHandler(iItemHandler, 2, 80, 7));
             this.addSlot(new SlotItemHandler(iItemHandler, 3, 101, 13));
-            this.addSlot(new SlotItemHandler(iItemHandler, 4, 80, 58));
+            this.addSlot(new SlotItemHandler(iItemHandler, 4, 38, 48));
+            this.addSlot(new SlotItemHandler(iItemHandler, 5, 80, 58));
         });
 
         addDataSlots(data);
@@ -70,7 +71,7 @@ public class ToolStationMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 4;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 5;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
