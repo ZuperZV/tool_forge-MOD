@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:grindstone"
+    },
+    "B": {
+      "item": "minecraft:gold_block"
+    },
+    "C": {
+      "item": "minecraft:oak_planks"
+    }
+  },
+  "pattern": [
+    " A ",
+    "BCB",
+    "CCC"
+  ],
+  "result": {
+    "item": "tool_forge:golden_exporter"
+  },
+  "show_notification": true
+}

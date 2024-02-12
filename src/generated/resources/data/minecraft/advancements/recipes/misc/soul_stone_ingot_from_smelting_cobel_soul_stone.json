@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cobel_soul_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:cobel_soul_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:soul_stone_ingot_from_smelting_cobel_soul_stone"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_cobel_soul_stone",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:soul_stone_ingot_from_smelting_cobel_soul_stone"
+    ]
+  },
+  "sends_telemetry_event": false
+}

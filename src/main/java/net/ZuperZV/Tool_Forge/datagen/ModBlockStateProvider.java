@@ -57,14 +57,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(ModBlocks.LILLIUM_BLOCK);
         blockWithItem(ModBlocks.LILLIUM_ORE);
-
-        //blockWithItem(ModBlocks.ALLOY_PROCESSOR);
+        
         simpleBlock(ModBlocks.TOOL_STATION.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/tool_station")));
         simpleBlock(ModBlocks.TOOL_FORGE.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/tool_forge")));
-        simpleBlock(ModBlocks.GOLDEN_EXPORTER.get(),
+
+        horizontalBlock(ModBlocks.GOLDEN_EXPORTER.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/golden_exporter")));
+
+        horizontalBlock(ModBlocks.ALLOY_PROCESSOR.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/alloy_processor")));
     }
 
     private void blockItem(RegistryObject<Block> blockRegistryObject) {

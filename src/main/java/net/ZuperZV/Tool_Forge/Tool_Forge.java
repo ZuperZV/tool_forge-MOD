@@ -66,6 +66,21 @@ public class Tool_Forge {
             event.accept(ModItems.GILDED_GOLD);
             event.accept(ModItems.RAW_GILDED_GOLD);
 
+            event.accept(ModItems.BISMUTH);
+
+            event.accept(ModItems.SOUL_STONE_BLADE);
+            event.accept(ModItems.SOUL_STONE_GUARD);
+            event.accept(ModItems.SOUL_STONE_STICK);
+
+            event.accept(ModItems.BLANK_PATTERN);
+            event.accept(ModItems.STICK_PATTERN);
+            event.accept(ModItems.GUARD_PATTERN);
+
+            event.accept(ModItems.HELMET_PATTERN);
+            event.accept(ModItems.CHESTPLATE_PATTERN);
+            event.accept(ModItems.LEGGINGS_PATTERN);
+            event.accept(ModItems.BOOTS_PATTERN);
+
         }
 
         if(event.getTabKey() == CreativeModeTabs.COMBAT) {
@@ -77,6 +92,11 @@ public class Tool_Forge {
             event.accept(ModItems.GILDED_NETHERITE_LEGGINGS);
             event.accept(ModItems.GILDED_NETHERITE_BOOTS);
 
+            event.accept(ModItems.BISMUTH_HELMET);
+            event.accept(ModItems.BISMUTH_CHESTPLATE);
+            event.accept(ModItems.BISMUTH_LEGGINGS);
+            event.accept(ModItems.BISMUTH_BOOTS);
+
             event.accept(ModItems.GILDED_DIAMOND_HELMET);
             event.accept(ModItems.GILDED_DIAMOND_CHESTPLATE);
             event.accept(ModItems.GILDED_DIAMOND_LEGGINGS);
@@ -84,6 +104,11 @@ public class Tool_Forge {
 
             event.accept(ModItems.GILDED_DIAMOND_SWORD);
             event.accept(ModItems.GILDED_DIAMOND_AXE);
+
+            event.accept(ModItems.BISMUTH_HELMET);
+            event.accept(ModItems.BISMUTH_CHESTPLATE);
+            event.accept(ModItems.BISMUTH_LEGGINGS);
+            event.accept(ModItems.BISMUTH_BOOTS);
 
             event.accept(ModItems.SOUL_STONE_SWORD);
 
@@ -110,6 +135,7 @@ public class Tool_Forge {
 
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(ModBlocks.TOOL_STATION);
+            event.accept(ModBlocks.TOOL_FORGE);
             event.accept(ModBlocks.ALLOY_PROCESSOR);
             event.accept(ModBlocks.GOLDEN_EXPORTER);
 

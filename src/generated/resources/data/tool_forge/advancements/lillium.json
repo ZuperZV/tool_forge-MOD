@@ -1,0 +1,38 @@
+{
+  "parent": "tool_forge:bismuth",
+  "criteria": {
+    "has_lillium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:lillium"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "only eat if you are dead"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "tool_forge:lillium"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Lillium?"
+    }
+  },
+  "requirements": [
+    [
+      "has_lillium"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

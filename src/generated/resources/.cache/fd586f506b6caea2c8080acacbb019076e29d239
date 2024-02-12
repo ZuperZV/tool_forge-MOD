@@ -1,4 +1,5 @@
-// 1.20.1	2024-01-28T21:04:56.2164339	Block States: tool_forge
+// 1.20.1	2024-02-03T00:39:50.7287483	Block States: tool_forge
+0067cdf82790acc37af722b24f4690e9ec5ecf61 assets/tool_forge/blockstates/alloy_processor.json
 16d97d6476a40ce9e36f3e36b2735682ae04349a assets/tool_forge/blockstates/bismuth_block.json
 101958e4d83fcb5181490b3c0cdea968c73936f1 assets/tool_forge/blockstates/bismuth_endstone_ore.json
 5b63c0402e7e0b8acd684dc19dcce0c4f24204eb assets/tool_forge/blockstates/bismuth_ore.json
@@ -12,7 +13,7 @@ c28412664d756eca2ecb67a6b6028d68204950a3 assets/tool_forge/blockstates/cobel_sou
 885a84e01cf32e12e079e1f6d2f19ebc2e7bbc2b assets/tool_forge/blockstates/cobel_soul_stone_stairs.json
 a72f8b945f08c39bec46e9ea2b4a89324e782b10 assets/tool_forge/blockstates/deepslate_bismuth_ore.json
 e9aa3f163413afbab2e35c90de49951efdaeda8e assets/tool_forge/blockstates/gilded_gold_block.json
-01541ce772c3fb753dc5d8145a331b7ed4c7f986 assets/tool_forge/blockstates/golden_exporter.json
+954c2bcf7f7c3dbf4b7cec8b3780d395723b9971 assets/tool_forge/blockstates/golden_exporter.json
 fc4e0ebcfdc4657ca90d2aab119dbf588834794c assets/tool_forge/blockstates/lillium_block.json
 d310b46681faaafb3bb3fdbbd2f50f74168d1b9e assets/tool_forge/blockstates/lillium_ore.json
 08f0d156dc4b7378c4f5916867dba16ee56e893f assets/tool_forge/blockstates/soul_stone.json

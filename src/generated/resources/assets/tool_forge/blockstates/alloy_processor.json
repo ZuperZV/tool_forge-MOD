@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "tool_forge:block/alloy_processor",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "tool_forge:block/alloy_processor"
+    },
+    "facing=south": {
+      "model": "tool_forge:block/alloy_processor",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tool_forge:block/alloy_processor",
+      "y": 270
+    }
+  }
+}

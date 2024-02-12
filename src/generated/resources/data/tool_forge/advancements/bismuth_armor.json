@@ -1,0 +1,84 @@
+{
+  "parent": "tool_forge:bismuth",
+  "criteria": {
+    "has_bismuth_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:bismuth_boots"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_bismuth_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:bismuth_chestplate"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_bismuth_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:bismuth_helmet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_bismuth_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:bismuth_leggings"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "you can feel all your blood getting stronger"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "tool_forge:bismuth_helmet",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Armor is in the blood?"
+    }
+  },
+  "requirements": [
+    [
+      "has_bismuth_helmet"
+    ],
+    [
+      "has_bismuth_chestplate"
+    ],
+    [
+      "has_bismuth_leggings"
+    ],
+    [
+      "has_bismuth_boots"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

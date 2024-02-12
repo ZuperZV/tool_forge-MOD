@@ -20,16 +20,21 @@ public enum ModArmorMaterials implements ArmorMaterial {
         p_266655_.put(ArmorItem.Type.LEGGINGS, 6);
         p_266655_.put(ArmorItem.Type.CHESTPLATE, 8);
         p_266655_.put(ArmorItem.Type.HELMET, 3);
-    }), 18, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, () -> Ingredient.of(ModItems.GILDED_NETHERITE_INGOT.get())),
+    }), 21, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, () -> Ingredient.of(ModItems.GILDED_NETHERITE_INGOT.get())),
+
+    BISMUTH("bismuth", 39, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
+        p_266655_.put(ArmorItem.Type.BOOTS, 4);
+        p_266655_.put(ArmorItem.Type.LEGGINGS, 7);
+        p_266655_.put(ArmorItem.Type.CHESTPLATE, 9);
+        p_266655_.put(ArmorItem.Type.HELMET, 4);
+    }), 8, SoundEvents.ARMOR_EQUIP_NETHERITE, 4.5F, 0.0F, () -> Ingredient.of(ModItems.BISMUTH.get())),
 
     DIAMOND_GILDED("diamond_gilded", 33, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266649_) -> {
         p_266649_.put(ArmorItem.Type.BOOTS, 3);
         p_266649_.put(ArmorItem.Type.LEGGINGS, 6);
         p_266649_.put(ArmorItem.Type.CHESTPLATE, 8);
         p_266649_.put(ArmorItem.Type.HELMET, 3);
-    }), 16, SoundEvents.ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, () -> Ingredient.of(ModItems.GILDED_DIAMOND.get()));
-
-
+    }), 19, SoundEvents.ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, () -> Ingredient.of(ModItems.GILDED_DIAMOND.get()));
 
 
     public static final StringRepresentable.EnumCodec<ArmorMaterials> CODEC = StringRepresentable.fromEnum(ArmorMaterials::values);

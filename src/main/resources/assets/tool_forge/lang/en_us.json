@@ -58,6 +58,7 @@
   "item.tool_forge.lava_container": "Lava Container",
 
   "block.tool_forge.tool_station": "Tool Station",
+  "block.tool_forge.tool_forge": "Tool Forge",
   "block.tool_forge.deepslate_furnace": "Deepslate Furnace",
   "block.tool_forge.alloy_processor": "Alloy Processor",
   "block.tool_forge.golden_exporter": "Golden Exporter",
@@ -75,6 +76,26 @@
 
   "item.tool_forge.ectoplasm": "Ectoplasm",
   "item.tool_forge.soul_shard": "Soul Shard",
+
+  "item.tool_forge.soul_stone_ingot": "Soul Stone Ingot",
+  "item.tool_forge.guard_pattern": "Guard Pattern",
+  "item.tool_forge.blade_pattern": "Blade Pattern",
+  "item.tool_forge.stick_pattern": "Stick Pattern",
+  "item.tool_forge.blank_pattern": "Blank Pattern",
+
+  "item.tool_forge.helmet_pattern": "Helmet Pattern",
+  "item.tool_forge.chestplate_pattern": "Chestplate Pattern",
+  "item.tool_forge.leggings_pattern": "Leggings Pattern",
+  "item.tool_forge.boots_pattern": "Boots Pattern",
+
+  "item.tool_forge.soul_stone_guard": "Soul Stone Guard",
+  "item.tool_forge.soul_stone_blade": "Soul Stone Blade",
+  "item.tool_forge.soul_stone_stick": "Soul Stone Stick",
+
+  "item.tool_forge.bismuth_helmet": "Bismuth Helmet",
+  "item.tool_forge.bismuth_chestplate": "Bismuth Chestplate",
+  "item.tool_forge.bismuth_leggings": "Bismuth Leggings",
+  "item.tool_forge.bismuth_boots": "Bismuth Boots",
 
   "tool_forge.tooltip.liquid.amount.with.capacity": "%s / %s mB",
   "tool_forge.tooltip.liquid.amount": "%s mB"

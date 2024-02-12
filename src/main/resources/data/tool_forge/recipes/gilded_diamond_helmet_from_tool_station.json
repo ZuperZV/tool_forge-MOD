@@ -14,7 +14,7 @@
       "item": "tool_forge:gilded_diamond"
     },
     {
-      "item": "minecraft:air"
+      "item": "tool_forge:blank_pattern"
     }
   ],
   "output": {

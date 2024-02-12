@@ -1,0 +1,39 @@
+{
+  "parent": "tool_forge:bismuth",
+  "criteria": {
+    "has_bismuth_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:bismuth_helmet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "watch out for the fallen anvils"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "tool_forge:bismuth_helmet",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "The hat?"
+    }
+  },
+  "requirements": [
+    [
+      "has_bismuth_helmet"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

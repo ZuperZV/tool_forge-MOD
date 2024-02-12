@@ -1,0 +1,38 @@
+{
+  "parent": "tool_forge:tool_forge",
+  "criteria": {
+    "has_bismuth": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tool_forge:bismuth"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "only eat if you have gastrointestinal diseases"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "tool_forge:bismuth"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Bis Muth?"
+    }
+  },
+  "requirements": [
+    [
+      "has_bismuth"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

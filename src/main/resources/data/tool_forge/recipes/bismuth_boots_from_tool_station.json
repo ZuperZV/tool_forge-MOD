@@ -1,0 +1,24 @@
+{
+  "type": "tool_forge:tool_station",
+  "craftTime": 200,
+  "fluidAmount": 2500,
+  "fluidType": "minecraft:lava",
+  "ingredients": [
+    {
+      "item": "tool_forge:bismuth"
+    },
+    {
+      "item": "minecraft:netherite_boots"
+    },
+    {
+      "item": "tool_forge:bismuth"
+    },
+    {
+      "item": "tool_forge:boots_pattern"
+    }
+  ],
+  "output": {
+    "item": "tool_forge:bismuth_boots",
+    "count": 1
+  }
+}

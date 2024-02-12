@@ -30,6 +30,20 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.RAW_GILDED_GOLD);
         simpleItem(ModItems.GILDED_GOLD_NUGGET);
 
+        simpleItem(ModItems.BLADE_PATTERN);
+        simpleItem(ModItems.GUARD_PATTERN);
+        simpleItem(ModItems.STICK_PATTERN);
+        simpleItem(ModItems.BLANK_PATTERN);
+
+        simpleItem(ModItems.HELMET_PATTERN);
+        simpleItem(ModItems.CHESTPLATE_PATTERN);
+        simpleItem(ModItems.LEGGINGS_PATTERN);
+        simpleItem(ModItems.BOOTS_PATTERN);
+
+        simpleItem(ModItems.SOUL_STONE_BLADE);
+        simpleItem(ModItems.SOUL_STONE_GUARD);
+        simpleItem(ModItems.SOUL_STONE_STICK);
+
         handheldItem(ModItems.GILDED_NETHERITE_SWORD);
         handheldItem(ModItems.GILDED_NETHERITE_PICKAXE);
         handheldItem(ModItems.GILDED_NETHERITE_AXE);
@@ -49,6 +63,11 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.BISMUTH);
         simpleItem(ModItems.LILLIUM);
+
+        simpleItem(ModItems.BISMUTH_CHESTPLATE);
+        simpleItem(ModItems.BISMUTH_HELMET);
+        simpleItem(ModItems.BISMUTH_BOOTS);
+        simpleItem(ModItems.BISMUTH_LEGGINGS);
 
         complexBlock(ModBlocks.TOOL_STATION.get());
         complexBlock(ModBlocks.GOLDEN_EXPORTER.get());

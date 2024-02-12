@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:diamond"
+    },
+    "B": {
+      "item": "tool_forge:gilded_gold"
+    }
+  },
+  "pattern": [
+    "AB"
+  ],
+  "result": {
+    "item": "tool_forge:gilded_diamond"
+  },
+  "show_notification": true
+}

@@ -7,6 +7,10 @@
     "tool_forge:gilded_diamond_chestplate",
     "tool_forge:gilded_diamond_leggings",
     "tool_forge:gilded_diamond_boots",
-    "tool_forge:gilded_diamond_helmet"
+    "tool_forge:gilded_diamond_helmet",
+    "tool_forge:bismuth_chestplate",
+    "tool_forge:bismuth_leggings",
+    "tool_forge:bismuth_boots",
+    "tool_forge:bismuth_helmet"
   ]
 }

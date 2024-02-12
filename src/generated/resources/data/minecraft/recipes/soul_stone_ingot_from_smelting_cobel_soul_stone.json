@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 250,
+  "experience": 0.5,
+  "group": "SOUL_STONE",
+  "ingredient": {
+    "item": "tool_forge:cobel_soul_stone"
+  },
+  "result": "tool_forge:soul_stone_ingot"
+}

@@ -119,5 +119,44 @@ public class ModAdvancementProvider  implements ForgeAdvancementProvider.Advance
                 .parent(Soul_Stone)
                 .addCriterion("has_soul_stone", InventoryChangeTrigger.TriggerInstance.hasItems(ModBlocks.COBEL_SOUL_STONE.get()))
                 .save(saver, new ResourceLocation(Tool_Forge.MOD_ID, "cobel_soul_stone"), existingFileHelper);
+
+        Advancement Bismuth = Advancement.Builder.advancement()
+                .display(new DisplayInfo(new ItemStack(ModItems.BISMUTH.get()),
+                        Component.literal("Bis Muth?"), Component.literal("only eat if you have gastrointestinal diseases"),
+                        null, FrameType.TASK,
+                        true, true, false))
+                .parent(rootAdvancement)
+                .addCriterion("has_bismuth", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BISMUTH.get()))
+                .save(saver, new ResourceLocation(Tool_Forge.MOD_ID, "bismuth"), existingFileHelper);
+
+        Advancement Lillium = Advancement.Builder.advancement()
+                .display(new DisplayInfo(new ItemStack(ModItems.LILLIUM.get()),
+                        Component.literal("Lillium?"), Component.literal("only eat if you are dead"),
+                        null, FrameType.TASK,
+                        true, true, false))
+                .parent(Bismuth)
+                .addCriterion("has_lillium", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.LILLIUM.get()))
+                .save(saver, new ResourceLocation(Tool_Forge.MOD_ID, "lillium"), existingFileHelper);
+
+        Advancement bismuth_helmet = Advancement.Builder.advancement()
+                .display(new DisplayInfo(new ItemStack(ModItems.BISMUTH_HELMET.get()),
+                        Component.literal("The hat?"), Component.literal("watch out for the fallen anvils"),
+                        null, FrameType.TASK,
+                        true, true, true))
+                .parent(Bismuth)
+                .addCriterion("has_bismuth_helmet", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BISMUTH_HELMET.get()))
+                .save(saver, new ResourceLocation(Tool_Forge.MOD_ID, "bismuth_helmet"), existingFileHelper);
+
+        Advancement bismuth_armor = Advancement.Builder.advancement()
+                .display(new DisplayInfo(new ItemStack(ModItems.BISMUTH_CHESTPLATE.get()),
+                        Component.literal("Armor is in the blood?"), Component.literal("you can feel all your blood getting stronger"),
+                        null, FrameType.TASK,
+                        true, true, false))
+                .parent(Bismuth)
+                .addCriterion("has_bismuth_helmet", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BISMUTH_HELMET.get()))
+                .addCriterion("has_bismuth_chestplate", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BISMUTH_CHESTPLATE.get()))
+                .addCriterion("has_bismuth_leggings", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BISMUTH_LEGGINGS.get()))
+                .addCriterion("has_bismuth_boots", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BISMUTH_BOOTS.get()))
+                .save(saver, new ResourceLocation(Tool_Forge.MOD_ID, "bismuth_armor"), existingFileHelper);
     }
 }

@@ -25,6 +25,34 @@ public class ModItems {
     public static final RegistryObject<Item> GILDED_GOLD = ITEMS.register("gilded_gold",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> GUARD_PATTERN = ITEMS.register("guard_pattern",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BLADE_PATTERN = ITEMS.register("blade_pattern",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> STICK_PATTERN = ITEMS.register("stick_pattern",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BLANK_PATTERN = ITEMS.register("blank_pattern",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> SOUL_STONE_GUARD = ITEMS.register("soul_stone_guard",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SOUL_STONE_BLADE = ITEMS.register("soul_stone_blade",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SOUL_STONE_STICK = ITEMS.register("soul_stone_stick",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> HELMET_PATTERN = ITEMS.register("helmet_pattern",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> CHESTPLATE_PATTERN = ITEMS.register("chestplate_pattern",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> LEGGINGS_PATTERN = ITEMS.register("leggings_pattern",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BOOTS_PATTERN = ITEMS.register("boots_pattern",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> GILDED_NETHERITE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("gilded_netherite_upgrade_smithing_template",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GILDED_DIAMOND_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("gilded_diamond_upgrade_smithing_template",
@@ -65,11 +93,20 @@ public class ModItems {
     public static final RegistryObject<Item> GILDED_DIAMOND_BOOTS = ITEMS.register("gilded_diamond_boots",
             () -> new ArmorItem(ModArmorMaterials.DIAMOND_GILDED, ArmorItem.Type.BOOTS, new Item.Properties()));
 
+    public static final RegistryObject<Item> BISMUTH_HELMET = ITEMS.register("bismuth_helmet",
+            () -> new ArmorItem(ModArmorMaterials.BISMUTH, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> BISMUTH_CHESTPLATE = ITEMS.register("bismuth_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.BISMUTH, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> BISMUTH_LEGGINGS = ITEMS.register("bismuth_leggings",
+            () -> new ArmorItem(ModArmorMaterials.BISMUTH, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> BISMUTH_BOOTS = ITEMS.register("bismuth_boots",
+            () -> new ArmorItem(ModArmorMaterials.BISMUTH, ArmorItem.Type.BOOTS, new Item.Properties()));
+
     public static final RegistryObject<Item> GILDED_DIAMOND_SWORD = ITEMS.register("gilded_diamond_sword",
             () -> new SwordItem(ModToolTiers.GILDED_DIAMOND, 3, -2.4F, new Item.Properties()));
-
     public static final RegistryObject<Item> SOUL_STONE_SWORD = ITEMS.register("soul_stone_sword",
             () -> new SwordItem(ModToolTiers.SOUL_STONE, 3, -2.4F, new Item.Properties()));
+
     public static final RegistryObject<Item> GILDED_DIAMOND_PICKAXE = ITEMS.register("gilded_diamond_pickaxe",
             () -> new PickaxeItem(ModToolTiers.GILDED_DIAMOND, 1, -2.8F, new Item.Properties()));
     public static final RegistryObject<Item> GILDED_DIAMOND_SHOVEL = ITEMS.register("gilded_diamond_shovel",

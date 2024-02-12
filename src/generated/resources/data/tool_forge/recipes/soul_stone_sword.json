@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "tool_forge:soul_stone_blade"
+    },
+    "B": {
+      "item": "tool_forge:soul_stone_guard"
+    },
+    "C": {
+      "item": "tool_forge:soul_stone_stick"
+    }
+  },
+  "pattern": [
+    "A",
+    "B",
+    "C"
+  ],
+  "result": {
+    "item": "tool_forge:soul_stone_sword"
+  },
+  "show_notification": true
+}

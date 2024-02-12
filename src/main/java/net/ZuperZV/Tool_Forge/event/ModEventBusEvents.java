@@ -38,9 +38,6 @@ public class ModEventBusEvents {
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(ModBlockEntities.TOOL_STATION_BE.get(),
                 ToolStationBlockEntityRenderer::new);
-        /*event.registerBlockEntityRenderer(ModBlockEntities.TOOL_STATION_BE.get(),
-               ToolStationBERenderer::new);
-        */
     }
 
 }

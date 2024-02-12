@@ -30,7 +30,12 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 ModItems.GILDED_DIAMOND_CHESTPLATE.get(),
                 ModItems.GILDED_DIAMOND_LEGGINGS.get(),
                 ModItems.GILDED_DIAMOND_BOOTS.get(),
-                ModItems.GILDED_DIAMOND_HELMET.get());
+                ModItems.GILDED_DIAMOND_HELMET.get(),
+
+                ModItems.BISMUTH_CHESTPLATE.get(),
+                ModItems.BISMUTH_LEGGINGS.get(),
+                ModItems.BISMUTH_BOOTS.get(),
+                ModItems.BISMUTH_HELMET.get());
     }
 
     @Override

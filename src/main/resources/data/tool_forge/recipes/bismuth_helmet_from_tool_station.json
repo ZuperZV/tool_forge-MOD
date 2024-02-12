@@ -1,0 +1,24 @@
+{
+  "type": "tool_forge:tool_station",
+  "craftTime": 200,
+  "fluidAmount": 2500,
+  "fluidType": "minecraft:lava",
+  "ingredients": [
+    {
+      "item": "tool_forge:bismuth"
+    },
+    {
+      "item": "minecraft:netherite_helmet"
+    },
+    {
+      "item": "tool_forge:bismuth"
+    },
+    {
+      "item": "tool_forge:helmet_pattern"
+    }
+  ],
+  "output": {
+    "item": "tool_forge:bismuth_helmet",
+    "count": 1
+  }
+}

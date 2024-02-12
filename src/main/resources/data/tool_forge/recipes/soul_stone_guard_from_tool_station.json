@@ -1,0 +1,24 @@
+{
+  "type": "tool_forge:tool_station",
+  "craftTime": 90,
+  "fluidAmount": 1000,
+  "fluidType": "minecraft:lava",
+  "ingredients": [
+    {
+      "item": "tool_forge:soul_stone_ingot"
+    },
+    {
+      "item": "minecraft:stone"
+    },
+    {
+      "item": "tool_forge:soul_stone_ingot"
+    },
+    {
+      "item": "tool_forge:guard_pattern"
+    }
+  ],
+  "output": {
+    "item": "tool_forge:soul_stone_guard",
+    "count": 1
+  }
+}

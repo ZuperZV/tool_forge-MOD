@@ -27,8 +27,8 @@ public class ToolStationScreen extends AbstractContainerScreen<ToolStationMenu> 
     @Override
     protected void init() {
         super.init();
-        this.inventoryLabelY = 10000;
-        this.titleLabelY = 10000;
+        this.inventoryLabelY = 10;
+        this.titleLabelY = 10;
 
         assignFluidRenderer();
     }

@@ -14,7 +14,7 @@
       "item": "tool_forge:gilded_netherite_ingot"
     },
     {
-      "item": "minecraft:air"
+      "item": "tool_forge:blank_pattern"
     }
   ],
   "output": {

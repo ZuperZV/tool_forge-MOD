@@ -56,7 +56,7 @@ public class GoldenExporterRecipeCategory implements IRecipeCategory<GoldenExpor
     public void setRecipe(IRecipeLayoutBuilder builder, GoldenExporterRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 27, 3).addIngredients(recipe.getIngredients().get(0));
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 58, 58).addItemStack(recipe.getResultItem(null));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 27, 38).addItemStack(recipe.getResultItem(null));
 
     }
 }

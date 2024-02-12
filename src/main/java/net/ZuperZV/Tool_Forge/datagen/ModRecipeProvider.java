@@ -24,6 +24,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private static final List<ItemLike> SOUL_STONE = List.of(ModBlocks.SOUL_STONE.get());
 
+    private static final List<ItemLike> COBEL_SOUL_STONE = List.of(ModBlocks.COBEL_SOUL_STONE.get());
+
     private static final List<ItemLike> BISMUTH_SMELTABLES = List.of(ModBlocks.BISMUTH_ORE.get(),
             ModBlocks.BISMUTH_ENDSTONE_ORE.get(),ModBlocks.DEPPSLATE_BISMUTH_ORE.get());
     private static final List<ItemLike> LILLIUM_SMELTABLES = List.of(ModBlocks.LILLIUM_ORE.get());
@@ -34,7 +36,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
 
-        //armor
+
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_GOLD.get())
                 .pattern("AAA")
                 .pattern("AAA")
@@ -169,8 +172,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         of(ModItems.GILDED_GOLD_NUGGET.get()).build()))
                 .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "chiesled_soul_stone"));
 
-
         oreSmelting(pWriter, SOUL_STONE, RecipeCategory.MISC, ModBlocks.COBEL_SOUL_STONE.get(), 0.50f, 170, "SOUL_STONE");
+        oreSmelting(pWriter, COBEL_SOUL_STONE, RecipeCategory.MISC, ModItems.SOUL_STONE_INGOT.get(), 0.50f, 250, "SOUL_STONE");
 
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, ModItems.BISMUTH.get(), RecipeCategory.MISC, ModBlocks.BISMUTH_BLOCK.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, ModItems.LILLIUM.get(), RecipeCategory.MISC, ModBlocks.LILLIUM_BLOCK.get());
@@ -307,6 +310,114 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
         //SmithingTransformRecipeBuilder.smithing(template, item to upgrade, upgradeitem, category, result)
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ALLOY_PROCESSOR.get())
+                .pattern(" B ")
+                .pattern("BAB")
+                .pattern(" B ")
+                .define('A', Blocks.FURNACE)
+                .define('B', Blocks.DEEPSLATE)
+                .unlockedBy("has_furnace", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(Blocks.FURNACE).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "alloy_processor"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.GOLDEN_EXPORTER.get())
+                .pattern(" A ")
+                .pattern("BCB")
+                .pattern("CCC")
+                .define('A', Blocks.GRINDSTONE)
+                .define('B', Blocks.GOLD_BLOCK)
+                .define('C', Blocks.OAK_PLANKS)
+                .unlockedBy("has_grindstone", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(Blocks.GRINDSTONE).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "golden_exporter"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SOUL_STONE_SWORD.get())
+                .pattern("A")
+                .pattern("B")
+                .pattern("C")
+                .define('A', ModItems.SOUL_STONE_BLADE.get())
+                .define('B', ModItems.SOUL_STONE_GUARD.get())
+                .define('C', ModItems.SOUL_STONE_STICK.get())
+                .unlockedBy("has_soul_stone", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.SOUL_STONE_BLADE.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "soul_stone_sword"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLANK_PATTERN.get())
+                .pattern("AA")
+                .pattern("AA")
+                .define('A', Items.IRON_INGOT)
+                .unlockedBy("has_blank_pattern", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(Items.IRON_INGOT).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "blank_pattern"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLADE_PATTERN.get())
+                .pattern("A")
+                .pattern("A")
+                .pattern("A")
+                .define('A', ModItems.BLANK_PATTERN.get())
+                .unlockedBy("has_blank_pattern", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.BLANK_PATTERN.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "blade_pattern"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.STICK_PATTERN.get())
+                .pattern("A")
+                .pattern("A")
+                .define('A', ModItems.BLANK_PATTERN.get())
+                .unlockedBy("has_blank_pattern", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.BLANK_PATTERN.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "stick_pattern"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GUARD_PATTERN.get())
+                .pattern("AAA")
+                .define('A', ModItems.BLANK_PATTERN.get())
+                .unlockedBy("has_blank_pattern", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.GUARD_PATTERN.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "guard_pattern"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.HELMET_PATTERN.get())
+                .pattern("AAA")
+                .pattern("A A")
+                .define('A', ModItems.BLANK_PATTERN.get())
+                .unlockedBy("has_blank_pattern", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.BLANK_PATTERN.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "helmet_pattern"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CHESTPLATE_PATTERN.get())
+                .pattern("A A")
+                .pattern("AAA")
+                .pattern("AAA")
+                .define('A', ModItems.BLANK_PATTERN.get())
+                .unlockedBy("has_blank_pattern", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.BLANK_PATTERN.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "chestplate_pattern"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.LEGGINGS_PATTERN.get())
+                .pattern("AAA")
+                .pattern("A A")
+                .pattern("A A")
+                .define('A', ModItems.BLANK_PATTERN.get())
+                .unlockedBy("has_blank_pattern", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.BLANK_PATTERN.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "legings_pattern"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BOOTS_PATTERN.get())
+                .pattern("A A")
+                .pattern("A A")
+                .define('A', ModItems.BLANK_PATTERN.get())
+                .unlockedBy("has_blank_pattern", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.BLANK_PATTERN.get()).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "boots_pattern"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_DIAMOND.get())
+                .pattern("AB")
+                .define('A', Items.DIAMOND)
+                .define('B', ModItems.GILDED_GOLD.get())
+                .unlockedBy("has_diamond", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(Items.DIAMOND).build()))
+                .save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "gilded_diamond"));
+
+        //SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ModItems.BISMUTH_BOOTS.get()), Ingredient.of(Items.NETHERITE_INGOT), RecipeCategory.COMBAT, ModItems.BISMUTH_LEGGINGS.get()).unlocks("has_netherite_ingot", has(Items.NETHERITE_INGOT)).save(pWriter, new ResourceLocation(Tool_Forge.MOD_ID, "test"));
     }
     public static SingleItemRecipeBuilder stonecutting(Ingredient pIngredient, RecipeCategory pCategory, ItemLike pResult) {
         return new SingleItemRecipeBuilder(pCategory, RecipeSerializer.STONECUTTER, pIngredient, pResult, 1);
